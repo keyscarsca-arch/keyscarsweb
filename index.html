@@ -1714,7 +1714,8 @@ window.__cutoutPhoto = function(imgEl){
 };
 
 window.__onPhotoLoad = function(imgEl){
-  window.__cutoutPhoto && window.__cutoutPhoto(imgEl);
+  // Recorte de fondo blanco DESACTIVADO: dañaba fotos de metal brillante
+  // (confundía los brillos de la llave con fondo blanco y los borraba).
   window.__fitNaturalSize && window.__fitNaturalSize(imgEl);
 };
 
