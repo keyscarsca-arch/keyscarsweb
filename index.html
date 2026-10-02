@@ -925,7 +925,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.4 7-12.5A7 7 0 0 0 5 9.5C5 14.6 12 22 12 22Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
             <span>Cr 7, Local 3-39, Barrio Propatria, Calle 18 — detrás de Deportes Sam, San Cristóbal</span>
           </div>
-          <div class="map-row"><b>WhatsApp:</b> +58 422-0354907</div>
+          <div class="map-row"><b>WhatsApp:</b> +58 422-6377050</div>
           <div class="map-row"><b>Horario:</b> Lunes a Viernes, 8:00 a.m. – 5:00 p.m.</div>
         </div>
       </div>
@@ -1050,7 +1050,7 @@
 </div>
 
 <script>
-const WHATSAPP_NUMBER = "584220354907";
+const WHATSAPP_NUMBER = "584226377050";
 let PRODUCTS = [];
 
 let cart = [];
@@ -1606,19 +1606,9 @@ window.__imgFallback = function(imgEl){
    modal. Si la foto es más chica que el recuadro, se muestra a su tamaño real (nítida)
    en vez de agrandada. No aplica al ícono de reemplazo (ese es vectorial, siempre nítido). */
 window.__fitNaturalSize = function(imgEl){
-  if(imgEl.classList.contains('is-placeholder')) return;
-  if(!imgEl.classList.contains('modal-img-el')) return;
-  const container = imgEl.parentElement;
-  if(!container) return;
-  const maxW = container.clientWidth - 44;
-  const maxH = container.clientHeight - 44;
-  if(imgEl.naturalWidth && imgEl.naturalHeight &&
-     imgEl.naturalWidth < maxW && imgEl.naturalHeight < maxH){
-    imgEl.style.width = imgEl.naturalWidth + 'px';
-    imgEl.style.height = imgEl.naturalHeight + 'px';
-    imgEl.style.objectFit = 'none';
-    imgEl.classList.add('is-small-photo');
-  }
+  // DESACTIVADO: hacía que cada foto tuviera un tamaño distinto en el recuadro
+  // (las chicas se veían diminutas). Ahora todas llenan el recuadro parejo,
+  // del mismo tamaño, vía object-fit:contain (ver CSS .modal-img img).
 };
 
 /* Recorta el "orillo" blanco/claro que rodea a las fotos de producto (típico de fotos
