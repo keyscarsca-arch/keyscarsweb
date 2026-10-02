@@ -367,7 +367,7 @@
   .card:hover{border-color:var(--gold);transform:translateY(-2px);}
   .card-thumb{
     height:96px;border-radius:6px;
-    background:radial-gradient(120% 140% at 50% 30%, #1a52a3 0%, #0d3792 45%, #071834 100%);
+    background:#FFFFFF;
     display:flex;align-items:center;justify-content:center;color:var(--navy);
     border:1px solid var(--line);overflow:hidden;
   }
@@ -607,10 +607,10 @@
   }
   .modal-img{
     width:100%;aspect-ratio:4/3;border-radius:16px 16px 0 0;overflow:hidden;position:relative;
-    background:radial-gradient(120% 140% at 50% 30%, #1a52a3 0%, #0d3792 45%, #071834 100%);
+    background:#FFFFFF;
     display:flex;align-items:center;justify-content:center;
   }
-  .modal-img img{width:100%;height:100%;object-fit:contain;padding:22px;filter:drop-shadow(0 10px 20px rgba(0,0,0,0.45));}
+  .modal-img img{width:100%;height:100%;object-fit:contain;padding:22px;filter:drop-shadow(0 6px 14px rgba(0,0,0,0.18));}
   .modal-img img:not(.is-placeholder){
     -webkit-mask-image:radial-gradient(ellipse 72% 72% at 50% 50%, black 62%, rgba(0,0,0,0.55) 80%, transparent 100%);
     mask-image:radial-gradient(ellipse 72% 72% at 50% 50%, black 62%, rgba(0,0,0,0.55) 80%, transparent 100%);
@@ -1362,17 +1362,8 @@ function buildReel(reelIndex, targetIndex){
 });
 
 const CHEAP_KEYCHAINS = [
-  {c:'LLAVERO-01', d:'Llavero elástico largo (lanyard)'},
-  {c:'LLAVERO-04', d:'Llavero alpinista mediano'},
-  {c:'LLAVERO-11', d:'Llavero plástico arcoíris'},
-  {c:'LLAVERO-16', d:'Llavero plástico de carros'},
-  {c:'LLAVERO-17', d:'Llavero destapador en metal'},
-  {c:'LLAVERO-35', d:'Llavero metal ciclista'},
-  {c:'LLAVERO-50', d:'Llavero de rin, goma + metal'},
-  {c:'LLAVERO-55', d:'Llavero metálico tipo espejo'},
-  {c:'LLAVERO-60', d:'Llavero metal de globo'},
-  {c:'LLAVERO-65', d:'Llavero metal forma de herramientas'},
-  {c:'LLAVERO-80', d:'Llavero metal palanca de cambios'},
+  {c:'LLAVERO-01', d:'Llavero'},
+  {c:'LLAVERO-02', d:'Llavero'},
 ];
 
 let spinning = false;
