@@ -330,22 +330,24 @@
   /* SECTION HEADS */
   .section{padding:20px 0;}
   .section-head{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:14px;flex-wrap:wrap;}
-  .taller-anim{width:140px;height:140px;flex-shrink:0;}
+  .taller-anim{width:150px;height:150px;flex-shrink:0;}
   .taller-anim-svg{width:100%;height:100%;overflow:visible;}
-  .medal-key{animation:medalFloat 3.2s ease-in-out infinite;transform-origin:100px 100px;}
-  .pulse-ring{animation:pulseRing 2.6s ease-out infinite;transform-origin:100px 100px;}
-  .pulse-ring-2{animation-delay:1.3s;}
-  @keyframes medalFloat{0%,100%{transform:rotate(-6deg);}50%{transform:rotate(6deg);}}
-  @keyframes pulseRing{0%{transform:scale(0.92);opacity:0.6;}100%{transform:scale(1.18);opacity:0;}}
+  .keyring-swing{animation:ringSway 2.8s ease-in-out infinite;transform-origin:100px 48px;}
+  .key-sway{animation-duration:2.8s;animation-timing-function:ease-in-out;animation-iteration-count:infinite;transform-origin:100px 60px;}
+  .key-sway-1{animation-name:ringSway;}
+  .key-sway-2{animation-name:ringSway;animation-delay:.08s;}
+  .key-sway-3{animation-name:ringSway;animation-delay:.16s;}
+  @keyframes ringSway{0%,100%{transform:rotate(-8deg);}50%{transform:rotate(8deg);}}
   @media (max-width:700px){.taller-anim{display:none;}}
   .section-head h2{font-size:29px;color:var(--navy);}
   .section-head p{color:var(--text-dim);font-size:15px;max-width:44ch;}
+  #nosotros .section-head p{color:var(--navy);font-size:17.5px;font-weight:700;font-style:italic;max-width:46ch;line-height:1.5;}
 
   /* MISION VISION */
   .mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   .mv-card{background:var(--panel);padding:20px 22px;border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:10px;}
-  .mv-card h3{color:var(--navy);font-size:19px;margin-bottom:8px;}
-  .mv-card p{color:var(--text-dim);font-size:15px;text-align:justify;hyphens:auto;line-height:1.6;}
+  .mv-card h3{color:var(--navy);font-size:20px;margin-bottom:10px;text-align:center;}
+  .mv-card p{color:var(--text-dim);font-size:15px;text-align:justify;hyphens:none;word-break:normal;overflow-wrap:normal;line-height:1.7;}
 
   /* CATALOG */
   .catalog-tools{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
@@ -638,7 +640,7 @@
   .modal-body h3{font-size:21px;color:var(--text);margin:8px 0 6px;line-height:1.3;}
   .modal-code{font-size:12.5px;color:var(--text-dim);font-family:monospace;margin-bottom:18px;}
   .modal-actions{display:flex;gap:10px;flex-wrap:wrap;}
-  .modal-actions .btn{flex:1;justify-content:center;min-width:170px;text-align:center;}
+  .modal-actions .btn{flex:none;justify-content:center;min-width:0;width:56px;height:48px;padding:0;text-align:center;}
 
   /* Selector de catálogo para pruebas locales (solo aparece si abres el HTML con
      doble clic desde tu computadora; en el hosting esto no se muestra nunca). */
@@ -890,24 +892,35 @@
         <p>Especialistas en cerrajería automotriz, residencial y sistemas de control, con un equipo capacitado y tecnología de vanguardia al servicio de cada cliente.</p>
       </div>
       <div class="taller-anim" aria-hidden="true">
-        <svg viewBox="0 0 200 200" class="taller-anim-svg">
+        <svg viewBox="0 0 200 190" class="taller-anim-svg">
           <defs>
-            <radialGradient id="gMedalBg" cx="35%" cy="30%" r="75%">
-              <stop offset="0%" stop-color="#14509e"/><stop offset="55%" stop-color="#0d3792"/><stop offset="100%" stop-color="#071834"/>
-            </radialGradient>
-            <linearGradient id="gMedalGold" x1="0" y1="0" x2="1" y2="1">
+            <linearGradient id="gHandGold" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stop-color="#FFE985"/><stop offset="55%" stop-color="#FFD700"/><stop offset="100%" stop-color="#B8860B"/>
             </linearGradient>
           </defs>
-          <circle class="pulse-ring" cx="100" cy="100" r="70" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.5"/>
-          <circle class="pulse-ring pulse-ring-2" cx="100" cy="100" r="70" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.5"/>
-          <circle cx="100" cy="100" r="66" fill="url(#gMedalBg)" stroke="url(#gMedalGold)" stroke-width="3"/>
-          <g class="medal-key">
-            <circle cx="78" cy="100" r="22" fill="none" stroke="url(#gMedalGold)" stroke-width="7"/>
-            <circle cx="78" cy="100" r="6" fill="#071834"/>
-            <rect x="98" y="93" width="48" height="14" rx="3" fill="url(#gMedalGold)"/>
-            <rect x="128" y="107" width="9" height="14" rx="2" fill="url(#gMedalGold)"/>
-            <rect x="113" y="107" width="9" height="18" rx="2" fill="url(#gMedalGold)"/>
+          <!-- llavero: anillo + 3 llaves colgando, oscilando como un pendulo -->
+          <g class="keyring-swing">
+            <circle cx="100" cy="48" r="13" fill="none" stroke="url(#gHandGold)" stroke-width="5"/>
+            <g class="key-sway key-sway-1">
+              <rect x="95" y="58" width="10" height="46" rx="3" fill="url(#gHandGold)"/>
+              <rect x="105" y="86" width="8" height="8" rx="1.5" fill="url(#gHandGold)"/>
+              <rect x="105" y="98" width="8" height="10" rx="1.5" fill="url(#gHandGold)"/>
+            </g>
+            <g class="key-sway key-sway-2">
+              <rect x="80" y="56" width="8" height="36" rx="3" fill="url(#gHandGold)"/>
+              <circle cx="84" cy="52" r="7" fill="none" stroke="url(#gHandGold)" stroke-width="4"/>
+            </g>
+            <g class="key-sway key-sway-3">
+              <rect x="112" y="56" width="8" height="30" rx="3" fill="url(#gHandGold)"/>
+              <circle cx="116" cy="52" r="6" fill="none" stroke="url(#gHandGold)" stroke-width="4"/>
+            </g>
+          </g>
+          <!-- mano (silueta estilizada) sosteniendo el llavero desde abajo -->
+          <g fill="#0d3792">
+            <path d="M62 150c0-7 4-13 9-17 3-14 6-24 8-28 2-4 8-4 9 1 1-5 9-6 10 0 1-5 9-5 10 1 1-5 9-4 9 2 1 4 2 12 2 20 6 3 11 10 11 18v12c0 10-8 18-18 18H80c-10 0-18-8-18-18v-9z"/>
+          </g>
+          <g class="hand-shine" fill="#ffffff" opacity="0.14">
+            <path d="M70 150c0-6 3-11 7-14 2-11 5-20 7-24 1 10-1 24-2 32-4 1-8 3-10 6z"/>
           </g>
         </svg>
       </div>
@@ -1070,8 +1083,8 @@
     <h3 id="modalDesc">—</h3>
     <div class="modal-code" id="modalCode">—</div>
     <div class="modal-actions">
-      <button class="btn btn-solid-navy" id="modalAddBtn"><span class="btn-ic" id="modalAddIcon"></span><span id="modalAddText">Agregar a cotización</span></button>
-      <a class="btn btn-green" id="modalWaBtn" target="_blank" href="#"><span class="btn-ic" id="modalWaIcon"></span>Pedir por WhatsApp</a>
+      <button class="btn btn-solid-navy" id="modalAddBtn" title="Agregar a cotización" aria-label="Agregar a cotización"><span class="btn-ic" id="modalAddIcon"></span></button>
+      <a class="btn btn-green" id="modalWaBtn" target="_blank" href="#" title="Pedir por WhatsApp" aria-label="Pedir por WhatsApp"><span class="btn-ic" id="modalWaIcon"></span></a>
     </div>
   </div>
 </div>
@@ -1759,15 +1772,14 @@ function openProductModal(code){
   document.getElementById('modalWaIcon').innerHTML = ICON_WHATSAPP_WHITE;
   const addBtn = document.getElementById('modalAddBtn');
   const addIcon = document.getElementById('modalAddIcon');
-  const addText = document.getElementById('modalAddText');
   const inCart = cart.some(c => c.c === p.c);
   addIcon.innerHTML = inCart ? ICON_CART_CHECK : ICON_CART;
-  addText.textContent = inCart ? 'Agregado' : 'Agregar a cotización';
+  addBtn.title = addBtn.ariaLabel = inCart ? 'Agregado a cotización' : 'Agregar a cotización';
   addBtn.onclick = ()=>{
     toggleCart(p.c);
     const nowInCart = cart.some(c => c.c === p.c);
     addIcon.innerHTML = nowInCart ? ICON_CART_CHECK : ICON_CART;
-    addText.textContent = nowInCart ? 'Agregado' : 'Agregar a cotización';
+    addBtn.title = addBtn.ariaLabel = nowInCart ? 'Agregado a cotización' : 'Agregar a cotización';
   };
   document.getElementById('productModal').classList.add('open');
   document.getElementById('modalOverlay').classList.add('open');
