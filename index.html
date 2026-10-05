@@ -330,11 +330,8 @@
   /* SECTION HEADS */
   .section{padding:20px 0;}
   .section-head{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:14px;flex-wrap:wrap;}
-  .taller-anim{width:150px;height:150px;flex-shrink:0;}
-  .taller-anim-svg{width:100%;height:100%;overflow:visible;}
-  .grafico-vectorial{width:100%;height:100%;display:block;}
-  .efecto-balanceo{animation:agitarLlavero 2s ease-in-out infinite;transform-origin:16px 34px;}
-  @keyframes agitarLlavero{0%,100%{transform:translateY(0) rotate(0deg);}25%{transform:translateY(-3.5px) rotate(-3deg);}50%{transform:translateY(1px) rotate(3.5deg);}75%{transform:translateY(-1.5px) rotate(-1deg);}}
+  .taller-anim{width:190px;height:190px;flex-shrink:0;}
+  .taller-video{width:100%;height:100%;display:block;object-fit:contain;mix-blend-mode:multiply;pointer-events:none;}
   @media (max-width:700px){.taller-anim{display:none;}}
   .section-head h2{font-size:29px;color:var(--navy);}
   .section-head p{color:var(--text-dim);font-size:15px;max-width:44ch;}
@@ -342,7 +339,8 @@
   #nosotros .section-head h2{font-size:32px;letter-spacing:-0.01em;}
   #nosotros .section-head h2::after{content:"";display:block;width:64px;height:4px;border-radius:2px;background:var(--gold);margin:12px auto 0;}
   #nosotros .section-head p{color:var(--text-dim);font-size:18px;font-weight:500;font-style:normal;max-width:62ch;line-height:1.65;margin:14px auto 0;}
-  #nosotros .taller-anim{position:absolute;right:0;top:50%;transform:translateY(-50%);}
+  #nosotros .section-head{min-height:160px;}
+  #nosotros .taller-anim{position:absolute;right:0;top:50%;margin-top:-80px;width:160px;height:160px;}
   @media (max-width:1000px){#nosotros .taller-anim{display:none;}}
 
   /* MISION VISION */
@@ -894,18 +892,10 @@
         <p>Especialistas en cerrajería automotriz, residencial y sistemas de control, con un equipo capacitado y tecnología de vanguardia al servicio de cada cliente.</p>
       </div>
       <div class="taller-anim" aria-hidden="true">
-        <svg viewBox="0 0 64 64" class="grafico-vectorial">
-          <circle cx="32" cy="32" r="30" fill="#E0F2FE" />
-          <g class="efecto-balanceo">
-            <circle cx="32" cy="24" r="5" stroke="#0F172A" stroke-width="2.5" fill="none" />
-            <path d="M32 29V46M32 37H35M32 41H35" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round" />
-            <path d="M28.5 27.5L19 37M24 32L21.5 29.5" stroke="#334155" stroke-width="2.5" stroke-linecap="round" />
-            <path d="M35.5 27.5L45 37M40 32L42.5 29.5" stroke="#334155" stroke-width="2.5" stroke-linecap="round" />
-            <path d="M10 40H20C22 40 24 38 24 36V32C24 30 22 28 20 28H14" stroke="#0EA5E9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-            <path d="M24 28C24 26 25.5 24 27.5 24H29C30 24 31 25 31 26V28" stroke="#0EA5E9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-            <path d="M24 32H28C29 32 30 33 30 34C30 35 29 36 28 36H24" stroke="#0EA5E9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-          </g>
-        </svg>
+        <video class="taller-video" autoplay loop muted playsinline preload="auto" disablepictureinpicture>
+          <source src="animacion/llaves.webm" type="video/webm">
+          <source src="animacion/llaves.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
     <div class="mv-grid">
