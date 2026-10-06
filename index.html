@@ -35,7 +35,12 @@
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
     "opens": "08:00",
-    "closes": "17:00"
+    "closes": "16:00"
+  },{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": "Saturday",
+    "opens": "08:00",
+    "closes": "14:30"
   }]
 }
 </script>
@@ -793,7 +798,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2" stroke-linecap="round"/></svg>
           <span id="clockDisplay">--:--:--</span>
         </div>
-        <img class="visits-badge" id="visitsBadge" alt="contador de visitas" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fkeyscarsmotos.com.ve&count_bg=%23FFD700&title_bg=%230D47A1&icon=&icon_color=%23E7E7E7&title=visitas&edge_flat=false" onerror="this.style.display='none'">
+        <img class="visits-badge" id="visitsBadge" alt="contador de visitas" src="https://hits.sh/keyscarsmotosandhouse.com.svg?label=visitas&color=0D47A1&labelColor=FFD700&style=flat-square" onerror="this.style.display='none'">
       </div>
       <button class="cart-btn" id="cartOpenBtn" aria-label="Ver cotización">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h2l2.4 12.2a2 2 0 0 0 2 1.8h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>
@@ -820,7 +825,7 @@
         <a href="#juego" class="btn btn-ghost">Jugar y ganar un premio</a>
       </div>
       <div class="hero-stats">
-        <div><b id="statTotal">1292</b><span>productos</span></div>
+        <div><b id="statTotal">1291</b><span>productos</span></div>
         <div><b id="statCats">15</b><span>categorías</span></div>
         <div><b>100%</b><span>WhatsApp</span></div>
       </div>
@@ -987,7 +992,7 @@
             <span>Cr 7, Local 3-39, Barrio Propatria, Calle 18 — detrás de Deportes Sam, San Cristóbal</span>
           </div>
           <div class="map-row"><b>WhatsApp:</b> +58 422-6377050</div>
-          <div class="map-row"><b>Horario:</b> Lunes a Viernes, 8:00 a.m. – 5:00 p.m.</div>
+          <div class="map-row"><b>Horario:</b> Lunes a Viernes, 8:00 a.m. – 4:00 p.m.<br>Sábados, 8:00 a.m. – 2:30 p.m.</div>
         </div>
       </div>
     </div>
@@ -1321,6 +1326,8 @@ document.getElementById('sendMsgBtn').addEventListener('click', ()=>{
    el QR que le entregas al cliente en su recibo. Si alguien entra a la web normal,
    sin ese enlace, nunca ve esta sección. */
 const ENCUESTA_TOKEN = 'kc';
+// Las respuestas de la encuesta tambien llegan por correo a esta direccion
+const ENCUESTA_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/keyscarsca@gmail.com';
 function checkEncuestaAccess(){
   const params = new URLSearchParams(window.location.search);
   if(params.get('opinion') === ENCUESTA_TOKEN){
@@ -1355,8 +1362,31 @@ document.getElementById('sendEncuestaBtn').addEventListener('click', ()=>{
     `3) Atención del vendedor: ${q3}\n` +
     `4) ¿Recomendaría Keys Cars?: ${q4}\n` +
     `5) Comentario: ${q5 || 'Sin comentario adicional'}`;
+  // 1) WhatsApp (se abre de inmediato, dentro del clic, para que el navegador no lo bloquee)
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
-  showToast('¡Gracias por tu opinión!');
+
+  // 2) Correo a keyscarsca@gmail.com (sin que el cliente haga nada más), via FormSubmit
+  const btn = document.getElementById('sendEncuestaBtn');
+  btn.disabled = true;
+  btn.textContent = 'Enviando…';
+  fetch(ENCUESTA_EMAIL_ENDPOINT, {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({
+      _subject: 'Nueva encuesta de satisfacción - Keys Cars',
+      _template: 'table',
+      _captcha: 'false',
+      '1) Satisfacción': encStarValue + '/5 estrellas',
+      '2) Producto correcto y funcionó bien': q2,
+      '3) Atención del vendedor': q3,
+      '4) ¿Recomendaría Keys Cars?': q4,
+      '5) Comentario': q5 || 'Sin comentario adicional',
+      'Enviada': new Date().toLocaleString('es-VE')
+    })
+  }).then(r=>r.json()).then(j=>console.log('Correo de encuesta:', j)).catch(e=>console.warn('No se pudo enviar el correo de la encuesta', e)).finally(()=>{
+    btn.textContent = '¡Gracias por tu opinión! ✓';
+    showToast('¡Gracias por tu opinión!');
+  });
 });
 
 /* ===== JUEGO: La Ruleta de Keys Cars ===== */
