@@ -1013,7 +1013,7 @@
     </div>
     <div class="form-card" style="max-width:560px;margin:0 auto;">
       <div class="field">
-        <label>1. ¿Qué tan satisfecho quedaste con tu compra en Keys Cars?</label>
+        <label>1. Nivel de satisfacción con tu compra en Keys Cars Motos &amp; House C.A</label>
         <div class="star-rating" id="encStars">
           <button type="button" data-v="1">★</button>
           <button type="button" data-v="2">★</button>
@@ -1023,16 +1023,7 @@
         </div>
       </div>
       <div class="field">
-        <label for="encQ2">2. ¿El producto que te entregaron era el correcto y funcionó bien?</label>
-        <select id="encQ2">
-          <option value="">Selecciona una opción</option>
-          <option>Sí</option>
-          <option>No</option>
-          <option>Tuve un problema</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="encQ3">3. ¿Cómo calificarías la atención del vendedor?</label>
+        <label for="encQ3">2. ¿Cómo calificarías la atención del vendedor?</label>
         <select id="encQ3">
           <option value="">Selecciona una opción</option>
           <option>Excelente</option>
@@ -1042,7 +1033,7 @@
         </select>
       </div>
       <div class="field">
-        <label for="encQ4">4. ¿Recomendarías Keys Cars a un familiar o amigo?</label>
+        <label for="encQ4">3. ¿Recomendarías Keys Cars a un familiar o amigo?</label>
         <select id="encQ4">
           <option value="">Selecciona una opción</option>
           <option>Sí</option>
@@ -1051,10 +1042,11 @@
         </select>
       </div>
       <div class="field">
-        <label for="encQ5">5. ¿Quieres dejarnos un comentario o sugerencia? (opcional)</label>
+        <label for="encQ5">4. ¿Quieres dejarnos un comentario o sugerencia? (opcional)</label>
         <textarea id="encQ5" placeholder="Escribe aquí..."></textarea>
       </div>
       <button class="btn btn-green" id="sendEncuestaBtn" style="width:100%;justify-content:center;">Enviar respuestas</button>
+      <div id="encError" role="alert" style="display:none;margin-top:12px;color:#B00020;font-size:14px;text-align:center;"></div>
     </div>
   </div>
 </section>
@@ -1350,44 +1342,52 @@ document.querySelectorAll('#encStars button').forEach(btn=>{
 });
 
 document.getElementById('sendEncuestaBtn').addEventListener('click', ()=>{
-  if(!encStarValue){ showToast('Selecciona una calificación con las estrellas'); return; }
-  const q2 = document.getElementById('encQ2').value;
-  const q3 = document.getElementById('encQ3').value;
-  const q4 = document.getElementById('encQ4').value;
-  const q5 = document.getElementById('encQ5').value.trim();
-  if(!q2 || !q3 || !q4){ showToast('Responde todas las preguntas antes de enviar'); return; }
-  const text =
-    `Encuesta de satisfacción - Keys Cars\n\n` +
-    `1) Satisfacción: ${encStarValue}/5 estrellas\n` +
-    `2) Producto correcto y funcionó bien: ${q2}\n` +
-    `3) Atención del vendedor: ${q3}\n` +
-    `4) ¿Recomendaría Keys Cars?: ${q4}\n` +
-    `5) Comentario: ${q5 || 'Sin comentario adicional'}`;
-  // 1) WhatsApp (se abre de inmediato, dentro del clic, para que el navegador no lo bloquee)
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
-
-  // 2) Correo a keyscarsca@gmail.com (sin que el cliente haga nada más), via FormSubmit
   const btn = document.getElementById('sendEncuestaBtn');
+  const errBox = document.getElementById('encError');
+  errBox.style.display = 'none';
+  if(!encStarValue){ showToast('Selecciona tu nivel de satisfacción con las estrellas'); return; }
+  const q3 = document.getElementById('encQ3').value;   // atención del vendedor
+  const q4 = document.getElementById('encQ4').value;   // recomendaría
+  const q5 = document.getElementById('encQ5').value.trim(); // comentario (opcional)
+  if(!q3 || !q4){ showToast('Responde todas las preguntas antes de enviar'); return; }
+
+  // Las respuestas se envian SOLO por correo a la empresa (via FormSubmit). Ya no se usa WhatsApp.
   btn.disabled = true;
   btn.textContent = 'Enviando…';
+  const ctrl = new AbortController();
+  const timer = setTimeout(()=>ctrl.abort(), 20000);
   fetch(ENCUESTA_EMAIL_ENDPOINT, {
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
+    signal: ctrl.signal,
     body: JSON.stringify({
-      _subject: 'Nueva encuesta de satisfacción - Keys Cars',
+      _subject: 'Nueva encuesta de satisfacción - Keys Cars Motos & House C.A',
       _template: 'table',
       _captcha: 'false',
-      '1) Satisfacción': encStarValue + '/5 estrellas',
-      '2) Producto correcto y funcionó bien': q2,
-      '3) Atención del vendedor': q3,
-      '4) ¿Recomendaría Keys Cars?': q4,
-      '5) Comentario': q5 || 'Sin comentario adicional',
+      '1) Nivel de satisfacción': encStarValue + '/5 estrellas',
+      '2) Atención del vendedor': q3,
+      '3) ¿Recomendaría Keys Cars?': q4,
+      '4) Comentario': q5 || 'Sin comentario adicional',
       'Enviada': new Date().toLocaleString('es-VE')
     })
-  }).then(r=>r.json()).then(j=>console.log('Correo de encuesta:', j)).catch(e=>console.warn('No se pudo enviar el correo de la encuesta', e)).finally(()=>{
-    btn.textContent = '¡Gracias por tu opinión! ✓';
-    showToast('¡Gracias por tu opinión!');
-  });
+  })
+  .then(r=>r.json())
+  .then(j=>{
+    if(j && (j.success === true || j.success === 'true')){
+      btn.textContent = '¡Gracias por tu opinión! ✓';
+      showToast('¡Gracias por tu opinión!');
+    } else {
+      throw new Error('FormSubmit respondio sin exito: ' + JSON.stringify(j));
+    }
+  })
+  .catch(err=>{
+    console.warn('No se pudo enviar la encuesta', err);
+    btn.disabled = false;
+    btn.textContent = 'Enviar respuestas';
+    errBox.textContent = 'No se pudo enviar tu opinión. Revisa tu conexión e inténtalo de nuevo.';
+    errBox.style.display = 'block';
+  })
+  .finally(()=>clearTimeout(timer));
 });
 
 /* ===== JUEGO: La Ruleta de Keys Cars ===== */
