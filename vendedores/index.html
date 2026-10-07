@@ -132,6 +132,64 @@
   .modal-add.added{background:var(--navy);color:#fff;}
   .modal-add.added svg path:last-child{stroke:#FFD700;}
 
+  /* acceso y administración */
+  .user-chip{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-dim);max-width:150px;}
+  .user-chip b{color:var(--navy);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block;}
+  .out-btn{background:#fff;border:1px solid var(--line);color:var(--text-dim);width:42px;height:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;}
+  .out-btn:active{background:var(--line);}
+  .admin-tabs{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:61px;z-index:30;}
+  .admin-tabs .wrap{display:flex;gap:8px;padding-top:8px;padding-bottom:8px;overflow-x:auto;scrollbar-width:none;}
+  .atab{flex:none;border:1px solid var(--line);background:#fff;color:var(--text-dim);border-radius:20px;padding:8px 16px;font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px;}
+  .atab.active{background:var(--navy);border-color:var(--navy);color:var(--gold);}
+  .atab .dot{background:#E00210;color:#fff;border-radius:9px;min-width:18px;height:18px;font-size:11px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;}
+  .panel{padding-top:20px;padding-bottom:30px;}
+  .panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+  .panel-head h2{font-size:22px;color:var(--navy);}
+  .panel-head p{margin:2px 0 0;color:var(--text-dim);font-size:13.5px;}
+  .btn-primary{background:var(--navy);color:#fff;border:2px solid var(--gold);border-radius:10px;padding:10px 18px;font-weight:700;font-size:14.5px;}
+  .btn-ghost{background:#fff;color:var(--navy);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-weight:600;font-size:13px;}
+  .btn-ghost:hover{border-color:var(--gold);}
+  .btn-danger{background:#fff;color:#C00010;border:1px solid #f1b9bf;border-radius:8px;padding:8px 12px;font-weight:600;font-size:13px;}
+  .btn-warn{background:#fff7d6;color:#7a5d00;border:1px solid #ecd778;border-radius:8px;padding:8px 12px;font-weight:600;font-size:13px;}
+  .ulist{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px;}
+  .ucard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;}
+  .ucard.warn{border-color:#E00210;box-shadow:0 0 0 2px rgba(224,2,16,0.12);}
+  .ucard-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;}
+  .ucard h3{font-size:17px;color:var(--text);}
+  .ucard .sub{font-family:monospace;font-size:13px;color:var(--text-dim);}
+  .badge{font-size:11.5px;font-weight:700;border-radius:20px;padding:4px 10px;white-space:nowrap;}
+  .badge.on{background:#dff7e6;color:#17713a;}
+  .badge.off{background:#eef1f6;color:#59677E;}
+  .badge.bad{background:#fde3e5;color:#B00020;}
+  .badge.admin{background:var(--navy);color:var(--gold);}
+  .phones{font-size:13px;color:var(--text-dim);display:flex;flex-direction:column;gap:4px;}
+  .phone-row{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#f6f8fc;border-radius:8px;padding:6px 10px;}
+  .phone-row button{border:none;background:transparent;color:#B00020;font-size:12.5px;font-weight:600;padding:2px 4px;}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;}
+  .empty{color:var(--text-dim);text-align:center;padding:40px 10px;}
+  .warnline{background:#fde3e5;color:#B00020;border-radius:8px;padding:8px 10px;font-size:13px;font-weight:600;}
+  .events{margin-top:26px;}
+  .events h3{font-size:17px;color:var(--navy);margin-bottom:10px;}
+  .ev{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:9px 12px;background:#fff;border:1px solid var(--line);border-radius:8px;margin-bottom:6px;}
+  .ev small{color:var(--text-dim);white-space:nowrap;}
+  .ev.alert{border-color:#f1b9bf;background:#fff6f7;}
+  .field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;}
+  .field label{font-size:13px;font-weight:600;color:var(--text-dim);}
+  .field input[type=text],.field input[type=password],.field input[type=number],.field select{height:44px;border:1px solid var(--line);border-radius:8px;padding:0 12px;font-size:16px;background:#fff;font-family:inherit;}
+  .field .hint{font-size:12px;color:var(--text-dim);}
+  .check{display:flex;align-items:center;gap:8px;font-size:14px;margin-bottom:12px;}
+  .form-btns{display:flex;gap:10px;margin-top:6px;}
+  .form-btns button{flex:1;height:46px;border-radius:10px;font-weight:700;font-size:15px;}
+  .form-err{color:#B00020;font-size:13.5px;min-height:18px;margin-bottom:8px;}
+  .pass-wrap{position:relative;}
+  .pass-wrap input{width:100%;padding-right:48px;}
+  .pass-wrap button, .lock-box .pass-wrap button{position:absolute;right:4px;top:4px;height:36px;width:52px;border:none;background:transparent;color:var(--text-dim);font-size:13px;font-weight:700;}
+  .lock-err.okmsg{color:#0a6b2c;}
+  .offline-bar{background:#fff7d6;color:#7a5d00;text-align:center;font-size:13px;padding:6px 10px;font-weight:600;}
+  .hidden{display:none !important;}
+  .lock-box .small{font-size:12px;color:var(--text-dim);margin:12px 0 0;}
+  .modal.form{max-width:440px;padding:22px 20px;}
+  .modal.form h3{margin-bottom:14px;color:var(--navy);}
   .load-more-wrap{display:flex;justify-content:center;margin:26px 0 8px;}
   .load-more{background:var(--navy);color:#fff;border:2px solid var(--gold);border-radius:10px;padding:12px 28px;font-weight:700;font-size:15px;display:none;}
   footer{text-align:center;color:var(--text-dim);font-size:12.5px;padding:26px 16px calc(34px + env(safe-area-inset-bottom));}
@@ -168,7 +226,7 @@
     .card-thumb{height:92px;}
     .brand-text{font-size:19px;}
     .brand-mark{height:38px;}
-    .role-pill{display:none;}
+    .role-pill{display:none;} .user-chip{display:none;}
     .brand-text,.brand-sub{white-space:nowrap;}
     .intro h1{font-size:21px;}
     .seg button{padding:10px 22px;}
@@ -182,14 +240,30 @@
 </head>
 <body>
 
-<div class="lock" id="lock">
+<div class="lock open" id="loginScreen">
   <div class="lock-box">
     <img src="logo.png" alt="Keys Cars">
-    <h2>Acceso de vendedores</h2>
-    <p>Escribe o pega el código de acceso que te dio Keys Cars.</p>
-    <input type="password" id="lockInput" placeholder="Código de acceso" autocomplete="off" autocapitalize="off" spellcheck="false">
-    <div class="lock-err" id="lockErr"></div>
-    <button id="lockBtn">Entrar</button>
+    <h2>Ingreso</h2>
+    <p>Escribe tu usuario y contraseña de Keys Cars.</p>
+    <div class="field"><input type="text" id="lgUser" placeholder="Usuario" autocomplete="username" autocapitalize="off" autocorrect="off" spellcheck="false"></div>
+    <div class="field pass-wrap"><input type="password" id="lgPass" placeholder="Contraseña" autocomplete="current-password" autocapitalize="off" spellcheck="false"><button type="button" id="lgShow" aria-label="Mostrar contraseña">Ver</button></div>
+    <div class="lock-err" id="lgErr"></div>
+    <button id="lgBtn">Entrar</button>
+    <p class="small">Este teléfono queda registrado con tu usuario y la ciudad aproximada desde donde entras.</p>
+  </div>
+</div>
+
+<div class="lock" id="setupScreen">
+  <div class="lock-box">
+    <img src="logo.png" alt="Keys Cars">
+    <h2>Crear administrador</h2>
+    <p>Primera vez: elige el usuario y la contraseña del administrador principal.</p>
+    <div class="field"><input type="text" id="suName" placeholder="Nombre (ej. Keys Cars)" autocomplete="off"></div>
+    <div class="field"><input type="text" id="suUser" placeholder="Usuario (sin espacios)" autocapitalize="off" autocorrect="off" spellcheck="false"></div>
+    <div class="field"><input type="password" id="suPass" placeholder="Contraseña (mínimo 8)" autocomplete="new-password"></div>
+    <div class="field"><input type="password" id="suPass2" placeholder="Repite la contraseña" autocomplete="new-password"></div>
+    <div class="lock-err" id="suErr"></div>
+    <button id="suBtn">Crear administrador</button>
   </div>
 </div>
 
@@ -203,14 +277,25 @@
       </div>
     </div>
     <div class="nav-right">
-      <span class="role-pill">Vendedores</span>
+      <span class="role-pill" id="rolePill">Vendedores</span>
+      <div class="user-chip hidden" id="userChip"><b id="userName"></b></div>
       <button class="cart-btn" id="cartOpenBtn" aria-label="Ver cotización">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.5 3h2l2.6 12.4a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 2-1.6L21 7H6"/></svg>
         <span class="cart-count" id="cartCount">0</span>
       </button>
+      <button class="out-btn hidden" id="logoutBtn" aria-label="Salir" title="Salir"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></button>
     </div>
   </nav>
 </header>
+
+<div class="admin-tabs hidden" id="adminTabs"><div class="wrap">
+  <button class="atab active" data-view="catalog">Catálogo</button>
+  <button class="atab" data-view="vendedores">Vendedores</button>
+  <button class="atab" data-view="activos">Vendedores activos <span class="dot hidden" id="activosDot">0</span></button>
+</div></div>
+<div class="offline-bar hidden" id="offlineBar"></div>
+
+<div id="viewCatalog" class="hidden">
 
 <section class="intro">
   <div class="wrap">
@@ -236,11 +321,29 @@
   <div class="grid" id="productGrid"></div>
   <div class="load-more-wrap"><button class="load-more" id="loadMoreBtn">Cargar más productos</button></div>
 </main>
+</div>
+
+<div id="viewVendedores" class="hidden"><div class="wrap panel">
+  <div class="panel-head">
+    <div><h2>Vendedores</h2><p>Crea, modifica o elimina usuarios y contraseñas. Cada usuario queda atado a su teléfono.</p></div>
+    <button class="btn-primary" id="addUserBtn">+ Agregar vendedor</button>
+  </div>
+  <div class="ulist" id="userList"></div>
+</div></div>
+
+<div id="viewActivos" class="hidden"><div class="wrap panel">
+  <div class="panel-head">
+    <div><h2>Vendedores activos</h2><p>Quién está conectado ahora (últimos 3 minutos). Se actualiza solo.</p></div>
+    <button class="btn-ghost" id="refreshActivos">Actualizar</button>
+  </div>
+  <div class="ulist" id="activeList"></div>
+  <div class="events"><h3>Actividad reciente</h3><div id="eventList"></div></div>
+</div></div>
 
 <footer>
   <b>Keys Cars Motos &amp; House C.A.</b> · Uso interno de vendedores<br>
   <span id="updated"></span><br>
-  <span style="opacity:.7">Versión 3 · si no ves los cambios, cierra y vuelve a abrir la app</span>
+  <span style="opacity:.7">Versión 4 · si no ves los cambios, cierra y vuelve a abrir la app</span>
 </footer>
 
 <div class="scrim" id="scrim"></div>
@@ -258,6 +361,8 @@
   </div>
 </div>
 <div class="toast" id="toast"></div>
+
+<div class="overlay" id="formOverlay"><div class="modal form" id="formModal"></div></div>
 
 <div class="overlay" id="modalOverlay">
   <div class="modal" id="modal">
@@ -279,8 +384,6 @@
 </div>
 
 <script>
-/* Los precios viajan CIFRADOS (AES-256-GCM) en datos.bin. Solo se pueden leer con el
-   código que va en el link. Sin el código, el archivo es ilegible. */
 const ICON_CART = `<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.5 3h2l2.6 12.4a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 2-1.6L21 7H6"/></svg>`;
 const ICON_CART_CHECK = `<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.5 3h2l2.6 12.4a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 2-1.6L21 7H6"/><path d="M9 10l2 2 4-4"/></svg>`;
 const ICON_WA_WHITE = `<svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.1-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>`;
@@ -288,32 +391,14 @@ document.getElementById('waIcon').innerHTML = ICON_WA_WHITE;
 const ICON_WA_GREEN = ICON_WA_WHITE.replace('fill="#fff"','fill="#25D366"');
 let PRODUCTS = [], PMAP = new Map(), categories = ["Todos"];
 let cart = [];            // [{c, qty}]
-const LS_CART = 'kc_vend_cart';
+let LS_CART = 'kc_vend_cart';
 let currency = 'USD', activeCategory = "Todos", searchTerm = "", visibleCount = 24;
 const PAGE_SIZE = 24;
-const LS_KEY = 'kc_vend_code', LS_CUR = 'kc_vend_cur';
+const LS_CUR = 'kc_vend_cur';
 
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
 function lsDel(k){ try{ localStorage.removeItem(k); }catch(e){} }
-
-function b64uToBytes(s){
-  s = s.replace(/-/g,'+').replace(/_/g,'/'); while(s.length % 4) s += '=';
-  const bin = atob(s), out = new Uint8Array(bin.length);
-  for(let i=0;i<bin.length;i++) out[i] = bin.charCodeAt(i);
-  return out;
-}
-async function decryptData(code){
-  const keyBytes = b64uToBytes(code.trim());
-  if(keyBytes.length !== 32) throw new Error('bad key');
-  const res = await fetch('datos.bin', {cache:'no-store'});
-  if(!res.ok) throw new Error('no data');
-  const buf = new Uint8Array(await res.arrayBuffer());
-  const iv = buf.slice(0,12), ct = buf.slice(12);
-  const key = await crypto.subtle.importKey('raw', keyBytes, 'AES-GCM', false, ['decrypt']);
-  const plain = await crypto.subtle.decrypt({name:'AES-GCM', iv}, key, ct);
-  return JSON.parse(new TextDecoder().decode(plain));
-}
 
 const CATEGORY_ORDER = ["LLAVES TIPO CISA","LLAVES RESIDENCIALES Y ESPECIALES","LLAVES PARA MOTOS Y VEHICULOS","HERRAMIENTAS, REPUESTOS Y ACCESORIOS CERRAJERIA","CILINDROS CANDADOS Y CERRADURAS","PORTACHIP","CARCASAS","LLAVEROS","CONTROLES Y TELEMANDOS","LLAVES CON CHIP","PRODUCTOS Xhorse","CONTROLES KEYDIY","ESPADINES PARA VVDI XHORSE","PRODUCTOS CISA","LLAVES SILCA - FLEXON"];
 function categoryRank(c){ const i = CATEGORY_ORDER.indexOf(c); return i === -1 ? 999 : i; }
@@ -502,7 +587,7 @@ document.getElementById('drawerCloseBtn').addEventListener('click', closeDrawer)
 document.getElementById('scrim').addEventListener('click', closeDrawer);
 document.getElementById('clearCartBtn').addEventListener('click', ()=>{
   if(!cart.length) return;
-  if(confirm('¿Vaciar toda la cotización?')){ cart = []; afterCartChange(true); }
+  askConfirm('¿Vaciar toda la cotización?', 'Vaciar').then(ok=>{ if(ok){ cart = []; afterCartChange(true); } });
 });
 function buildQuoteText(){
   let m = 'Hola, te envío la cotización de Keys Cars Motos & House:\n\n';
@@ -564,39 +649,388 @@ function startApp(data){
   const present = Array.from(new Set(PRODUCTS.map(p=>p.cat)))
     .sort((a,b)=> categoryRank(a)-categoryRank(b) || (a<b?-1:1));
   PMAP = new Map(PRODUCTS.map(p => [p.c, p]));
+  LS_CART = 'kc_vend_cart_' + ((session && session.usuario) || '');
   loadCart(); updateCartCount(); renderDrawer();
   categories = ["Todos", ...present];
   if(data.act) document.getElementById('updated').textContent = 'Precios actualizados: ' + data.act;
   renderChips(); renderGrid();
 }
 
-const lock = document.getElementById('lock');
-async function tryCode(code, fromUser){
+
+/* ====================== ACCESO (Supabase) ====================== */
+const SB_URL = 'https://qtfxrhznhgxrimqivlfj.supabase.co';
+const SB_KEY = 'sb_publishable_tYY-1_EE19qx-TEiUN-0pg__QMGcngc';
+const ALERT_ENDPOINT = 'https://formsubmit.co/ajax/keyscarsca@gmail.com';
+const LS_TOK = 'kc_vend_tok', LS_DEV = 'kc_vend_dev', LS_CAT = 'kc_vend_cat';
+const OFFLINE_MAX_MS = 72 * 3600 * 1000;
+let session = null;           // {token, rol, usuario, nombre}
+let started = false, pingTimer = null, activosTimer = null, currentView = 'catalog';
+
+function newId(){
+  const a = new Uint8Array(16); (window.crypto||{}).getRandomValues ? crypto.getRandomValues(a) : a.forEach((_,i)=>a[i]=Math.floor(Math.random()*256));
+  return Array.from(a, b => b.toString(16).padStart(2,'0')).join('');
+}
+let memDev = null;
+function deviceId(){
+  let d = lsGet(LS_DEV);
+  if(!d || d.length < 16){ d = memDev || newId(); memDev = d; lsSet(LS_DEV, d); }
+  return d;
+}
+async function rpc(fn, args){
+  const ctrl = new AbortController(); const to = setTimeout(()=>ctrl.abort(), 20000);
   try{
-    const data = await decryptData(code);
-    lsSet(LS_KEY, code.trim());
-    lock.classList.remove('open');
-    startApp(data);
-    return true;
-  }catch(err){
-    if(fromUser) document.getElementById('lockErr').textContent = 'Código incorrecto o sin conexión. Revisa e intenta de nuevo.';
-    return false;
+    const r = await fetch(SB_URL + '/rest/v1/rpc/' + fn, {
+      method:'POST', headers:{'Content-Type':'application/json', 'apikey': SB_KEY},
+      body: JSON.stringify(args || {}), signal: ctrl.signal
+    });
+    if(!r.ok) throw new Error('http ' + r.status);
+    return await r.json();
+  } finally { clearTimeout(to); }
+}
+function isNetErr(e){ return !(e && e.kind === 'api'); }
+async function approxCity(){
+  try{
+    const c = sessionStorage.getItem('kc_city'); if(c) return c;
+  }catch(e){}
+  try{
+    const ctrl = new AbortController(); const to = setTimeout(()=>ctrl.abort(), 3500);
+    const r = await fetch('https://ipwho.is/?fields=success,city,region,country', {signal: ctrl.signal}); clearTimeout(to);
+    const j = await r.json();
+    if(j && j.success){
+      const c = [j.city, j.region, j.country].filter(Boolean).join(', ');
+      try{ sessionStorage.setItem('kc_city', c); }catch(e){}
+      return c;
+    }
+  }catch(e){}
+  return '';
+}
+function sendAlert(asunto, datos){
+  try{
+    fetch(ALERT_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(Object.assign({_subject: asunto, _template:'table', _captcha:'false', 'Fecha': new Date().toLocaleString('es-VE')}, datos))
+    }).catch(()=>{});
+  }catch(e){}
+}
+function fmtDate(ts){
+  try{ return new Date(ts).toLocaleString('es-VE', {day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit'}); }catch(e){ return String(ts); }
+}
+function ago(ts){
+  const s = Math.max(0, Math.round((Date.now() - new Date(ts).getTime())/1000));
+  if(s < 60) return 'hace ' + s + ' s';
+  if(s < 3600) return 'hace ' + Math.round(s/60) + ' min';
+  if(s < 86400) return 'hace ' + Math.round(s/3600) + ' h';
+  return 'hace ' + Math.round(s/86400) + ' d';
+}
+
+/* ---- pantallas ---- */
+function show(id, on){ document.getElementById(id).classList.toggle('hidden', !on); }
+function showLogin(msg){
+  stopTimers(); started = false; session = null;
+  ['viewCatalog','viewVendedores','viewActivos','adminTabs','offlineBar','userChip','logoutBtn'].forEach(i=>show(i,false));
+  document.getElementById('setupScreen').classList.remove('open');
+  document.getElementById('loginScreen').classList.add('open');
+  const le = document.getElementById('lgErr'); le.textContent = msg || ''; le.classList.toggle('okmsg', /creado/.test(msg||''));
+  document.getElementById('lgPass').value = '';
+  document.getElementById('lgBtn').disabled = false; document.getElementById('lgBtn').textContent = 'Entrar';
+}
+function enterApp(){
+  document.getElementById('loginScreen').classList.remove('open');
+  document.getElementById('setupScreen').classList.remove('open');
+  show('userChip', true); show('logoutBtn', true);
+  document.getElementById('userName').textContent = session.nombre || session.usuario;
+  const admin = session.rol === 'admin';
+  document.getElementById('rolePill').textContent = admin ? 'Administrador' : 'Vendedores';
+  show('adminTabs', admin);
+  LS_CART = 'kc_vend_cart_' + session.usuario;
+  setView('catalog');
+  startTimers();
+}
+function setView(v){
+  currentView = v;
+  show('viewCatalog', v === 'catalog'); show('viewVendedores', v === 'vendedores'); show('viewActivos', v === 'activos');
+  document.querySelectorAll('.atab').forEach(b => b.classList.toggle('active', b.getAttribute('data-view') === v));
+  clearInterval(activosTimer); activosTimer = null;
+  if(v === 'vendedores') loadUsers();
+  if(v === 'activos'){ loadActivos(); activosTimer = setInterval(()=>{ if(!document.hidden) loadActivos(); }, 10000); }
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll('.atab').forEach(b => b.addEventListener('click', ()=> setView(b.getAttribute('data-view'))));
+
+function forceLogout(msg){
+  lsDel(LS_TOK); lsDel(LS_CAT);
+  showLogin(msg);
+}
+const ERR_TXT = {
+  credenciales: 'Usuario o contraseña incorrectos.',
+  desactivado: 'Tu usuario está desactivado. Habla con Keys Cars.',
+  limite: 'Este usuario ya está registrado en otro teléfono. Si cambiaste de teléfono, pide a Keys Cars que lo libere.',
+  datos: 'Revisa los datos e intenta de nuevo.',
+  sesion: 'Tu sesión se cerró. Entra de nuevo.',
+};
+function errMsg(r){
+  if(r.error === 'espera'){ const m = Math.max(1, Math.ceil((r.segundos||900)/60)); return 'Demasiados intentos fallidos. Espera ' + m + ' min e intenta de nuevo.'; }
+  if(r.error === 'bloqueado') return 'Tu acceso está bloqueado temporalmente' + (r.hasta ? ' hasta ' + fmtDate(r.hasta) : '') + '. Habla con Keys Cars.';
+  return ERR_TXT[r.error] || 'No se pudo iniciar sesión.';
+}
+
+async function doLogin(){
+  const u = document.getElementById('lgUser').value.trim(), p = document.getElementById('lgPass').value;
+  const err = document.getElementById('lgErr'), btn = document.getElementById('lgBtn');
+  if(!u || !p){ err.textContent = 'Escribe tu usuario y contraseña.'; return; }
+  btn.disabled = true; btn.textContent = 'Entrando…'; err.textContent = '';
+  try{
+    const ciudad = await approxCity();
+    const r = await rpc('fn_login', {p_usuario:u, p_clave:p, p_device:deviceId(), p_ciudad:ciudad, p_agente:(navigator.userAgent||'').slice(0,200)});
+    if(!r.ok){
+      if(r.error === 'limite') sendAlert('Keys Cars · Intento desde otro teléfono', {Usuario: r.usuario, Nombre: r.nombre||'', Ciudad: ciudad||'(no disponible)', Aviso:'Intentó entrar desde un teléfono distinto al registrado. Fue bloqueado.'});
+      err.textContent = errMsg(r); btn.disabled = false; btn.textContent = 'Entrar'; return;
+    }
+    session = {token:r.token, rol:r.rol, usuario:r.usuario, nombre:r.nombre};
+    lsSet(LS_TOK, r.token);
+    if(r.nuevo) sendAlert('Keys Cars · Teléfono nuevo registrado', {Usuario:r.usuario, Nombre:r.nombre||'', Ciudad:ciudad||'(no disponible)', Aviso:'Se registró un teléfono nuevo para este usuario.'});
+    document.getElementById('lgUser').value = '';
+    await loadCatalogAndStart(true);
+  }catch(e){
+    err.textContent = 'Sin conexión o el servidor no responde. Revisa tu internet e intenta de nuevo.';
+    btn.disabled = false; btn.textContent = 'Entrar';
   }
 }
-document.getElementById('lockBtn').addEventListener('click', ()=> tryCode(document.getElementById('lockInput').value, true));
-document.getElementById('lockInput').addEventListener('keydown', e=>{ if(e.key==='Enter') tryCode(e.target.value, true); });
+document.getElementById('lgBtn').addEventListener('click', doLogin);
+['lgUser','lgPass'].forEach(i => document.getElementById(i).addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); }));
+document.getElementById('lgShow').addEventListener('click', ()=>{
+  const p = document.getElementById('lgPass'), b = document.getElementById('lgShow');
+  const on = p.type === 'password'; p.type = on ? 'text' : 'password'; b.textContent = on ? 'Ocultar' : 'Ver';
+});
 
-(async function init(){
-  const saved = lsGet(LS_CUR); if(saved==='USD'||saved==='EUR') setCurrency(saved);
-  let code = decodeURIComponent((location.hash||'').replace(/^#/,'')).replace(/^k=/,'');
-  const stored = lsGet(LS_KEY);
-  if(code){
-    const ok = await tryCode(code, false);
-    if(ok){ try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} return; }
+async function loadCatalogAndStart(fresh){
+  const r = await rpc('fn_catalogo', {p_token: session.token});
+  if(!r.ok){ forceLogout(errMsg(r)); return; }
+  try{ lsSet(LS_CAT, JSON.stringify({t: Date.now(), usuario: session.usuario, rol: session.rol, nombre: session.nombre, data: r})); }catch(e){}
+  show('offlineBar', false);
+  if(r.yo){ session.rol = r.yo.rol; session.usuario = r.yo.usuario; session.nombre = r.yo.nombre; }
+  startApp(r); enterApp(); started = true;
+}
+
+async function restore(){
+  const tok = lsGet(LS_TOK);
+  if(!tok){ showLogin(''); return; }
+  session = {token: tok, rol:'', usuario:'', nombre:''};
+  let cached = null; try{ cached = JSON.parse(lsGet(LS_CAT) || 'null'); }catch(e){}
+  try{
+    const r = await rpc('fn_catalogo', {p_token: tok});
+    if(!r.ok){ forceLogout(errMsg(r)); return; }
+    if(r.yo){ session = {token:tok, rol:r.yo.rol, usuario:r.yo.usuario, nombre:r.yo.nombre}; }
+    try{ lsSet(LS_CAT, JSON.stringify({t: Date.now(), usuario: session.usuario, rol: session.rol, nombre: session.nombre, data: r})); }catch(e){}
+    startApp(r); enterApp(); started = true;
+  }catch(e){
+    if(cached && cached.data && cached.usuario && (Date.now() - cached.t) < OFFLINE_MAX_MS){
+      session = {token:tok, rol:cached.rol, usuario:cached.usuario, nombre:cached.nombre};
+      startApp(cached.data); enterApp(); started = true;
+      if(session.rol === 'admin'){ show('adminTabs', true); }
+      const bar = document.getElementById('offlineBar'); bar.textContent = 'Sin conexión · mostrando datos guardados el ' + fmtDate(cached.t); show('offlineBar', true);
+    } else {
+      showLogin('Sin conexión. Conéctate a internet para entrar.');
+    }
   }
-  if(stored && await tryCode(stored, false)) return;
-  lsDel(LS_KEY);
-  lock.classList.add('open');
+}
+
+/* ---- latido: mantiene "activo" y corta la sesión si el administrador desconecta o bloquea ---- */
+async function ping(){
+  if(!session || !started) return;
+  try{
+    const r = await rpc('fn_ping', {p_token: session.token});
+    if(!r.ok){ forceLogout(r.error === 'bloqueado' ? errMsg(r) : (r.error === 'desactivado' ? ERR_TXT.desactivado : 'El administrador cerró tu sesión. Entra de nuevo.')); return; }
+    show('offlineBar', false);
+    if(session.rol === 'admin') updateDot();
+  }catch(e){ /* sin internet: se sigue mostrando lo guardado */ }
+}
+function startTimers(){ stopTimers(); pingTimer = setInterval(()=>{ if(!document.hidden) ping(); }, 60000); }
+function stopTimers(){ clearInterval(pingTimer); clearInterval(activosTimer); pingTimer = activosTimer = null; }
+document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) ping(); });
+window.addEventListener('online', ping);
+
+document.getElementById('logoutBtn').addEventListener('click', async ()=>{
+  const ok = await askConfirm('¿Salir de tu cuenta?', 'Salir'); if(!ok) return;
+  try{ await rpc('fn_salir', {p_token: session.token}); }catch(e){}
+  forceLogout('');
+});
+
+/* ---- ventana propia (en la app no existen alert/confirm del navegador) ---- */
+function openForm(html){ const m = document.getElementById('formModal'); m.innerHTML = html; document.getElementById('formOverlay').classList.add('open'); return m; }
+function closeForm(){ document.getElementById('formOverlay').classList.remove('open'); }
+document.getElementById('formOverlay').addEventListener('click', e=>{ if(e.target.id === 'formOverlay') closeForm(); });
+function askConfirm(texto, boton, peligro){
+  return new Promise(res=>{
+    const m = openForm(`<h3>${esc(texto)}</h3><div class="form-btns"><button class="btn-ghost" id="cfNo">Cancelar</button><button class="${peligro?'btn-danger':'btn-primary'}" id="cfYes">${esc(boton||'Aceptar')}</button></div>`);
+    m.querySelector('#cfNo').onclick = ()=>{ closeForm(); res(false); };
+    m.querySelector('#cfYes').onclick = ()=>{ closeForm(); res(true); };
+  });
+}
+
+/* ====================== ADMINISTRACIÓN ====================== */
+async function adminCall(fn, args){
+  try{
+    const r = await rpc(fn, Object.assign({p_token: session.token}, args || {}));
+    if(!r.ok && (r.error === 'sesion' || r.error === 'bloqueado' || r.error === 'desactivado')){ forceLogout(errMsg(r)); return null; }
+    return r;
+  }catch(e){ showToast('Sin conexión'); return null; }
+}
+const ADM_ERR = {existe:'Ese usuario ya existe.', usuario_invalido:'Usuario inválido: usa 3 a 40 letras minúsculas, números, punto, guion o guion bajo.', clave_corta:'La contraseña es muy corta (mínimo 6; para el administrador 8).', propio:'No puedes hacer eso con tu propio usuario o con el administrador.', no_existe:'Ese usuario ya no existe.', permiso:'No tienes permiso.'};
+
+let USERS = [];
+async function loadUsers(){
+  const box = document.getElementById('userList'); box.innerHTML = '<div class="empty">Cargando…</div>';
+  const r = await adminCall('fn_admin_usuarios'); if(!r) { box.innerHTML = '<div class="empty">No se pudo cargar.</div>'; return; }
+  if(!r.ok){ box.innerHTML = '<div class="empty">No se pudo cargar.</div>'; return; }
+  USERS = r.usuarios; renderUsers();
+}
+function userBadge(u){
+  if(u.rol === 'admin') return '<span class="badge admin">Administrador</span>';
+  if(!u.activo) return '<span class="badge off">Desactivado</span>';
+  if(u.bloqueado_hasta) return '<span class="badge bad">Bloqueado hasta ' + esc(fmtDate(u.bloqueado_hasta)) + '</span>';
+  if(u.conectado) return '<span class="badge on">● Conectado</span>';
+  return '<span class="badge off">Sin conexión</span>';
+}
+function renderUsers(){
+  const box = document.getElementById('userList');
+  if(!USERS.length){ box.innerHTML = '<div class="empty">Aún no hay usuarios.</div>'; return; }
+  box.innerHTML = '';
+  USERS.forEach(u=>{
+    const c = document.createElement('div'); c.className = 'ucard';
+    const phones = u.dispositivos.map(d => `<div class="phone-row"><span>📱 ${esc(d.ciudad || 'Ciudad no disponible')} · visto ${esc(ago(d.ultima_vez))}</span><button data-lib="${esc(d.id)}">Liberar</button></div>`).join('') || '<div>Sin teléfonos registrados todavía.</div>';
+    const blocked = !!u.bloqueado_hasta;
+    c.innerHTML = `
+      <div class="ucard-top"><div><h3>${esc(u.nombre || u.usuario)}</h3><div class="sub">@${esc(u.usuario)}</div></div>${userBadge(u)}</div>
+      <div class="phones"><div><b>Teléfonos:</b> ${u.dispositivos.length} de ${u.max_dispositivos}</div>${phones}</div>
+      <div class="actions">
+        <button class="btn-ghost" data-act="edit">Editar</button>
+        ${u.rol === 'admin' ? '' : `
+        <button class="btn-warn" data-act="${blocked ? 'unblock' : 'block'}">${blocked ? 'Desbloquear' : 'Bloquear'}</button>
+        <button class="btn-ghost" data-act="kick">Desconectar</button>
+        <button class="btn-danger" data-act="del">Eliminar</button>`}
+      </div>`;
+    c.querySelector('[data-act="edit"]').onclick = ()=> userForm(u);
+    if(u.rol !== 'admin'){
+      c.querySelector('[data-act="del"]').onclick = async ()=>{
+        if(await askConfirm('¿Eliminar a ' + (u.nombre || u.usuario) + '? Perderá el acceso para siempre.', 'Eliminar', true)){ const r = await adminCall('fn_admin_eliminar', {p_id:u.id}); if(r && r.ok){ showToast('Usuario eliminado'); loadUsers(); } else if(r) showToast(ADM_ERR[r.error]||'No se pudo'); }
+      };
+      c.querySelector('[data-act="kick"]').onclick = async ()=>{ const r = await adminCall('fn_admin_desconectar', {p_usuario_id:u.id}); if(r && r.ok){ showToast('Desconectado'); loadUsers(); } };
+      c.querySelector(blocked ? '[data-act="unblock"]' : '[data-act="block"]').onclick = ()=> blocked ? doBlock(u, 0) : blockForm(u);
+    }
+    c.querySelectorAll('[data-lib]').forEach(b => b.onclick = async ()=>{
+      if(await askConfirm('¿Liberar este teléfono? ' + (u.nombre||u.usuario) + ' podrá registrar otro.', 'Liberar')){ const r = await adminCall('fn_admin_liberar', {p_usuario_id:u.id, p_dispositivo_id:b.getAttribute('data-lib')}); if(r && r.ok){ showToast('Teléfono liberado'); loadUsers(); } }
+    });
+    box.appendChild(c);
+  });
+}
+async function doBlock(u, horas){
+  const r = await adminCall('fn_admin_bloquear', {p_usuario_id:u.id, p_horas:horas});
+  if(r && r.ok){ showToast(horas === 0 ? 'Desbloqueado' : 'Bloqueado'); closeForm(); if(currentView==='activos') loadActivos(); else loadUsers(); }
+  else if(r) showToast(ADM_ERR[r.error] || 'No se pudo');
+}
+function blockForm(u){
+  const m = openForm(`<h3>Bloquear a ${esc(u.nombre || u.usuario)}</h3><p style="margin:0 0 14px;color:#59677E;font-size:14px">Se cierra su sesión y no podrá entrar mientras dure el bloqueo.</p>
+    <div class="form-btns" style="flex-direction:column"><button class="btn-warn" data-h="1">Por 1 hora</button><button class="btn-warn" data-h="24">Por 24 horas</button><button class="btn-warn" data-h="168">Por 7 días</button><button class="btn-danger" data-h="-1">Hasta que yo lo quite</button><button class="btn-ghost" id="bkNo">Cancelar</button></div>`);
+  m.querySelectorAll('[data-h]').forEach(b => b.onclick = ()=> doBlock(u, parseInt(b.getAttribute('data-h'), 10)));
+  m.querySelector('#bkNo').onclick = closeForm;
+}
+function userForm(u){
+  const nuevo = !u, admin = u && u.rol === 'admin';
+  const m = openForm(`<h3>${nuevo ? 'Agregar vendedor' : 'Editar ' + esc(u.nombre || u.usuario)}</h3>
+    <div class="field"><label>Nombre</label><input type="text" id="ufNombre" value="${nuevo ? '' : esc(u.nombre)}" autocomplete="off"></div>
+    <div class="field"><label>Usuario</label><input type="text" id="ufUser" value="${nuevo ? '' : esc(u.usuario)}" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off"><span class="hint">Minúsculas, sin espacios. Ej: carlos.perez</span></div>
+    <div class="field"><label>${nuevo ? 'Contraseña' : 'Nueva contraseña'}</label><input type="text" id="ufPass" placeholder="${nuevo ? 'Mínimo 6 caracteres' : 'Déjala vacía para no cambiarla'}" autocomplete="off" autocapitalize="off" spellcheck="false"><span class="hint">${nuevo ? 'Anótala para dársela al vendedor.' : 'Si la cambias, se cierra su sesión actual.'}</span></div>
+    ${admin ? '' : `<div class="field"><label>Teléfonos permitidos</label><select id="ufMax">${[1,2,3,4,5].map(n=>`<option value="${n}" ${((u&&u.max_dispositivos)||1)===n?'selected':''}>${n}</option>`).join('')}</select></div>
+    <label class="check"><input type="checkbox" id="ufActivo" ${(!u||u.activo)?'checked':''}> Usuario activo</label>`}
+    <div class="form-err" id="ufErr"></div>
+    <div class="form-btns"><button class="btn-ghost" id="ufNo">Cancelar</button><button class="btn-primary" id="ufOk">Guardar</button></div>`);
+  m.querySelector('#ufNo').onclick = closeForm;
+  m.querySelector('#ufOk').onclick = async ()=>{
+    const btn = m.querySelector('#ufOk'); btn.disabled = true;
+    const maxEl = m.querySelector('#ufMax'), actEl = m.querySelector('#ufActivo');
+    const r = await adminCall('fn_admin_guardar', {
+      p_id: nuevo ? null : u.id, p_usuario: m.querySelector('#ufUser').value, p_nombre: m.querySelector('#ufNombre').value,
+      p_clave: m.querySelector('#ufPass').value || null, p_max: maxEl ? parseInt(maxEl.value,10) : (u ? u.max_dispositivos : 1),
+      p_activo: actEl ? actEl.checked : null });
+    btn.disabled = false;
+    if(!r) return;
+    if(!r.ok){ m.querySelector('#ufErr').textContent = ADM_ERR[r.error] || 'No se pudo guardar.'; return; }
+    closeForm(); showToast(nuevo ? 'Vendedor creado' : 'Cambios guardados'); loadUsers();
+  };
+}
+document.getElementById('addUserBtn').addEventListener('click', ()=> userForm(null));
+
+const EV_TXT = {
+  limite_dispositivos:['⚠️ Intento desde otro teléfono (bloqueado)', true], dispositivo_nuevo:['📱 Teléfono nuevo registrado', false],
+  login_fallido:['Clave o usuario incorrecto', false], cuenta_en_espera:['🔒 Cuenta en espera por claves incorrectas', true],
+  usuario_creado:['Usuario creado', false], usuario_eliminado:['Usuario eliminado', false], desconectado:['Desconectado por el administrador', false],
+  bloqueado:['Bloqueado por el administrador', false], desbloqueado:['Desbloqueado', false], telefono_liberado:['Teléfono liberado', false]
+};
+async function loadActivos(){
+  const box = document.getElementById('activeList');
+  const r = await adminCall('fn_admin_activos'); if(!r || !r.ok){ return; }
+  if(!r.activos.length){ box.innerHTML = '<div class="empty">Nadie conectado en este momento.</div>'; }
+  else {
+    box.innerHTML = '';
+    r.activos.forEach(a=>{
+      const multi = a.sesiones_usuario > 1 || a.sesiones_usuario > a.max_dispositivos;
+      const c = document.createElement('div'); c.className = 'ucard' + (multi ? ' warn' : '');
+      c.innerHTML = `
+        <div class="ucard-top"><div><h3>${esc(a.nombre || a.usuario)}</h3><div class="sub">@${esc(a.usuario)}</div></div><span class="badge on">● Activo</span></div>
+        ${multi ? `<div class="warnline">⚠ ${a.sesiones_usuario} conexiones activas con este mismo usuario</div>` : ''}
+        <div class="phones"><div>📍 ${esc(a.ciudad || 'Ciudad no disponible')}</div><div>📱 Teléfono …${esc(a.telefono)}</div><div>Visto ${esc(ago(a.visto))} · conectado desde ${esc(fmtDate(a.desde))}</div></div>
+        <div class="actions"><button class="btn-ghost" data-act="kick">Desconectar</button>${a.rol === 'admin' ? '' : '<button class="btn-warn" data-act="block">Bloqueo temporal</button>'}</div>`;
+      c.querySelector('[data-act="kick"]').onclick = async ()=>{
+        if(a.rol === 'admin' && a.usuario === session.usuario){ showToast('Esa eres tú'); return; }
+        const x = await adminCall('fn_admin_desconectar', {p_usuario_id:a.usuario_id, p_sid:a.sid}); if(x && x.ok){ showToast('Desconectado'); loadActivos(); } };
+      const bb = c.querySelector('[data-act="block"]'); if(bb) bb.onclick = ()=> blockForm({id:a.usuario_id, nombre:a.nombre, usuario:a.usuario});
+      box.appendChild(c);
+    });
+  }
+  const ev = document.getElementById('eventList');
+  ev.innerHTML = r.eventos.length ? r.eventos.map(e=>{
+    const t = EV_TXT[e.tipo] || [e.tipo, false];
+    return `<div class="ev${t[1]?' alert':''}"><span><b>${esc(e.usuario||'')}</b> · ${esc(t[0])}${e.ciudad?' · '+esc(e.ciudad):''}${e.detalle&&!EV_TXT[e.tipo]?' · '+esc(e.detalle):''}</span><small>${esc(fmtDate(e.cuando))}</small></div>`;
+  }).join('') : '<div class="empty">Sin actividad todavía.</div>';
+  updateDotFrom(r);
+}
+document.getElementById('refreshActivos').addEventListener('click', loadActivos);
+function updateDotFrom(r){
+  const bad = r.activos.filter(a => a.sesiones_usuario > 1 || a.sesiones_usuario > a.max_dispositivos).length;
+  const d = document.getElementById('activosDot'); d.textContent = bad; d.classList.toggle('hidden', !bad);
+}
+async function updateDot(){ const r = await adminCall('fn_admin_activos'); if(r && r.ok) updateDotFrom(r); }
+
+/* ====================== PRIMER ADMINISTRADOR ====================== */
+async function initSetup(secret){
+  try{
+    const e = await rpc('fn_estado');
+    if(e.admin_creado){ showLogin('El administrador ya fue creado. Entra con tu usuario.'); return; }
+  }catch(err){ showLogin('Sin conexión. Intenta de nuevo.'); return; }
+  document.getElementById('loginScreen').classList.remove('open');
+  document.getElementById('setupScreen').classList.add('open');
+  document.getElementById('suBtn').onclick = async ()=>{
+    const n = document.getElementById('suName').value.trim(), u = document.getElementById('suUser').value.trim().toLowerCase(),
+          p = document.getElementById('suPass').value, p2 = document.getElementById('suPass2').value, err = document.getElementById('suErr');
+    if(!/^[a-z0-9._-]{3,40}$/.test(u)){ err.textContent = 'Usuario: 3 a 40 caracteres, minúsculas, números, punto o guion.'; return; }
+    if(p.length < 8){ err.textContent = 'La contraseña debe tener al menos 8 caracteres.'; return; }
+    if(p !== p2){ err.textContent = 'Las contraseñas no coinciden.'; return; }
+    err.textContent = ''; const b = document.getElementById('suBtn'); b.disabled = true;
+    try{
+      const r = await rpc('fn_setup', {p_secreto: secret, p_usuario: u, p_clave: p, p_nombre: n});
+      if(!r.ok){ err.textContent = r.error === 'codigo' ? 'El código de instalación no es válido.' : (r.error === 'ya_creado' ? 'El administrador ya existe.' : 'No se pudo crear. Revisa los datos.'); b.disabled = false; return; }
+      try{ history.replaceState(null, '', location.pathname); }catch(e){}
+      document.getElementById('setupScreen').classList.remove('open');
+      showLogin('Administrador creado. Ahora entra con tu usuario y contraseña.');
+    }catch(e){ err.textContent = 'Sin conexión. Intenta de nuevo.'; b.disabled = false; }
+  };
+}
+
+(function init(){
+  const saved = lsGet(LS_CUR); if(saved==='USD'||saved==='EUR') setCurrency(saved);
+  const m = (location.hash || '').match(/^#setup=([A-Za-z0-9]{16,64})$/);
+  if(m){ initSetup(m[1]); return; }
+  restore();
 })();
 
 if('serviceWorker' in navigator){
