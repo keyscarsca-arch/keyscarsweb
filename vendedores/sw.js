@@ -1,5 +1,5 @@
 /* Service worker del catálogo de vendedores. Alcance: solo /vendedores/ (no toca la página pública). */
-const CACHE = 'kc-vend-v2';
+const CACHE = 'kc-vend-v3';
 const SHELL = ['./', 'index.html', 'manifest.json', 'logo.png', 'icon-192.png', 'icon-512.png'];
 self.addEventListener('install', e=>{ e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting())); });
 self.addEventListener('activate', e=>{
@@ -19,7 +19,7 @@ self.addEventListener('fetch', e=>{
     return;
   }
   // página y precios: primero internet (siempre lo más nuevo); sin internet, la última copia
-  e.respondWith(fetch(req).then(r=>{
+  e.respondWith(fetch(req, {cache:'reload'}).then(r=>{
     if(r.ok && url.pathname.indexOf('/vendedores/') !== -1){ const cp = r.clone(); caches.open(CACHE).then(c=>c.put(req, cp)); }
     return r;
   }).catch(()=>caches.match(req).then(h=>h || caches.match('index.html'))));
