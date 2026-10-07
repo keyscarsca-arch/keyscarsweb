@@ -1,0 +1,17 @@
+{
+  "name": "Keys Cars · Catálogo Vendedores",
+  "short_name": "Keys Cars",
+  "description": "Catálogo de productos y precios para vendedores de Keys Cars Motos & House",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0D47A1",
+  "theme_color": "#0D47A1",
+  "lang": "es",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
