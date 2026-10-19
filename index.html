@@ -1506,7 +1506,8 @@ document.getElementById('spinBtn').addEventListener('click', ()=>{
     const strip = document.getElementById('reelStrip' + i);
     requestAnimationFrame(()=>{
       strip.style.transition = `transform ${durations[i]}s cubic-bezier(0.22,0.68,0.32,1)`;
-      strip.style.transform = `translateY(-${(totalItems-1)*ICON_H}px)`;
+      const iconH = (strip.firstElementChild && strip.firstElementChild.getBoundingClientRect().height) || ICON_H; /* 72 px en pantallas grandes, 60 px en celulares */
+      strip.style.transform = `translateY(-${(totalItems-1)*iconH}px)`;
     });
   });
 
