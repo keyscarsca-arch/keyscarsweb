@@ -103,6 +103,11 @@
   'body.bf-mid .section-head p,body.bf-mid #catalogo p,body.bf-mid #nosotros .section-head p,body.bf-mid #contacto .section-head p,body.bf-mid #catalogo .count,body.bf-mid #resultCount{color:#E6EAF2!important;}' +
   'body.bf-mid #nosotros .taller-anim{background:radial-gradient(circle,#F7F8FB,#D9DEE9);border-radius:50%;overflow:hidden;box-shadow:0 0 0 3px #FFC400,0 14px 34px rgba(0,0,0,.4);}' +
   'body.bf-mid .card,body.bf-mid .mv-card,body.bf-mid .form-card,body.bf-mid .map-card{box-shadow:0 10px 28px rgba(8,14,30,.35)!important;}' +
+  /* opción: parte de abajo en azul profundo, reparto áureo de color: 61,8 % azul / 23,6 % negro / 14,6 % dorado (?fondo=azul) */
+  'body.bf-azul{background:radial-gradient(760px 420px at 84% 880px,rgba(255,196,0,.10),transparent 70%),radial-gradient(1100px 620px at 18% 0,rgba(26,95,180,.45),transparent 70%),linear-gradient(180deg,#0f3a78 0%,#0b2b5c 38.2%,#081f45 61.8%,#050c1c 100%)!important;}' +
+  'body.bf-azul .section{border-top:1px solid rgba(255,196,0,.18);}' +
+  'body.bf-azul .section-head h2::after,body.bf-azul .section h2::after{content:"";display:block;width:61.8px;height:3px;border-radius:2px;background:#FFC400;margin-top:8px;}' +
+  'body.bf-azul #nosotros .section-head h2::after{margin-left:auto;margin-right:auto;}' +
   /* cinta superior con cuenta regresiva */
   '.bf-bar{position:relative;z-index:41;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:8px 14px;background:repeating-linear-gradient(-45deg,#FFC400 0 18px,#0B0B0D 18px 36px);text-align:center;}' +
   '.bf-bar-in{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:6px 18px;border-radius:999px;background:#0B0B0D;color:#fff;font:700 14px/1.2 "Plus Jakarta Sans",Inter,system-ui,sans-serif;box-shadow:0 0 0 2px #FFC400;}' +
@@ -137,6 +142,7 @@
     document.body.classList.add('bf-on');
     if (new URLSearchParams(location.search).get('fondo') === 'oscuro') document.body.classList.add('bf-dark');
     if (new URLSearchParams(location.search).get('fondo') === 'medio') document.body.classList.add('bf-mid');
+    if (new URLSearchParams(location.search).get('fondo') === 'azul') document.body.classList.add('bf-mid', 'bf-azul');
 
     /* cinta superior */
     var bar = document.createElement('div'); bar.className = 'bf-bar';
