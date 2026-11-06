@@ -23,6 +23,13 @@
   '.hero::before{background-image:repeating-linear-gradient(-45deg,rgba(255,196,0,.07) 0 14px,transparent 14px 28px)!important;background-size:auto!important;opacity:1!important;}' +
   '.hero p{color:#D5D5DB!important;}' +
   '.hero-stats div span{color:#C8C8CF!important;}' +
+  /* todo en negro: la foto de las llaves va recortada, sin parche azul */
+  '.hero-bg-image{background:radial-gradient(700px 420px at 80% 50%,rgba(255,196,0,.16),transparent 65%),#050506!important;}' +
+  '.hero-photo-color,.hero-photo-tint,.hero-photo-frame,.shine-sweep{display:none!important;}' +
+  '.hero-key-photo{-webkit-mask-image:none!important;mask-image:none!important;filter:drop-shadow(0 14px 26px rgba(0,0,0,.85)) drop-shadow(0 0 28px rgba(255,196,0,.28)) brightness(1.06)!important;height:96%!important;right:6%!important;}' +
+  '.game-panel{background:radial-gradient(120% 140% at 50% -10%,#26210a 0%,#0e0e10 45%,#000 100%)!important;}' +
+  '.game-panel > p{color:#D5D5DB!important;}' +
+  '.reels{background:#111114!important;border-color:#FFC400!important;}' +
   /* cinta superior con cuenta regresiva */
   '.bf-bar{position:relative;z-index:41;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:8px 14px;background:repeating-linear-gradient(-45deg,#FFC400 0 18px,#0B0B0D 18px 36px);text-align:center;}' +
   '.bf-bar-in{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:6px 18px;border-radius:999px;background:#0B0B0D;color:#fff;font:700 14px/1.2 "Plus Jakarta Sans",Inter,system-ui,sans-serif;box-shadow:0 0 0 2px #FFC400;}' +
@@ -38,8 +45,8 @@
   /* destellos y etiquetas que caen */
   '.bf-layer{position:fixed;inset:0;z-index:35;pointer-events:none;overflow:hidden;}' +
   '.bf-bit{position:absolute;top:-60px;opacity:0;animation:bfFall var(--t,12s) linear var(--d,0s) infinite;}' +
-  '.bf-tag{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:#FFC400;color:#0B0B0D;font:800 14px/1 "Plus Jakarta Sans",Inter,sans-serif;box-shadow:0 0 14px rgba(255,196,0,.6);}' +
-  '.bf-spark{width:10px;height:10px;background:#FFC400;transform:rotate(45deg);box-shadow:0 0 10px rgba(255,196,0,.9);}' +
+  '.bf-tag{display:flex;align-items:center;justify-content:center;width:24px;height:24px;opacity:.55;border-radius:50%;background:#FFC400;color:#0B0B0D;font:800 14px/1 "Plus Jakarta Sans",Inter,sans-serif;box-shadow:0 0 14px rgba(255,196,0,.6);}' +
+  '.bf-spark{width:7px;height:7px;opacity:.6;background:#FFC400;transform:rotate(45deg);box-shadow:0 0 10px rgba(255,196,0,.9);}' +
   '@keyframes bfFall{0%{transform:translate(0,0) rotate(0);opacity:0}8%{opacity:.9}92%{opacity:.9}100%{transform:translate(var(--x,30px),108vh) rotate(360deg);opacity:0}}' +
   /* ruleta */
   '.bf-on .game-panel{box-shadow:0 0 0 3px #FFC400,0 0 26px rgba(255,196,0,.5),0 10px 30px rgba(0,0,0,.3);animation:bfPanel 2.6s ease-in-out infinite;}' +
@@ -55,6 +62,8 @@
   function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
   ready(function(){
     document.body.classList.add('bf-on');
+
+    var kp = document.querySelector('.hero-key-photo'); if (kp) kp.src = 'blackfriday-llaves.png';
 
     /* cinta superior */
     var bar = document.createElement('div'); bar.className = 'bf-bar';
