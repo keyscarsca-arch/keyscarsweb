@@ -97,6 +97,12 @@
   'body.bf-dark #nosotros .taller-anim{background:radial-gradient(circle,#F7F8FB,#D9DEE9);border-radius:50%;overflow:hidden;box-shadow:0 0 0 3px #FFC400,0 14px 34px rgba(0,0,0,.55);}' +
   'body.bf-dark input,body.bf-dark select,body.bf-dark textarea{background:#0b0d13!important;color:#fff!important;border-color:#2f3543!important;}' +
   'body.bf-dark .chip,body.bf-dark .cat-chip,body.bf-dark .filters button{background:#14171f!important;color:#E9EBF0!important;border-color:#2f3543!important;}' +
+  /* opción: parte de abajo en tono medio (?fondo=medio): mezcla áurea (38,2 % claro / 61,8 % oscuro) entre #EEF1F6 y #0A1020, con matiz del azul de la marca */
+  'body.bf-mid{background:radial-gradient(900px 520px at 85% 900px,rgba(26,95,180,.35),transparent 65%),linear-gradient(180deg,#5a6785 0%,#4b5873 38.2%,#3f4a63 61.8%,#363f55 100%)!important;}' +
+  'body.bf-mid .section-head h2,body.bf-mid .section h2{color:#fff!important;}' +
+  'body.bf-mid .section-head p,body.bf-mid #catalogo p,body.bf-mid #nosotros .section-head p,body.bf-mid #contacto .section-head p,body.bf-mid #catalogo .count,body.bf-mid #resultCount{color:#E6EAF2!important;}' +
+  'body.bf-mid #nosotros .taller-anim{background:radial-gradient(circle,#F7F8FB,#D9DEE9);border-radius:50%;overflow:hidden;box-shadow:0 0 0 3px #FFC400,0 14px 34px rgba(0,0,0,.4);}' +
+  'body.bf-mid .card,body.bf-mid .mv-card,body.bf-mid .form-card,body.bf-mid .map-card{box-shadow:0 10px 28px rgba(8,14,30,.35)!important;}' +
   /* cinta superior con cuenta regresiva */
   '.bf-bar{position:relative;z-index:41;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:8px 14px;background:repeating-linear-gradient(-45deg,#FFC400 0 18px,#0B0B0D 18px 36px);text-align:center;}' +
   '.bf-bar-in{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:6px 18px;border-radius:999px;background:#0B0B0D;color:#fff;font:700 14px/1.2 "Plus Jakarta Sans",Inter,system-ui,sans-serif;box-shadow:0 0 0 2px #FFC400;}' +
@@ -130,6 +136,7 @@
   ready(function(){
     document.body.classList.add('bf-on');
     if (new URLSearchParams(location.search).get('fondo') === 'oscuro') document.body.classList.add('bf-dark');
+    if (new URLSearchParams(location.search).get('fondo') === 'medio') document.body.classList.add('bf-mid');
 
     /* cinta superior */
     var bar = document.createElement('div'); bar.className = 'bf-bar';
