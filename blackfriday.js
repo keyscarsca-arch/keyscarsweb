@@ -84,7 +84,7 @@
   '.bf-btn:hover{background:#1CA653;color:#fff;}' +
   '@media(max-width:560px){.bf-of-head small{display:none}.bf-card{width:252px;height:156px}.bf-img{width:112px}}' +
   '@media(prefers-reduced-motion:reduce){.bf-track{animation:none!important}.bf-reel{overflow-x:auto}}' +
-  /* opción: parte de abajo oscura (?fondo=oscuro) */
+  /* parte de abajo oscura (por defecto; ?fondo=claro la deja clara) */
   'body.bf-dark{--bg:#07090f;--panel:#12151c;--panel-2:#191d27;--line:#2a2f3b;--text:#F3F4F7;--text-dim:#C3C8D4;}' +
   'body.bf-dark{background:radial-gradient(900px 500px at 85% 900px,rgba(26,95,180,.28),transparent 65%),linear-gradient(180deg,#07090f,#0a1020 60%,#07090f)!important;}' +
   'body.bf-dark .section-head h2,body.bf-dark .section h2,body.bf-dark .section h3,body.bf-dark .mv-card h3{color:#fff!important;}' +
@@ -129,7 +129,7 @@
   function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
   ready(function(){
     document.body.classList.add('bf-on');
-    if (new URLSearchParams(location.search).get('fondo') === 'oscuro') document.body.classList.add('bf-dark');
+    if (new URLSearchParams(location.search).get('fondo') !== 'claro') document.body.classList.add('bf-dark');
 
     /* cinta superior */
     var bar = document.createElement('div'); bar.className = 'bf-bar';
