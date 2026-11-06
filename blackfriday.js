@@ -50,6 +50,30 @@
   '.bf-spark{animation:bfTwinkle 1.6s ease-in-out infinite;}' +
   '@keyframes bfTwinkle{0%,100%{filter:brightness(1)}50%{filter:brightness(1.8)}}' +
   '@media(prefers-reduced-motion:reduce){.bf-bar,.hero-key-photo,.hero-bg-image::after,.bf-seal,.bf-seal::after,.bf-count span,.bf-bar a,.bf-bar b{animation:none!important}}' +
+  /* sección de ofertas */
+  '.bf-ofertas{background:radial-gradient(900px 360px at 80% 0,rgba(26,95,180,.45),transparent 65%),linear-gradient(180deg,#0B0B0D,#06142b);padding:34px 0 38px;border-bottom:4px solid #FFC400;position:relative;overflow:hidden;}' +
+  '.bf-ofertas .wrap{max-width:1200px;margin:0 auto;padding:0 24px;}' +
+  '.bf-of-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px;}' +
+  '.bf-of-head h2{margin:0;font:800 30px/1.1 "Plus Jakarta Sans",Inter,sans-serif;color:#fff;letter-spacing:.01em;}' +
+  '.bf-of-head h2 span{color:#FFC400;}' +
+  '.bf-of-head p{margin:6px 0 0;color:#C8CCD6;font-size:14px;}' +
+  '.bf-demo{background:#FFC400;color:#0B0B0D;font:800 11px/1 Inter,sans-serif;letter-spacing:.1em;padding:6px 10px;border-radius:6px;text-transform:uppercase;}' +
+  '.bf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;}' +
+  '.bf-card{position:relative;background:linear-gradient(180deg,#17171B,#0f0f12);border:1.5px solid rgba(255,196,0,.45);border-radius:16px;padding:12px 12px 14px;display:flex;flex-direction:column;gap:8px;box-shadow:0 10px 28px rgba(0,0,0,.45);transition:transform .2s,border-color .2s,box-shadow .2s;}' +
+  '.bf-card:hover{transform:translateY(-4px);border-color:#FFC400;box-shadow:0 14px 34px rgba(255,196,0,.22);}' +
+  '.bf-off{position:absolute;top:-10px;left:-8px;z-index:2;background:#E00210;color:#fff;font:800 14px/1 "Plus Jakarta Sans",Inter,sans-serif;padding:8px 11px;border-radius:10px;transform:rotate(-6deg);box-shadow:0 6px 14px rgba(224,2,16,.45);animation:bfOff 2.4s ease-in-out infinite;}' +
+  '@keyframes bfOff{0%,100%{transform:rotate(-6deg) scale(1)}50%{transform:rotate(-6deg) scale(1.1)}}' +
+  '.bf-img{background:#fff;border-radius:12px;height:150px;display:flex;align-items:center;justify-content:center;overflow:hidden;}' +
+  '.bf-img img{max-width:88%;max-height:88%;object-fit:contain;}' +
+  '.bf-cat{min-height:26px;font:700 10.5px/1.2 Inter,sans-serif;color:#FFC400;letter-spacing:.06em;text-transform:uppercase;}' +
+  '.bf-desc{color:#fff;font:600 13.5px/1.3 Inter,sans-serif;min-height:35px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}' +
+  '.bf-code{color:#9AA0AE;font:12px/1 monospace;}' +
+  '.bf-prices{display:flex;align-items:baseline;gap:9px;margin-top:2px;}' +
+  '.bf-now{font:800 26px/1 "Plus Jakarta Sans",Inter,sans-serif;color:#FFC400;}' +
+  '.bf-was{font:600 14px/1 Inter,sans-serif;color:#8C93A3;text-decoration:line-through;}' +
+  '.bf-btn{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:7px;background:#25D366;color:#06210f;font:800 13px/1 Inter,sans-serif;padding:10px;border-radius:10px;text-decoration:none;}' +
+  '.bf-btn:hover{background:#1CA653;color:#fff;}' +
+  '@media(max-width:560px){.bf-of-head h2{font-size:23px}.bf-grid{grid-template-columns:repeat(2,1fr);gap:12px}.bf-img{height:116px}.bf-now{font-size:21px}}' +
   /* cinta superior con cuenta regresiva */
   '.bf-bar{position:relative;z-index:41;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:8px 14px;background:repeating-linear-gradient(-45deg,#FFC400 0 18px,#0B0B0D 18px 36px);text-align:center;}' +
   '.bf-bar-in{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:6px 18px;border-radius:999px;background:#0B0B0D;color:#fff;font:700 14px/1.2 "Plus Jakarta Sans",Inter,system-ui,sans-serif;box-shadow:0 0 0 2px #FFC400;}' +
@@ -117,6 +141,39 @@
         : '<div class="bf-bit" style="left:' + left + '%;--t:' + t + ';--d:' + dl + ';--x:' + x + '"><div class="bf-spark"></div></div>';
     }
     L.innerHTML = html; document.body.appendChild(L);
+
+
+    /* sección "Ofertas Black Friday": productos y precios los define la dueña en blackfriday-ofertas.json (nada sale del catálogo interno) */
+    function money(v){ var n = parseFloat(String(v).replace(',', '.')); return isNaN(n) ? String(v) : '$' + n.toFixed(2).replace('.', ','); }
+    function esc(t){ return String(t == null ? '' : t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    var demo = new URLSearchParams(location.search).get('ofertas') === 'demo';
+    var lista = fetch('blackfriday-ofertas.json', {cache:'no-cache'}).then(function(r){ return r.ok ? r.json() : []; }).catch(function(){ return []; });
+    if (demo) lista = Promise.resolve([
+      {codigo:'CISA-01', precio_antes:'1.00', precio_promo:'0.80'},
+      {codigo:'CISA-03', precio_antes:'1.00', precio_promo:'0.75'},
+      {codigo:'LL-CISA-02', precio_antes:'2.50', precio_promo:'2.00'},
+      {codigo:'T-0002', precio_antes:'10.00', precio_promo:'8.00'}
+    ]);
+    Promise.all([lista, fetch('productos.json').then(function(r){ return r.json(); }).catch(function(){ return {}; })]).then(function(res){
+      var items = res[0] || [], cat = res[1] || {};
+      if (!items.length) return;
+      var num = (typeof WHATSAPP_NUMBER !== 'undefined') ? WHATSAPP_NUMBER : '584226377050';
+      var cards = items.map(function(o){
+        var p = cat[o.codigo] || {codigo:o.codigo, descripcion:o.descripcion || '', categoria:o.categoria || ''};
+        var a = parseFloat(String(o.precio_antes).replace(',', '.')), b = parseFloat(String(o.precio_promo).replace(',', '.'));
+        var pct = (a > 0 && b >= 0 && b < a) ? Math.round((1 - b / a) * 100) : 0;
+        var msg = 'Hola, quiero aprovechar la oferta Black Friday de Keys Cars:\n' + p.codigo + ' - ' + p.descripcion + '\nPrecio promoción: ' + money(o.precio_promo);
+        var c = encodeURIComponent(p.codigo);
+        return '<div class="bf-card">' + (pct ? '<div class="bf-off">-' + pct + '%</div>' : '') +
+          '<div class="bf-img"><img loading="lazy" alt="' + esc(p.codigo) + '" src="imagenes_productos/mini/' + c + '.webp" onerror="this.onerror=null;this.src=\'imagenes_productos/' + c + '.jpg\'"></div>' +
+          '<div class="bf-cat">' + esc(p.categoria) + '</div><div class="bf-desc">' + esc(p.descripcion) + '</div><div class="bf-code">' + esc(p.codigo) + '</div>' +
+          '<div class="bf-prices"><span class="bf-now">' + money(o.precio_promo) + '</span>' + (pct ? '<span class="bf-was">' + money(o.precio_antes) + '</span>' : '') + '</div>' +
+          '<a class="bf-btn" target="_blank" rel="noopener" href="https://wa.me/' + num + '?text=' + encodeURIComponent(msg) + '">Cotizar por WhatsApp</a></div>';
+      }).join('');
+      var sec = document.createElement('section'); sec.className = 'bf-ofertas'; sec.id = 'ofertas-bf';
+      sec.innerHTML = '<div class="wrap"><div class="bf-of-head"><div><h2>Ofertas <span>Black Friday</span></h2><p>Precios especiales por tiempo limitado. Cotiza por WhatsApp.</p></div>' + (demo ? '<span class="bf-demo">Vista de ejemplo · precios ficticios</span>' : '') + '</div><div class="bf-grid">' + cards + '</div></div>';
+      var ref = document.getElementById('catalogo'); if (ref && ref.parentNode) ref.parentNode.insertBefore(sec, ref);
+    });
 
     var panel = document.querySelector('.game-panel');
     if (panel) panel.insertAdjacentHTML('afterbegin', '<div class="bf-badge">' + tagIcon.replace('<svg ', '<svg width="16" height="16" ') + ' Edición Black Friday</div>');
