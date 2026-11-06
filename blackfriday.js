@@ -1,5 +1,5 @@
 /* Tema Black Friday de Keys Cars (negro y dorado).
-   Se activa solo del 21 al 30 de noviembre y se apaga después.
+   Se activa solo del 12 al 30 de noviembre y se apaga después.
    Para probar: ?blackfriday=1 (forzar) o ?blackfriday=0 (apagar).
    Es solo decoración: no toca el catálogo ni los datos. Para quitarlo del todo: borrar este archivo y su línea <script> en index.html. */
 (function(){
@@ -7,7 +7,7 @@
   try{
     var q = new URLSearchParams(location.search).get('blackfriday');
     var d = new Date(), m = d.getMonth(), day = d.getDate();
-    var enFecha = (m === 10 && day >= 21 && day <= 30);
+    var enFecha = (m === 10 && day >= 12 && day <= 30);
     if (q === '0' || (q !== '1' && !enFecha)) return;
   }catch(e){ return; }
 
