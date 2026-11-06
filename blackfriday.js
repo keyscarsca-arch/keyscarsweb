@@ -23,10 +23,13 @@
   '.hero::before{background-image:repeating-linear-gradient(-45deg,rgba(255,196,0,.07) 0 14px,transparent 14px 28px)!important;background-size:auto!important;opacity:1!important;}' +
   '.hero p{color:#D5D5DB!important;}' +
   '.hero-stats div span{color:#C8C8CF!important;}' +
-  /* portada: degradado azul que se funde a negro (mismo de la ruleta) */
-  '.hero-bg-image{background:radial-gradient(ellipse 55% 130% at 80% 45%,#14509e 0%,#0e3a7d 38%,#0B0B0D 78%),#0B0B0D!important;}' +
+  /* portada: degradado en proporción áurea (38,2 % / 61,8 %), del negro al azul de la foto, con un destello dorado en el punto áureo */
+  '.hero-bg-image{background:' +
+    'radial-gradient(ellipse 38.2% 100% at 80% 38.2%,rgba(255,196,0,.20) 0%,rgba(255,196,0,0) 100%),' +
+    'radial-gradient(ellipse 61.8% 161.8% at 78% -23.6%,#1a5fb4 0%,rgba(26,95,180,0) 100%),' +
+    'linear-gradient(90deg,#0B0B0D 0%,#0B0B0D 23.6%,#06142b 38.2%,#052a5b 61.8%,#033676 85.4%,#033676 100%)!important;}' +
   '.hero-photo-color{display:none!important;}' +
-  '.hero-key-photo{-webkit-mask-image:radial-gradient(ellipse 78% 76% at 58% 50%,#000 52%,rgba(0,0,0,.55) 72%,transparent 96%)!important;mask-image:radial-gradient(ellipse 78% 76% at 58% 50%,#000 52%,rgba(0,0,0,.55) 72%,transparent 96%)!important;}' +
+  '.hero-key-photo{-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38.2%,#000 85%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 23.6%,#000 76.4%,transparent 100%)!important;-webkit-mask-composite:source-in!important;mask-image:linear-gradient(90deg,transparent 0%,#000 38.2%,#000 85%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 23.6%,#000 76.4%,transparent 100%)!important;mask-composite:intersect!important;}' +
   /* cinta superior con cuenta regresiva */
   '.bf-bar{position:relative;z-index:41;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:8px 14px;background:repeating-linear-gradient(-45deg,#FFC400 0 18px,#0B0B0D 18px 36px);text-align:center;}' +
   '.bf-bar-in{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:6px 18px;border-radius:999px;background:#0B0B0D;color:#fff;font:700 14px/1.2 "Plus Jakarta Sans",Inter,system-ui,sans-serif;box-shadow:0 0 0 2px #FFC400;}' +
