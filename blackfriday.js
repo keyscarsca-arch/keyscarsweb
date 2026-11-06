@@ -23,13 +23,10 @@
   '.hero::before{background-image:repeating-linear-gradient(-45deg,rgba(255,196,0,.07) 0 14px,transparent 14px 28px)!important;background-size:auto!important;opacity:1!important;}' +
   '.hero p{color:#D5D5DB!important;}' +
   '.hero-stats div span{color:#C8C8CF!important;}' +
-  /* todo en negro: la foto de las llaves va recortada, sin parche azul */
-  '.hero-bg-image{background:radial-gradient(700px 420px at 80% 50%,rgba(255,196,0,.16),transparent 65%),#050506!important;}' +
-  '.hero-photo-color,.hero-photo-tint,.hero-photo-frame,.shine-sweep{display:none!important;}' +
-  '.hero-key-photo{-webkit-mask-image:none!important;mask-image:none!important;filter:drop-shadow(0 14px 26px rgba(0,0,0,.85)) drop-shadow(0 0 28px rgba(255,196,0,.28)) brightness(1.06)!important;height:96%!important;right:6%!important;}' +
-  '.game-panel{background:radial-gradient(120% 140% at 50% -10%,#26210a 0%,#0e0e10 45%,#000 100%)!important;}' +
-  '.game-panel > p{color:#D5D5DB!important;}' +
-  '.reels{background:#111114!important;border-color:#FFC400!important;}' +
+  /* portada: degradado azul que se funde a negro (mismo de la ruleta) */
+  '.hero-bg-image{background:radial-gradient(ellipse 55% 130% at 80% 45%,#14509e 0%,#0e3a7d 38%,#0B0B0D 78%),#0B0B0D!important;}' +
+  '.hero-photo-color{display:none!important;}' +
+  '.hero-key-photo{-webkit-mask-image:radial-gradient(ellipse 78% 76% at 58% 50%,#000 52%,rgba(0,0,0,.55) 72%,transparent 96%)!important;mask-image:radial-gradient(ellipse 78% 76% at 58% 50%,#000 52%,rgba(0,0,0,.55) 72%,transparent 96%)!important;}' +
   /* cinta superior con cuenta regresiva */
   '.bf-bar{position:relative;z-index:41;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:8px 14px;background:repeating-linear-gradient(-45deg,#FFC400 0 18px,#0B0B0D 18px 36px);text-align:center;}' +
   '.bf-bar-in{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:6px 18px;border-radius:999px;background:#0B0B0D;color:#fff;font:700 14px/1.2 "Plus Jakarta Sans",Inter,system-ui,sans-serif;box-shadow:0 0 0 2px #FFC400;}' +
@@ -62,8 +59,6 @@
   function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
   ready(function(){
     document.body.classList.add('bf-on');
-
-    var kp = document.querySelector('.hero-key-photo'); if (kp) kp.src = 'blackfriday-llaves.png';
 
     /* cinta superior */
     var bar = document.createElement('div'); bar.className = 'bf-bar';
