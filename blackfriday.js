@@ -1,5 +1,5 @@
 /* Tema Black Friday de Keys Cars (negro y dorado).
-   Se activa solo del 20 de noviembre al 30 de noviembre y se apaga después.
+   Se activa solo del 21 al 30 de noviembre y se apaga después.
    Para probar: ?blackfriday=1 (forzar) o ?blackfriday=0 (apagar).
    Es solo decoración: no toca el catálogo ni los datos. Para quitarlo del todo: borrar este archivo y su línea <script> en index.html. */
 (function(){
@@ -7,7 +7,7 @@
   try{
     var q = new URLSearchParams(location.search).get('blackfriday');
     var d = new Date(), m = d.getMonth(), day = d.getDate();
-    var enFecha = (m === 10 && day >= 20 && day <= 30);
+    var enFecha = (m === 10 && day >= 21 && day <= 30);
     if (q === '0' || (q !== '1' && !enFecha)) return;
   }catch(e){ return; }
 
@@ -30,6 +30,26 @@
     'linear-gradient(90deg,#0B0B0D 0%,#0B0B0D 23.6%,#06142b 38.2%,#052a5b 61.8%,#033676 85.4%,#033676 100%)!important;}' +
   '.hero-photo-color{display:none!important;}' +
   '.hero-key-photo{-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38.2%,#000 85%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 23.6%,#000 76.4%,transparent 100%)!important;-webkit-mask-composite:source-in!important;mask-image:linear-gradient(90deg,transparent 0%,#000 38.2%,#000 85%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 23.6%,#000 76.4%,transparent 100%)!important;mask-composite:intersect!important;}' +
+  /* animaciones */
+  '.bf-bar{background:linear-gradient(45deg,#FFC400 25%,#0B0B0D 25% 50%,#FFC400 50% 75%,#0B0B0D 75%)!important;background-size:50px 50px!important;animation:bfStripes 2.4s linear infinite;}' +
+  '@keyframes bfStripes{to{background-position:50px 0}}' +
+  '.hero-key-photo{animation:bfFloat 5.5s ease-in-out infinite;}' +
+  '@keyframes bfFloat{0%,100%{transform:translateY(-50%) rotate(-1.6deg) scale(1)}50%{transform:translateY(calc(-50% - 11px)) rotate(1.6deg) scale(1.025)}}' +
+  '.hero-bg-image::after{content:"";position:absolute;right:6%;top:8%;width:34%;height:84%;border-radius:50%;background:radial-gradient(circle,rgba(255,196,0,.32) 0%,rgba(255,196,0,0) 62%);animation:bfGlow 3.6s ease-in-out infinite;pointer-events:none;}' +
+  '@keyframes bfGlow{0%,100%{opacity:.35;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}' +
+  '.bf-seal{position:relative;overflow:hidden;animation:bfSealPulse 2.8s ease-in-out infinite;}' +
+  '.bf-seal::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.75),rgba(255,255,255,0));transform:skewX(-20deg);animation:bfShine 3.2s ease-in-out infinite;}' +
+  '@keyframes bfShine{0%,35%{left:-60%}75%,100%{left:130%}}' +
+  '@keyframes bfSealPulse{0%,100%{transform:rotate(-2deg) scale(1)}50%{transform:rotate(-2deg) scale(1.045)}}' +
+  '.bf-count span:last-child{animation:bfTick 1s steps(1) infinite;}' +
+  '@keyframes bfTick{0%{transform:scale(1.1)}30%,100%{transform:scale(1)}}' +
+  '.bf-bar a{animation:bfBtn 2.2s ease-in-out infinite;}' +
+  '@keyframes bfBtn{0%,100%{box-shadow:0 0 0 0 rgba(255,196,0,.7)}60%{box-shadow:0 0 0 9px rgba(255,196,0,0)}}' +
+  '.bf-bar b{animation:bfBlink 1.8s ease-in-out infinite;}' +
+  '@keyframes bfBlink{0%,100%{opacity:1}50%{opacity:.55}}' +
+  '.bf-spark{animation:bfTwinkle 1.6s ease-in-out infinite;}' +
+  '@keyframes bfTwinkle{0%,100%{filter:brightness(1)}50%{filter:brightness(1.8)}}' +
+  '@media(prefers-reduced-motion:reduce){.bf-bar,.hero-key-photo,.hero-bg-image::after,.bf-seal,.bf-seal::after,.bf-count span,.bf-bar a,.bf-bar b{animation:none!important}}' +
   /* cinta superior con cuenta regresiva */
   '.bf-bar{position:relative;z-index:41;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:8px 14px;background:repeating-linear-gradient(-45deg,#FFC400 0 18px,#0B0B0D 18px 36px);text-align:center;}' +
   '.bf-bar-in{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:6px 18px;border-radius:999px;background:#0B0B0D;color:#fff;font:700 14px/1.2 "Plus Jakarta Sans",Inter,system-ui,sans-serif;box-shadow:0 0 0 2px #FFC400;}' +
