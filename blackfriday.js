@@ -84,6 +84,19 @@
   '.bf-btn:hover{background:#1CA653;color:#fff;}' +
   '@media(max-width:560px){.bf-of-head small{display:none}.bf-card{width:252px;height:156px}.bf-img{width:112px}}' +
   '@media(prefers-reduced-motion:reduce){.bf-track{animation:none!important}.bf-reel{overflow-x:auto}}' +
+  /* opción: parte de abajo oscura (?fondo=oscuro) */
+  'body.bf-dark{--bg:#07090f;--panel:#12151c;--panel-2:#191d27;--line:#2a2f3b;--text:#F3F4F7;--text-dim:#C3C8D4;}' +
+  'body.bf-dark{background:radial-gradient(900px 500px at 85% 900px,rgba(26,95,180,.28),transparent 65%),linear-gradient(180deg,#07090f,#0a1020 60%,#07090f)!important;}' +
+  'body.bf-dark .section-head h2,body.bf-dark .section h2,body.bf-dark .section h3,body.bf-dark .mv-card h3{color:#fff!important;}' +
+  'body.bf-dark .section-head p,body.bf-dark .mv-card p,body.bf-dark .section p{color:#C9CDD8!important;}' +
+  'body.bf-dark .chip.active{background:#FFC400!important;color:#0B0B0D!important;border-color:#FFC400!important;}' +
+  'body.bf-dark label,body.bf-dark .contact-grid strong,body.bf-dark .contact-grid b{color:#fff!important;}' +
+  'body.bf-dark .card,body.bf-dark .info-card,body.bf-dark .mv-card,body.bf-dark .contact-card,body.bf-dark .form-card,body.bf-dark .map-card{background:linear-gradient(180deg,#14171f,#0e1016)!important;border-color:#2a2f3b!important;color:#E9EBF0;}' +
+  'body.bf-dark .card-desc,body.bf-dark .card-code,body.bf-dark .card-cat{color:#E9EBF0!important;}' +
+  'body.bf-dark .card-cat{color:#FFC400!important;}' +
+  'body.bf-dark #nosotros .taller-anim{background:radial-gradient(circle,#F7F8FB,#D9DEE9);border-radius:50%;overflow:hidden;box-shadow:0 0 0 3px #FFC400,0 14px 34px rgba(0,0,0,.55);}' +
+  'body.bf-dark input,body.bf-dark select,body.bf-dark textarea{background:#0b0d13!important;color:#fff!important;border-color:#2f3543!important;}' +
+  'body.bf-dark .chip,body.bf-dark .cat-chip,body.bf-dark .filters button{background:#14171f!important;color:#E9EBF0!important;border-color:#2f3543!important;}' +
   /* cinta superior con cuenta regresiva */
   '.bf-bar{position:relative;z-index:41;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:8px 14px;background:repeating-linear-gradient(-45deg,#FFC400 0 18px,#0B0B0D 18px 36px);text-align:center;}' +
   '.bf-bar-in{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:6px 18px;border-radius:999px;background:#0B0B0D;color:#fff;font:700 14px/1.2 "Plus Jakarta Sans",Inter,system-ui,sans-serif;box-shadow:0 0 0 2px #FFC400;}' +
@@ -116,6 +129,7 @@
   function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
   ready(function(){
     document.body.classList.add('bf-on');
+    if (new URLSearchParams(location.search).get('fondo') === 'oscuro') document.body.classList.add('bf-dark');
 
     /* cinta superior */
     var bar = document.createElement('div'); bar.className = 'bf-bar';
