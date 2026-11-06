@@ -76,6 +76,13 @@
   '.bf-btn{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:7px;background:#25D366;color:#06210f;font:800 13px/1 Inter,sans-serif;padding:10px;border-radius:10px;text-decoration:none;}' +
   '.bf-btn:hover{background:#1CA653;color:#fff;}' +
   '@media(max-width:560px){.bf-of-head h2{font-size:23px}.bf-grid{grid-template-columns:repeat(2,1fr);gap:12px}.bf-img{height:116px}.bf-now{font-size:21px}}' +
+  /* ofertas dentro del banner (opción B) */
+  '.bf-inhero{position:absolute;right:3.5%;top:50%;transform:translateY(-50%);z-index:3;display:flex;gap:12px;}' +
+  '.bf-inhero .bf-card{width:178px;padding:9px 9px 11px;gap:5px;border-radius:14px;background:linear-gradient(180deg,rgba(23,23,27,.94),rgba(10,10,13,.94));}' +
+  '.bf-inhero .bf-img{height:104px}.bf-inhero .bf-desc{font-size:11.5px;min-height:30px}.bf-inhero .bf-cat{display:none}.bf-inhero .bf-code{font-size:10.5px}' +
+  '.bf-inhero .bf-now{font-size:21px}.bf-inhero .bf-was{font-size:12px}.bf-inhero .bf-btn{font-size:11.5px;padding:8px}.bf-inhero .bf-off{font-size:12px;padding:6px 9px}' +
+  '.bf-inhero-tag{position:absolute;right:3.5%;top:10px;z-index:4;color:#FFC400;font:800 12px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;}' +
+  '.bf-modo-banner .hero-key-photo{opacity:.0!important}' +
   /* cinta superior con cuenta regresiva */
   '.bf-bar{position:relative;z-index:41;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:8px 14px;background:repeating-linear-gradient(-45deg,#FFC400 0 18px,#0B0B0D 18px 36px);text-align:center;}' +
   '.bf-bar-in{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:6px 18px;border-radius:999px;background:#0B0B0D;color:#fff;font:700 14px/1.2 "Plus Jakarta Sans",Inter,system-ui,sans-serif;box-shadow:0 0 0 2px #FFC400;}' +
@@ -172,6 +179,15 @@
           '<div class="bf-prices"><span class="bf-now">' + money(o.precio_promo) + '</span>' + (pct ? '<span class="bf-was">' + money(o.precio_antes) + '</span>' : '') + '</div>' +
           '<a class="bf-btn" target="_blank" rel="noopener" href="https://wa.me/' + num + '?text=' + encodeURIComponent(msg) + '">Cotizar por WhatsApp</a></div>';
       }).join('');
+      if (new URLSearchParams(location.search).get('modo') === 'banner'){
+        var hero2 = document.querySelector('.hero'); if (!hero2) return;
+        document.body.classList.add('bf-modo-banner');
+        var box = document.createElement('div'); box.className = 'bf-inhero';
+        box.innerHTML = cards.split('<div class="bf-card">').slice(1, 4).map(function(x){ return '<div class="bf-card">' + x; }).join('');
+        hero2.appendChild(box);
+        hero2.insertAdjacentHTML('beforeend', '<div class="bf-inhero-tag">Ofertas Black Friday' + (demo ? ' · ejemplo' : '') + '</div>');
+        return;
+      }
       var sec = document.createElement('section'); sec.className = 'bf-ofertas'; sec.id = 'ofertas-bf';
       sec.innerHTML = '<div class="wrap"><div class="bf-of-head"><div><h2>Ofertas <span>Black Friday</span></h2><p>Precios especiales por tiempo limitado. Cotiza por WhatsApp.</p></div>' + (demo ? '<span class="bf-demo">Vista de ejemplo · precios ficticios</span>' : '') + '</div><div class="bf-grid">' + cards + '</div></div>';
       var ref = document.getElementById('catalogo'); if (ref && ref.parentNode) ref.parentNode.insertBefore(sec, ref);
