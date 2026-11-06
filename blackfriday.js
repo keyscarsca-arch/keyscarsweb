@@ -52,37 +52,34 @@
   '.bf-spark{animation:bfTwinkle 1.6s ease-in-out infinite;}' +
   '@keyframes bfTwinkle{0%,100%{filter:brightness(1)}50%{filter:brightness(1.8)}}' +
   '@media(prefers-reduced-motion:reduce){.bf-bar,.hero-key-photo,.hero-bg-image::after,.bf-seal,.bf-seal::after,.bf-count span,.bf-bar a,.bf-bar b{animation:none!important}}' +
-  /* sección de ofertas */
-  '.bf-ofertas{background:radial-gradient(900px 360px at 80% 0,rgba(26,95,180,.45),transparent 65%),linear-gradient(180deg,#0B0B0D,#06142b);padding:34px 0 38px;border-bottom:4px solid #FFC400;position:relative;overflow:hidden;}' +
-  '.bf-ofertas .wrap{max-width:1200px;margin:0 auto;padding:0 24px;}' +
-  '.bf-of-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px;}' +
-  '.bf-of-head h2{margin:0;font:800 30px/1.1 "Plus Jakarta Sans",Inter,sans-serif;color:#fff;letter-spacing:.01em;}' +
+  /* carrete de ofertas: franja compacta con productos girando; al pasar el cursor se detiene, la tarjeta se agranda y la foto se amplía con lupa */
+  '.bf-ofertas{background:radial-gradient(800px 200px at 80% 0,rgba(26,95,180,.4),transparent 65%),linear-gradient(180deg,#0B0B0D,#06142b);padding:16px 0 18px;border-bottom:4px solid #FFC400;position:relative;overflow:hidden;}' +
+  '.bf-of-head{max-width:1200px;margin:0 auto 6px;padding:0 24px;display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;}' +
+  '.bf-of-head h2{margin:0;font:800 19px/1.1 "Plus Jakarta Sans",Inter,sans-serif;color:#fff;letter-spacing:.02em;}' +
   '.bf-of-head h2 span{color:#FFC400;}' +
-  '.bf-of-head p{margin:6px 0 0;color:#C8CCD6;font-size:14px;}' +
-  '.bf-demo{background:#FFC400;color:#0B0B0D;font:800 11px/1 Inter,sans-serif;letter-spacing:.1em;padding:6px 10px;border-radius:6px;text-transform:uppercase;}' +
-  '.bf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;}' +
-  '.bf-card{position:relative;background:linear-gradient(180deg,#17171B,#0f0f12);border:1.5px solid rgba(255,196,0,.45);border-radius:16px;padding:12px 12px 14px;display:flex;flex-direction:column;gap:8px;box-shadow:0 10px 28px rgba(0,0,0,.45);transition:transform .2s,border-color .2s,box-shadow .2s;}' +
-  '.bf-card:hover{transform:translateY(-4px);border-color:#FFC400;box-shadow:0 14px 34px rgba(255,196,0,.22);}' +
-  '.bf-off{position:absolute;top:-10px;left:-8px;z-index:2;background:#E00210;color:#fff;font:800 14px/1 "Plus Jakarta Sans",Inter,sans-serif;padding:8px 11px;border-radius:10px;transform:rotate(-6deg);box-shadow:0 6px 14px rgba(224,2,16,.45);animation:bfOff 2.4s ease-in-out infinite;}' +
-  '@keyframes bfOff{0%,100%{transform:rotate(-6deg) scale(1)}50%{transform:rotate(-6deg) scale(1.1)}}' +
-  '.bf-img{background:#fff;border-radius:12px;height:150px;display:flex;align-items:center;justify-content:center;overflow:hidden;}' +
-  '.bf-img img{max-width:88%;max-height:88%;object-fit:contain;}' +
-  '.bf-cat{min-height:26px;font:700 10.5px/1.2 Inter,sans-serif;color:#FFC400;letter-spacing:.06em;text-transform:uppercase;}' +
-  '.bf-desc{color:#fff;font:600 13.5px/1.3 Inter,sans-serif;min-height:35px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}' +
-  '.bf-code{color:#9AA0AE;font:12px/1 monospace;}' +
-  '.bf-prices{display:flex;align-items:baseline;gap:9px;margin-top:2px;}' +
-  '.bf-now{font:800 26px/1 "Plus Jakarta Sans",Inter,sans-serif;color:#FFC400;}' +
-  '.bf-was{font:600 14px/1 Inter,sans-serif;color:#8C93A3;text-decoration:line-through;}' +
-  '.bf-btn{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:7px;background:#25D366;color:#06210f;font:800 13px/1 Inter,sans-serif;padding:10px;border-radius:10px;text-decoration:none;}' +
+  '.bf-of-head small{color:#AEB4C2;font:600 11.5px/1 Inter,sans-serif;letter-spacing:.04em;}' +
+  '.bf-of-head h2 .bf-demo{background:#FFC400;color:#0B0B0D;font:800 10px/1 Inter,sans-serif;letter-spacing:.1em;padding:5px 9px;border-radius:5px;text-transform:uppercase;margin-left:10px;}' +
+  '.bf-reel{position:relative;overflow:hidden;padding:20px 0 20px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}' +
+  '.bf-track{display:flex;gap:16px;width:max-content;animation:bfReel var(--dur,40s) linear infinite;}' +
+  '.bf-reel:hover .bf-track{animation-play-state:paused;}' +
+  '@keyframes bfReel{to{transform:translateX(var(--shift,-50%))}}' +
+  '.bf-card{position:relative;flex:none;width:262px;height:162px;background:linear-gradient(180deg,#17171B,#0f0f12);border:1.5px solid rgba(255,196,0,.45);border-radius:14px;padding:10px;display:flex;gap:10px;box-shadow:0 8px 22px rgba(0,0,0,.45);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s,box-shadow .25s;}' +
+  '.bf-card:hover{transform:scale(1.14);z-index:6;border-color:#FFC400;box-shadow:0 16px 36px rgba(255,196,0,.28);}' +
+  '.bf-off{position:absolute;top:-9px;left:-7px;z-index:3;background:#E00210;color:#fff;font:800 12px/1 "Plus Jakarta Sans",Inter,sans-serif;padding:6px 9px;border-radius:8px;transform:rotate(-6deg);box-shadow:0 5px 12px rgba(224,2,16,.45);}' +
+  '.bf-img{position:relative;flex:none;width:100px;height:100%;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:zoom-in;}' +
+  '.bf-img img{max-width:90%;max-height:90%;object-fit:contain;}' +
+  '.bf-lens{position:absolute;width:64px;height:64px;border-radius:50%;border:2.5px solid #FFC400;box-shadow:0 4px 14px rgba(0,0,0,.45),inset 0 0 10px rgba(255,255,255,.5);background-color:#fff;background-repeat:no-repeat;pointer-events:none;opacity:0;transition:opacity .15s;transform:translate(-50%,-50%);}' +
+  '.bf-img:hover .bf-lens{opacity:1;}' +
+  '.bf-info{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:space-between;}' +
+  '.bf-desc{color:#fff;font:600 11.5px/1.25 Inter,sans-serif;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}' +
+  '.bf-code{color:#9AA0AE;font:10.5px/1 monospace;margin-top:3px;}' +
+  '.bf-prices{display:flex;align-items:baseline;gap:7px;}' +
+  '.bf-now{font:800 21px/1 "Plus Jakarta Sans",Inter,sans-serif;color:#FFC400;}' +
+  '.bf-was{font:600 11.5px/1 Inter,sans-serif;color:#8C93A3;text-decoration:line-through;}' +
+  '.bf-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:#25D366;color:#06210f;font:800 11px/1 Inter,sans-serif;padding:7px;border-radius:8px;text-decoration:none;}' +
   '.bf-btn:hover{background:#1CA653;color:#fff;}' +
-  '@media(max-width:560px){.bf-of-head h2{font-size:23px}.bf-grid{grid-template-columns:repeat(2,1fr);gap:12px}.bf-img{height:116px}.bf-now{font-size:21px}}' +
-  /* ofertas dentro del banner (opción B) */
-  '.bf-inhero{position:absolute;right:3.5%;top:50%;transform:translateY(-50%);z-index:3;display:flex;gap:12px;}' +
-  '.bf-inhero .bf-card{width:178px;padding:9px 9px 11px;gap:5px;border-radius:14px;background:linear-gradient(180deg,rgba(23,23,27,.94),rgba(10,10,13,.94));}' +
-  '.bf-inhero .bf-img{height:104px}.bf-inhero .bf-desc{font-size:11.5px;min-height:30px}.bf-inhero .bf-cat{display:none}.bf-inhero .bf-code{font-size:10.5px}' +
-  '.bf-inhero .bf-now{font-size:21px}.bf-inhero .bf-was{font-size:12px}.bf-inhero .bf-btn{font-size:11.5px;padding:8px}.bf-inhero .bf-off{font-size:12px;padding:6px 9px}' +
-  '.bf-inhero-tag{position:absolute;right:3.5%;top:10px;z-index:4;color:#FFC400;font:800 12px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;}' +
-  '.bf-modo-banner .hero-key-photo{opacity:.0!important}' +
+  '@media(max-width:560px){.bf-of-head small{display:none}.bf-card{width:238px;height:154px}.bf-img{width:90px}}' +
+  '@media(prefers-reduced-motion:reduce){.bf-track{animation:none!important}.bf-reel{overflow-x:auto}}' +
   /* cinta superior con cuenta regresiva */
   '.bf-bar{position:relative;z-index:41;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:8px 14px;background:repeating-linear-gradient(-45deg,#FFC400 0 18px,#0B0B0D 18px 36px);text-align:center;}' +
   '.bf-bar-in{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:6px 18px;border-radius:999px;background:#0B0B0D;color:#fff;font:700 14px/1.2 "Plus Jakarta Sans",Inter,system-ui,sans-serif;box-shadow:0 0 0 2px #FFC400;}' +
@@ -167,30 +164,38 @@
       var items = res[0] || [], cat = res[1] || {};
       if (!items.length) return;
       var num = (typeof WHATSAPP_NUMBER !== 'undefined') ? WHATSAPP_NUMBER : '584226377050';
-      var cards = items.map(function(o){
+      function tarjeta(o){
         var p = cat[o.codigo] || {codigo:o.codigo, descripcion:o.descripcion || '', categoria:o.categoria || ''};
         var a = parseFloat(String(o.precio_antes).replace(',', '.')), b = parseFloat(String(o.precio_promo).replace(',', '.'));
         var pct = (a > 0 && b >= 0 && b < a) ? Math.round((1 - b / a) * 100) : 0;
         var msg = 'Hola, quiero aprovechar la oferta Black Friday de Keys Cars:\n' + p.codigo + ' - ' + p.descripcion + '\nPrecio promoción: ' + money(o.precio_promo);
         var c = encodeURIComponent(p.codigo);
         return '<div class="bf-card">' + (pct ? '<div class="bf-off">-' + pct + '%</div>' : '') +
-          '<div class="bf-img"><img loading="lazy" alt="' + esc(p.codigo) + '" src="imagenes_productos/mini/' + c + '.webp" onerror="this.onerror=null;this.src=\'imagenes_productos/' + c + '.jpg\'"></div>' +
-          '<div class="bf-cat">' + esc(p.categoria) + '</div><div class="bf-desc">' + esc(p.descripcion) + '</div><div class="bf-code">' + esc(p.codigo) + '</div>' +
+          '<div class="bf-img"><img loading="lazy" alt="' + esc(p.codigo) + '" src="imagenes_productos/mini/' + c + '.webp" onerror="this.onerror=null;this.src=\'imagenes_productos/' + c + '.jpg\'"><span class="bf-lens"></span></div>' +
+          '<div class="bf-info"><div><div class="bf-desc">' + esc(p.descripcion) + '</div><div class="bf-code">' + esc(p.codigo) + '</div></div>' +
           '<div class="bf-prices"><span class="bf-now">' + money(o.precio_promo) + '</span>' + (pct ? '<span class="bf-was">' + money(o.precio_antes) + '</span>' : '') + '</div>' +
-          '<a class="bf-btn" target="_blank" rel="noopener" href="https://wa.me/' + num + '?text=' + encodeURIComponent(msg) + '">Cotizar por WhatsApp</a></div>';
-      }).join('');
-      if (new URLSearchParams(location.search).get('modo') === 'banner'){
-        var hero2 = document.querySelector('.hero'); if (!hero2) return;
-        document.body.classList.add('bf-modo-banner');
-        var box = document.createElement('div'); box.className = 'bf-inhero';
-        box.innerHTML = cards.split('<div class="bf-card">').slice(1, 4).map(function(x){ return '<div class="bf-card">' + x; }).join('');
-        hero2.appendChild(box);
-        hero2.insertAdjacentHTML('beforeend', '<div class="bf-inhero-tag">Ofertas Black Friday' + (demo ? ' · ejemplo' : '') + '</div>');
-        return;
+          '<a class="bf-btn" target="_blank" rel="noopener" href="https://wa.me/' + num + '?text=' + encodeURIComponent(msg) + '"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.2 17.2L2 22l4.9-1.3A11 11 0 0 0 20.5 3.5zM12 20a9 9 0 0 1-4.6-1.3l-.3-.2-2.9.8.8-2.8-.2-.3A9 9 0 1 1 12 20zm5-6.7c-.3-.1-1.6-.8-1.9-.9s-.5-.1-.7.1-.8.9-.9 1.1-.3.2-.6.1a7.4 7.4 0 0 1-3.7-3.2c-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.700 11.700 0 0 0 4.500 3.900c1.700.7 2.300.8 3.100.7a2.600 2.600 0 0 0 1.700-1.200 2.100 2.100 0 0 0 .1-1.200c-.1-.1-.3-.2-.6-.4z"/></svg> Cotizar</a></div></div>';
       }
+      var uno = items.map(tarjeta).join('');
+      /* repetir el juego de tarjetas hasta cubrir ~1600 px y duplicarlo para que el giro no tenga cortes */
+      var ancho = 262 + 16, veces = Math.max(1, Math.ceil(1600 / (items.length * ancho)));
+      var set = new Array(veces + 1).join(uno);
+      var setPx = items.length * veces * ancho;
       var sec = document.createElement('section'); sec.className = 'bf-ofertas'; sec.id = 'ofertas-bf';
-      sec.innerHTML = '<div class="wrap"><div class="bf-of-head"><div><h2>Ofertas <span>Black Friday</span></h2><p>Precios especiales por tiempo limitado. Cotiza por WhatsApp.</p></div>' + (demo ? '<span class="bf-demo">Vista de ejemplo · precios ficticios</span>' : '') + '</div><div class="bf-grid">' + cards + '</div></div>';
+      sec.innerHTML = '<div class="bf-of-head"><h2>Ofertas <span>Black Friday</span>' + (demo ? '<span class="bf-demo">Ejemplo · precios ficticios</span>' : '') + '</h2><small>Pasa el cursor para detener y ampliar</small></div>' +
+        '<div class="bf-reel"><div class="bf-track" style="--shift:-' + setPx + 'px;--dur:' + Math.round(items.length * veces * 5) + 's">' + set + set + '</div></div>';
       var ref = document.getElementById('catalogo'); if (ref && ref.parentNode) ref.parentNode.insertBefore(sec, ref);
+      /* lupa: sigue al cursor sobre la foto y muestra la imagen ampliada */
+      sec.addEventListener('mousemove', function(e){
+        var box = e.target.closest ? e.target.closest('.bf-img') : null; if (!box) return;
+        var lens = box.querySelector('.bf-lens'), img = box.querySelector('img'); if (!lens || !img) return;
+        var r = box.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top, z = 2.6;
+        var ir = img.getBoundingClientRect();
+        lens.style.left = x + 'px'; lens.style.top = y + 'px';
+        lens.style.backgroundImage = 'url("' + (img.currentSrc || img.src) + '")';
+        lens.style.backgroundSize = (ir.width * z) + 'px ' + (ir.height * z) + 'px';
+        lens.style.backgroundPosition = (-((x - (ir.left - r.left)) * z - 32)) + 'px ' + (-((y - (ir.top - r.top)) * z - 32)) + 'px';
+      });
     });
 
     var panel = document.querySelector('.game-panel');
