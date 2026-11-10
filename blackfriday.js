@@ -7,7 +7,7 @@
   try{
     var q = new URLSearchParams(location.search).get('blackfriday');
     var d = new Date(), m = d.getMonth(), day = d.getDate();
-    var enFecha = (m === 10 && day >= 12 && day <= 30);
+    var enFecha = (m === 10 && day >= 11 && day <= 27);
     if (q === '0' || (q !== '1' && !enFecha)) return;
   }catch(e){ return; }
 
@@ -140,9 +140,10 @@
   function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
   ready(function(){
     document.body.classList.add('bf-on');
-    if (new URLSearchParams(location.search).get('fondo') === 'oscuro') document.body.classList.add('bf-dark');
-    if (new URLSearchParams(location.search).get('fondo') === 'medio') document.body.classList.add('bf-mid');
-    if (new URLSearchParams(location.search).get('fondo') === 'azul') document.body.classList.add('bf-mid', 'bf-azul');
+    var fondo = new URLSearchParams(location.search).get('fondo');
+    if (!fondo || fondo === 'oscuro') document.body.classList.add('bf-dark');
+    if (fondo === 'medio') document.body.classList.add('bf-mid');
+    if (fondo === 'azul') document.body.classList.add('bf-mid', 'bf-azul');
 
     /* cinta superior */
     var bar = document.createElement('div'); bar.className = 'bf-bar';
