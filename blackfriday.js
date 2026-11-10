@@ -61,6 +61,12 @@
   '.bf-reel{position:relative;overflow:hidden;padding:30px 0 26px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}' +
   '.bf-track{display:flex;gap:16px;width:max-content;animation:bfReel var(--dur,40s) linear infinite;}' +
   '.bf-reel:hover .bf-track{animation-play-state:paused;}' +
+  '.bf-reel-wrap{position:relative;}' +
+  '.bf-arr{position:absolute;top:50%;margin-top:-22px;z-index:8;width:44px;height:44px;border-radius:50%;border:2px solid #0B0B0D;background:#FFC400;color:#0B0B0D;display:grid;place-items:center;cursor:pointer;padding:0;box-shadow:0 6px 18px rgba(0,0,0,.55),0 0 0 1px #FFC400;touch-action:manipulation;transition:transform .15s,background .15s;-webkit-tap-highlight-color:transparent;}' +
+  '.bf-arr.izq{left:10px;}.bf-arr.der{right:10px;}' +
+  '.bf-arr:hover,.bf-arr.on{transform:scale(1.12);background:#FFD84D;}' +
+  '.bf-arr svg{display:block;}' +
+  '@media(max-width:600px){.bf-arr{width:38px;height:38px;margin-top:-19px;}.bf-arr.izq{left:6px;}.bf-arr.der{right:6px;}}' +
   '@keyframes bfReel{to{transform:translateX(var(--shift,-50%))}}' +
   '.bf-card{position:relative;flex:none;width:286px;height:164px;background:linear-gradient(180deg,#17171B,#0f0f12);border:1.5px solid rgba(255,196,0,.45);border-radius:14px;padding:10px;display:flex;gap:10px;box-shadow:0 8px 22px rgba(0,0,0,.45);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s,box-shadow .25s;}' +
   '.bf-card:hover{transform:translateY(-6px) scale(1.12);z-index:6;border-color:#FFC400;box-shadow:0 0 0 1px #FFC400,0 20px 44px rgba(0,0,0,.6),0 0 32px rgba(255,196,0,.3);}' +
@@ -217,8 +223,8 @@
       var set = new Array(veces + 1).join(uno);
       var setPx = items.length * veces * ancho;
       var sec = document.createElement('section'); sec.className = 'bf-ofertas'; sec.id = 'ofertas-bf';
-      sec.innerHTML = '<div class="bf-of-head"><h2>Ofertas <span>Black Friday</span>' + (demo ? '<span class="bf-demo">Ejemplo · precios ficticios</span>' : '') + '</h2><small>Pasa el cursor para detener y ampliar</small></div>' +
-        '<div class="bf-reel"><div class="bf-track" style="--shift:-' + setPx + 'px;--dur:' + Math.round(items.length * veces * 5) + 's">' + set + set + '</div></div>';
+      sec.innerHTML = '<div class="bf-of-head"><h2>Ofertas <span>Black Friday</span>' + (demo ? '<span class="bf-demo">Ejemplo · precios ficticios</span>' : '') + '</h2><small>Pasa el cursor para detener y ampliar · usa las flechas para ir más rápido</small></div>' +
+        '<div class="bf-reel-wrap"><div class="bf-reel"><div class="bf-track" style="--shift:-' + setPx + 'px;--dur:' + Math.round(items.length * veces * 5) + 's">' + set + set + '</div></div><button type="button" class="bf-arr izq" aria-label="Ir más rápido hacia atrás" title="Ir más rápido hacia atrás"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="bf-arr der" aria-label="Ir más rápido hacia adelante" title="Ir más rápido hacia adelante"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>';
       var ref = document.getElementById('catalogo'); if (ref && ref.parentNode) ref.parentNode.insertBefore(sec, ref);
       /* botón de carrito: usa la misma cotización del catálogo */
       function marcar(){ try { sec.querySelectorAll('.bf-cart').forEach(function(b){ var en = cart.some(function(c){ return c.c === b.getAttribute('data-cod'); }); b.classList.toggle('added', en); b.title = en ? 'Agregado a cotización' : 'Agregar a cotización'; }); } catch(e){} }
@@ -228,6 +234,35 @@
         marcar();
       });
       setInterval(marcar, 1200);
+      /* flechas: aceleran el carrete hacia atrás o hacia adelante mientras se mantienen (cursor encima o dedo apretado) */
+      (function(){
+        var track = sec.querySelector('.bf-track'), reel = sec.querySelector('.bf-reel');
+        var anim = null, objetivo = 1, rate = 1, VEL = 9, raf = 0;
+        function tomar(){
+          try { anim = track.getAnimations()[0] || null; } catch(e){ anim = null; }
+          if (anim) { var d = anim.effect.getTiming().duration; anim.currentTime = (anim.currentTime || 0) + d * 40; }
+        }
+        setTimeout(tomar, 300);
+        function paso(){
+          rate += (objetivo - rate) * 0.14;
+          if (Math.abs(objetivo - rate) < 0.02) rate = objetivo;
+          if (anim) { try { anim.playbackRate = rate; } catch(e){} }
+          if (rate !== objetivo) raf = requestAnimationFrame(paso); else raf = 0;
+        }
+        function ir(v, btn, on){
+          objetivo = on ? v : 1;
+          btn.classList.toggle('on', on);
+          if (!anim) { if (on) { try { reel.scrollBy({left: v > 0 ? 320 : -320, behavior: 'smooth'}); } catch(e){} } return; }
+          if (!raf) raf = requestAnimationFrame(paso);
+        }
+        [['.bf-arr.izq', -VEL], ['.bf-arr.der', VEL]].forEach(function(x){
+          var btn = sec.querySelector(x[0]); if (!btn) return;
+          btn.addEventListener('pointerenter', function(){ ir(x[1], btn, true); });
+          btn.addEventListener('pointerleave', function(){ ir(x[1], btn, false); });
+          btn.addEventListener('pointercancel', function(){ ir(x[1], btn, false); });
+          btn.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+        });
+      })();
     });
 
     var panel = document.querySelector('.game-panel');
