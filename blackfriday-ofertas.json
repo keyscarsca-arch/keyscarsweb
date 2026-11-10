@@ -7,5 +7,16 @@
   {"codigo": "CANDADO-39", "precio_antes": "9.65", "precio_promo": "7.72"},
   {"codigo": "CANDADO-40", "precio_antes": "4.76", "precio_promo": "3.81"},
   {"codigo": "CANDADO-41", "precio_antes": "12.73", "precio_promo": "10.18"},
-  {"codigo": "CANDADO-42", "precio_antes": "15.30", "precio_promo": "12.24"}
+  {"codigo": "CANDADO-42", "precio_antes": "15.30", "precio_promo": "12.24"},
+  {"codigo": "CANDADOGUAYA-01", "precio_antes": "11.31", "precio_promo": "9.05"},
+  {"codigo": "CANDADOGUAYA-03", "precio_antes": "15.30", "precio_promo": "12.24"},
+  {"codigo": "CERRADURA-19", "precio_antes": "17.86", "precio_promo": "14.29"},
+  {"codigo": "CERRADURA-20", "precio_antes": "17.86", "precio_promo": "14.29"},
+  {"codigo": "CERRADURA-21", "precio_antes": "17.86", "precio_promo": "14.29"},
+  {"codigo": "CERRADURA-22", "precio_antes": "17.86", "precio_promo": "14.29"},
+  {"codigo": "LLAVERO-44", "precio_antes": "7.46", "precio_promo": "5.97"},
+  {"codigo": "LLAVERO-45", "precio_antes": "7.46", "precio_promo": "5.97"},
+  {"codigo": "LLAVERO-46", "precio_antes": "7.46", "precio_promo": "5.97"},
+  {"codigo": "LLAVERO-47", "precio_antes": "7.46", "precio_promo": "5.97"},
+  {"codigo": "LLAVERO-48", "precio_antes": "7.46", "precio_promo": "5.97"}
 ]
