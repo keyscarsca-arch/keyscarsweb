@@ -82,6 +82,9 @@
   '.bf-was{font:600 11.5px/1 Inter,sans-serif;color:#8C93A3;text-decoration:line-through;}' +
   '.bf-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:#25D366;color:#06210f;font:800 11px/1 Inter,sans-serif;padding:7px;border-radius:8px;text-decoration:none;}' +
   '.bf-btn:hover{background:#1CA653;color:#fff;}' +
+  '.bf-act{display:flex;gap:6px;align-items:stretch;}.bf-act .bf-btn{flex:1;}' +
+  '.bf-cart{flex:0 0 36px;display:flex;align-items:center;justify-content:center;background:#17171B;color:#FFC400;border:1.5px solid #FFC400;border-radius:8px;cursor:pointer;padding:0;}' +
+  '.bf-cart:hover{background:#FFC400;color:#0B0B0D;}.bf-cart.added{background:#FFC400;color:#0B0B0D;}' +
   '@media(max-width:560px){.bf-of-head small{display:none}.bf-card{width:252px;height:156px}.bf-img{width:112px}}' +
   '@media(prefers-reduced-motion:reduce){.bf-track{animation:none!important}.bf-reel{overflow-x:auto}}' +
   /* opción: parte de abajo oscura (?fondo=oscuro) */
@@ -206,7 +209,7 @@
           '<div class="bf-img" data-cod="' + esc(p.codigo) + '"><img loading="lazy" alt="' + esc(p.codigo) + '" src="imagenes_productos/mini/' + c + '.webp" onerror="this.onerror=null;this.src=\'imagenes_productos/' + c + '.jpg\'"></div>' +
           '<div class="bf-info"><div><div class="bf-desc">' + esc(p.descripcion) + '</div><div class="bf-code">' + esc(p.codigo) + '</div></div>' +
           '<div class="bf-prices"><span class="bf-now">' + money(o.precio_promo) + '</span>' + (pct ? '<span class="bf-was">' + money(o.precio_antes) + '</span>' : '') + '</div>' +
-          '<a class="bf-btn" target="_blank" rel="noopener" href="https://wa.me/' + num + '?text=' + encodeURIComponent(msg) + '"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.2 17.2L2 22l4.9-1.3A11 11 0 0 0 20.5 3.5zM12 20a9 9 0 0 1-4.6-1.3l-.3-.2-2.9.8.8-2.8-.2-.3A9 9 0 1 1 12 20zm5-6.7c-.3-.1-1.6-.8-1.9-.9s-.5-.1-.7.1-.8.9-.9 1.1-.3.2-.6.1a7.4 7.4 0 0 1-3.7-3.2c-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.700 11.700 0 0 0 4.500 3.900c1.700.7 2.300.8 3.100.7a2.600 2.600 0 0 0 1.700-1.200 2.100 2.100 0 0 0 .1-1.200c-.1-.1-.3-.2-.6-.4z"/></svg> Cotizar</a></div></div>';
+          '<div class="bf-act"><button type="button" class="bf-cart" data-cod="' + esc(p.codigo) + '" title="Agregar a cotización" aria-label="Agregar a cotización"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></button><a class="bf-btn" target="_blank" rel="noopener" href="https://wa.me/' + num + '?text=' + encodeURIComponent(msg) + '"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.2 17.2L2 22l4.9-1.3A11 11 0 0 0 20.5 3.5zM12 20a9 9 0 0 1-4.6-1.3l-.3-.2-2.9.8.8-2.8-.2-.3A9 9 0 1 1 12 20zm5-6.7c-.3-.1-1.6-.8-1.9-.9s-.5-.1-.7.1-.8.9-.9 1.1-.3.2-.6.1a7.4 7.4 0 0 1-3.7-3.2c-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.700 11.700 0 0 0 4.500 3.900c1.700.7 2.300.8 3.100.7a2.600 2.600 0 0 0 1.700-1.200 2.100 2.100 0 0 0 .1-1.200c-.1-.1-.3-.2-.6-.4z"/></svg> Cotizar</a></div></div></div>';
       }
       var uno = items.map(tarjeta).join('');
       /* repetir el juego de tarjetas hasta cubrir ~1600 px y duplicarlo para que el giro no tenga cortes */
@@ -217,6 +220,14 @@
       sec.innerHTML = '<div class="bf-of-head"><h2>Ofertas <span>Black Friday</span>' + (demo ? '<span class="bf-demo">Ejemplo · precios ficticios</span>' : '') + '</h2><small>Pasa el cursor para detener y ampliar</small></div>' +
         '<div class="bf-reel"><div class="bf-track" style="--shift:-' + setPx + 'px;--dur:' + Math.round(items.length * veces * 5) + 's">' + set + set + '</div></div>';
       var ref = document.getElementById('catalogo'); if (ref && ref.parentNode) ref.parentNode.insertBefore(sec, ref);
+      /* botón de carrito: usa la misma cotización del catálogo */
+      function marcar(){ try { sec.querySelectorAll('.bf-cart').forEach(function(b){ var en = cart.some(function(c){ return c.c === b.getAttribute('data-cod'); }); b.classList.toggle('added', en); b.title = en ? 'Agregado a cotización' : 'Agregar a cotización'; }); } catch(e){} }
+      sec.addEventListener('click', function(e){
+        var b = e.target.closest('.bf-cart'); if (!b) return;
+        try { toggleCart(b.getAttribute('data-cod')); } catch(err){}
+        marcar();
+      });
+      setInterval(marcar, 1200);
     });
 
     var panel = document.querySelector('.game-panel');
