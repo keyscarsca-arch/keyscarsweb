@@ -1,3 +1,11 @@
 [
-  {"codigo":"CANDADO-34","precio_antes":"5.40","precio_promo":"4.32"}
+  {"codigo": "CANDADO-34", "precio_antes": "5.40", "precio_promo": "4.32"},
+  {"codigo": "CANDADO-35", "precio_antes": "6.81", "precio_promo": "5.45"},
+  {"codigo": "CANDADO-36", "precio_antes": "8.10", "precio_promo": "6.48"},
+  {"codigo": "CANDADO-37", "precio_antes": "9.65", "precio_promo": "7.72"},
+  {"codigo": "CANDADO-38", "precio_antes": "8.94", "precio_promo": "7.15"},
+  {"codigo": "CANDADO-39", "precio_antes": "9.65", "precio_promo": "7.72"},
+  {"codigo": "CANDADO-40", "precio_antes": "4.76", "precio_promo": "3.81"},
+  {"codigo": "CANDADO-41", "precio_antes": "12.73", "precio_promo": "10.18"},
+  {"codigo": "CANDADO-42", "precio_antes": "15.30", "precio_promo": "12.24"}
 ]
