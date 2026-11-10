@@ -106,6 +106,10 @@
   'body.bf-dark #nosotros .taller-anim{background:radial-gradient(circle,#F7F8FB,#D9DEE9);border-radius:50%;overflow:hidden;box-shadow:0 0 0 3px #FFC400,0 14px 34px rgba(0,0,0,.55);}' +
   'body.bf-dark input,body.bf-dark select,body.bf-dark textarea{background:#0b0d13!important;color:#fff!important;border-color:#2f3543!important;}' +
   'body.bf-dark .chip,body.bf-dark .cat-chip,body.bf-dark .filters button{background:#14171f!important;color:#E9EBF0!important;border-color:#2f3543!important;}' +
+  'body.bf-dark .product-modal,body.bf-dark .drawer,body.bf-dark .prize-box,body.bf-dark .claim-box,body.bf-dark .claim-done,body.bf-dark .local-load-card{--text:#0F2038;--text-dim:#26303F;--line:#DCE3EE;--panel:#FFFFFF;--panel-2:#EEF3FA;color:#0F2038;}' +
+  'body.bf-dark .product-modal label,body.bf-dark .drawer label,body.bf-dark .claim-box label,body.bf-dark .prize-box label,body.bf-dark .claim-done label,body.bf-dark .product-modal strong,body.bf-dark .drawer strong,body.bf-dark .claim-box strong,body.bf-dark .prize-box strong,body.bf-dark .claim-done strong{color:#0F2038!important;}' +
+  'body.bf-dark .claim-intro,body.bf-dark .claim-box p,body.bf-dark .claim-box small,body.bf-dark .claim-box span,body.bf-dark .drawer p,body.bf-dark .drawer small{color:#26303F!important;}' +
+'body.bf-dark .drawer input,body.bf-dark .drawer select,body.bf-dark .drawer textarea,body.bf-dark .claim-box input,body.bf-dark .claim-box select,body.bf-dark .claim-box textarea{background:#fff!important;color:#0F2038!important;border-color:#DCE3EE!important;}' +
   /* opción: parte de abajo en tono medio (?fondo=medio): mezcla áurea (38,2 % claro / 61,8 % oscuro) entre #EEF1F6 y #0A1020, con matiz del azul de la marca */
   'body.bf-mid{background:radial-gradient(900px 520px at 85% 900px,rgba(26,95,180,.35),transparent 65%),linear-gradient(180deg,#5a6785 0%,#4b5873 38.2%,#3f4a63 61.8%,#363f55 100%)!important;}' +
   'body.bf-mid .section-head h2,body.bf-mid .section h2{color:#fff!important;}' +
