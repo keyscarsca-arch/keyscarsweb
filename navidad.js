@@ -43,9 +43,9 @@
   '.nv-luces{height:58px;background-color:' + T.head + ';background-repeat:repeat-x;background-position:center top;background-size:200px 58px;pointer-events:none;border-bottom:3px solid ' + T.a + ';}' +
   '.nv-marco{position:relative;}' +
   '.nv-corona{position:absolute;pointer-events:none;filter:drop-shadow(0 4px 8px rgba(0,0,0,.45));z-index:3;}' +
-  '.nv-gorro{position:absolute;pointer-events:none;z-index:6;width:46px;left:-6px;top:-16px;transform:rotate(-14deg);filter:drop-shadow(0 2px 3px rgba(0,0,0,.5));}' +
+  '.nv-gorro{position:absolute;pointer-events:none;z-index:6;width:38px;left:2px;top:-16px;transform:rotate(-16deg);transform-origin:50% 80%;filter:drop-shadow(0 2px 3px rgba(0,0,0,.45));}' +
   '.brand{position:relative;}' +
-  '@media(max-width:700px){.nv-gorro{width:36px;left:-5px;top:-13px}}' +
+  '@media(max-width:700px){.nv-gorro{width:30px;left:1px;top:-12px}}' +
   '@keyframes nvLuz{0%,100%{opacity:1}50%{opacity:.35}}' +
   /* nieve */
   '.nv-nieve{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden;}' +
@@ -74,7 +74,7 @@
   '.nv-aura{animation:nvAura 3.2s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}' +
   '@keyframes nvAura{0%,100%{opacity:.55}50%{opacity:1}}' +
   /* ruleta */
-  '.nv-ruleta{display:block;width:100%;max-width:230px;margin:2px auto 8px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.4));}' +
+  '.nv-ruleta{display:block;width:100%;max-width:150px;margin:0 auto 6px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.4));}.nv-luz0{animation:nvLuz 1.8s ease-in-out infinite}.nv-luz1{animation:nvLuz 1.8s ease-in-out .9s infinite}' +
   '.nv-badge{display:inline-flex;align-items:center;gap:7px;margin:0 auto 8px;background:' + T.a + ';color:' + T.ink + ';font:800 11px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;border-radius:999px;}' +
   '.game-panel{position:relative;border-color:' + T.a + '!important;' + (T.panel ? 'background:' + T.panel + '!important;' : '') + '}' +
   '@media(max-width:860px){.nv-banda-in{grid-template-columns:1fr;gap:18px;text-align:center;justify-items:center}.nv-escena{max-width:300px}.nv-texto p{margin:0 auto}.nv-lado{width:100%;max-width:340px}}' +
@@ -211,13 +211,42 @@
   }
 
   /* gorrito de Papá Noel */
-  var GORRO = '<svg class="nv-gorro" viewBox="0 0 70 60" aria-hidden="true">' +
-    '<path d="M6 44 C6 20 22 8 46 8 C56 8 62 14 64 24 C54 20 46 24 44 34 C43 40 42 44 42 46 Z" fill="#D8202F"/>' +
-    '<path d="M6 44 C14 30 26 18 46 10" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="2.2" stroke-linecap="round"/>' +
-    '<path d="M2 46 C16 38 36 38 50 47 C52 55 40 58 26 56 C10 56 0 52 2 46Z" fill="#fff"/>' +
-    '<path d="M6 49 C18 45 34 46 46 50" fill="none" stroke="#DCDCE6" stroke-width="1.6" stroke-linecap="round"/>' +
-    '<circle cx="63" cy="23" r="7.4" fill="#fff"/><circle cx="60" cy="20.4" r="2.2" fill="#E8E8F2"/>' +
+  var GORRO = '<svg class="nv-gorro" viewBox="0 0 84 66" aria-hidden="true">' +
+    '<defs><linearGradient id="gcono" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0404E"/><stop offset=".55" stop-color="#C8101F"/><stop offset="1" stop-color="#8F0A16"/></linearGradient>' +
+    '<linearGradient id="gpiel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E4E7EE"/></linearGradient></defs>' +
+    '<path d="M10 44 C8 24 22 8 42 6 C56 5 66 12 72 24 C76 32 74 42 70 50 C64 40 56 34 46 32 C36 32 24 36 10 44Z" fill="url(#gcono)"/>' +
+    '<path d="M14 40 C16 26 26 14 42 11" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="2.4" stroke-linecap="round"/>' +
+    '<path d="M70 50 C76 44 80 40 82 44 C84 50 80 58 72 58Z" fill="url(#gcono)"/>' +
+    '<circle cx="78" cy="58" r="7" fill="url(#gpiel)"/><circle cx="75.5" cy="55.5" r="2.2" fill="#fff"/>' +
+    '<path d="M2 46 C2 38 14 34 38 34 C58 34 72 38 72 46 C72 56 58 60 38 60 C16 60 2 56 2 46Z" fill="url(#gpiel)"/>' +
+    '<path d="M6 50 C18 55 58 55 68 50" fill="none" stroke="#C9CEDA" stroke-width="1.8" stroke-linecap="round"/>' +
+    '<g fill="#fff"><circle cx="8" cy="42" r="4.2"/><circle cx="20" cy="37" r="4.6"/><circle cx="38" cy="35" r="4.8"/><circle cx="56" cy="37" r="4.6"/><circle cx="68" cy="42" r="4.2"/></g>' +
   '</svg>';
+
+  /* arbolito de Navidad con luces, bolas y regalos (para la ruleta) */
+  function arbolito(cls){
+    var rojo = '#E5303F', oro = T.a;
+    var bolas = [[80,44,rojo],[66,70,oro],[96,72,'#fff'],[56,104,rojo],[84,102,oro],[110,108,rojo],[40,140,oro],[70,138,'#fff'],[100,142,rojo],[126,146,oro]], b = '';
+    bolas.forEach(function(p, i){ b += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="4.6" fill="' + p[2] + '"/><circle cx="' + (p[0]-1.5) + '" cy="' + (p[1]-1.5) + '" r="1.3" fill="#fff" opacity=".7"/>'; });
+    var luces = [[72,56],[90,58],[60,86],[78,90],[104,88],[48,122],[68,120],[92,124],[118,126],[30,152],[56,154],[84,156],[112,158],[134,156]], l = '';
+    luces.forEach(function(p, i){ l += '<circle class="nv-luz' + (i % 2) + '" cx="' + p[0] + '" cy="' + p[1] + '" r="2.4" fill="' + (i % 3 === 0 ? '#FFF1A8' : i % 3 === 1 ? '#7FE3A8' : '#FFB3B8') + '"/>'; });
+    return '<svg class="' + cls + '" viewBox="0 0 160 196" role="img" aria-label="Arbolito de Navidad con regalos">' +
+      '<defs><linearGradient id="abv" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0d4f2c"/><stop offset=".5" stop-color="#1f9157"/><stop offset="1" stop-color="#0d4f2c"/></linearGradient>' +
+      '<radialGradient id="abh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFE9A0" stop-opacity=".55"/><stop offset="1" stop-color="#FFE9A0" stop-opacity="0"/></radialGradient></defs>' +
+      '<ellipse cx="80" cy="96" rx="78" ry="92" fill="url(#abh)"/>' +
+      '<ellipse cx="80" cy="182" rx="68" ry="9" fill="#000" opacity=".28"/>' +
+      '<rect x="72" y="160" width="16" height="18" rx="2" fill="#6b4423"/>' +
+      '<polygon points="80,84 144,166 16,166" fill="url(#abv)"/><polygon points="80,84 144,166 118,166 80,110" fill="#000" opacity=".12"/>' +
+      '<polygon points="80,48 128,124 32,124" fill="url(#abv)"/><polygon points="80,48 128,124 106,124 80,74" fill="#000" opacity=".12"/>' +
+      '<polygon points="80,18 114,80 46,80" fill="url(#abv)"/><polygon points="80,18 114,80 98,80 80,40" fill="#000" opacity=".12"/>' +
+      '<path d="M50 78 Q80 92 110 78 M38 122 Q80 140 122 122 M24 162 Q80 182 136 162" fill="none" stroke="' + oro + '" stroke-width="3" stroke-linecap="round" opacity=".95"/>' +
+      l + b +
+      '<g class="nv-estrella"><circle cx="80" cy="14" r="15" fill="#FFE58A" opacity=".35"/><path d="M80 2 L84 11 L94 12 L86.6 18.6 L89 28 L80 23 L71 28 L73.4 18.6 L66 12 L76 11Z" fill="' + oro + '" stroke="#fff3b0" stroke-width=".8"/></g>' +
+      '<g><rect x="20" y="158" width="30" height="24" rx="2" fill="#C8101F"/><rect x="32" y="158" width="6" height="24" fill="' + oro + '"/><rect x="20" y="167" width="30" height="5" fill="' + oro + '"/><path d="M35 158 q-8 -10 -12 -3 q4 6 12 3 q8 3 12 -3 q-4 -7 -12 3Z" fill="' + oro + '"/></g>' +
+      '<g><rect x="108" y="162" width="30" height="20" rx="2" fill="#1f7a4d"/><rect x="120" y="162" width="6" height="20" fill="#E5303F"/><rect x="108" y="170" width="30" height="5" fill="#E5303F"/><path d="M123 162 q-7 -9 -11 -2 q4 5 11 2 q7 3 11 -2 q-4 -7 -11 2Z" fill="#E5303F"/></g>' +
+      '<g><rect x="90" y="168" width="20" height="14" rx="2" fill="' + oro + '"/><rect x="98" y="168" width="4" height="14" fill="#C8101F"/></g>' +
+    '</svg>';
+  }
 
   function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
   ready(function(){
@@ -264,7 +293,7 @@
 
     /* pesebre pequeño en la ruleta */
     var panel = document.querySelector('.game-panel');
-    if (panel) panel.insertAdjacentHTML('afterbegin', corona('', 'width:62px;right:6px;top:10px') + '<div style="text-align:center"><span class="nv-badge">★ Edición Navidad</span></div>' + pesebre('B', 'nv-ruleta'));
+    if (panel) panel.insertAdjacentHTML('afterbegin', corona('', 'width:62px;right:6px;top:10px') + '<div style="text-align:center"><span class="nv-badge">★ Edición Navidad</span></div>' + arbolito('nv-ruleta'));
 
     /* selector de estilo (solo en la vista previa) */
     if (window.NV_VISTA){
