@@ -15,9 +15,9 @@
 
   /* paletas de los tres estilos */
   var T = {
-    '1': {n:'Noche navideña', dark:true,  a:'#F2C14E', a2:'#E8A93A', head:'#0A1530', hero:'radial-gradient(ellipse 60% 120% at 82% 20%,rgba(242,193,78,.22),transparent 60%),linear-gradient(115deg,#060d22 0%,#0b1a3d 45%,#173a78 100%)', band:'linear-gradient(180deg,#0b1a3a,#10244f 60%,#0a1630)', bg:'#070b18', bg2:'#0a1226', l1:'#F2C14E', l2:'#FFFFFF', sky1:'#0b1a3d', sky2:'#1d3f80', ink:'#0A1530'},
-    '2': {n:'Rojo y verde clásico', dark:false, a:'#F2C14E', a2:'#D9A441', head:'#9E1B26', hero:'radial-gradient(ellipse 55% 120% at 84% 15%,rgba(242,193,78,.26),transparent 60%),linear-gradient(115deg,#6e0f19 0%,#a51f2c 55%,#14573a 130%)', band:'linear-gradient(180deg,#b3202d,#8a1420 70%,#10523a)', bg:'#FBF7F0', bg2:'#F3ECDF', l1:'#E5303F', l2:'#2FA36B', sky1:'#10321f', sky2:'#1f6a45', ink:'#6e0f19'},
-    '3': {n:'Dorado y negro', dark:true,  a:'#E2B33C', a2:'#C99A22', head:'#0B0B0D', hero:'radial-gradient(ellipse 55% 120% at 84% 25%,rgba(226,179,60,.30),transparent 62%),linear-gradient(115deg,#050505 0%,#14100a 55%,#2a1f0a 120%)', band:'linear-gradient(180deg,#14100a,#1d160a 60%,#0b0905)', bg:'#0a0907', bg2:'#12100b', l1:'#FFD56B', l2:'#FFF1C9', sky1:'#0d0b07', sky2:'#2b2210', ink:'#0B0B0D'}
+    '1': {n:'Noche navideña', dark:true,  a:'#FFD24A', a2:'#F2B705', head:'#0A1530', hero:'radial-gradient(ellipse 60% 120% at 82% 20%,rgba(255,210,74,.20),transparent 60%),linear-gradient(105deg,#060d22 0%,#0b1a3d 42%,#0a3770 100%)', band:'linear-gradient(180deg,#0b1a3a,#10244f 60%,#0a1630)', bg:'#070b18', bg2:'#0a1226', l1:'#F2C14E', l2:'#FFFFFF', sky1:'#0b1a3d', sky2:'#1d3f80', ink:'#0A1530'},
+    '2': {n:'Rojo y verde clásico', dark:false, a:'#FFD24A', a2:'#F2B705', head:'#9E1B26', hero:'linear-gradient(105deg,#6e0f19 0%,#a51f2c 36%,#8c1824 44%,#0f5a34 64%,#0a6230 100%)', band:'linear-gradient(100deg,#a51f2c 0%,#8a1420 42%,#0e5a35 100%)', bg:'#FBF7F0', bg2:'#F3ECDF', l1:'#E5303F', l2:'#2FA36B', sky1:'#10321f', sky2:'#1f6a45', ink:'#6e0f19'},
+    '3': {n:'Dorado y negro', dark:true,  a:'#F7C948', a2:'#E5AE10', head:'#0B0B0D', hero:'linear-gradient(105deg,#050505 0%,#120e08 45%,#2c2214 78%,#40321e 100%)', band:'linear-gradient(180deg,#14100a,#1d160a 60%,#0b0905)', bg:'#0a0907', bg2:'#12100b', l1:'#FFD56B', l2:'#FFF1C9', sky1:'#0d0b07', sky2:'#2b2210', ink:'#0B0B0D'}
   }[estilo];
 
   var css = '' +
@@ -33,7 +33,8 @@
   '.hero-stats div span{color:#DCD5C3!important;}' +
   '.hero-bg-image{background:' + T.hero + '!important;}' +
   '.hero-photo-color{display:none!important;}' +
-  '.hero-key-photo{-webkit-mask-image:radial-gradient(ellipse 52% 50% at 50% 50%,#000 38%,transparent 74%)!important;mask-image:radial-gradient(ellipse 52% 50% at 50% 50%,#000 38%,transparent 74%)!important;}' +
+  '.hero-key-photo{-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 40%),radial-gradient(ellipse 80% 78% at 58% 50%,#000 45%,rgba(0,0,0,.6) 65%,transparent 90%)!important;-webkit-mask-composite:source-in!important;mask-image:linear-gradient(90deg,transparent 0%,#000 40%),radial-gradient(ellipse 80% 78% at 58% 50%,#000 45%,rgba(0,0,0,.6) 65%,transparent 90%)!important;mask-composite:intersect!important;}' +
+  '.hero h1{background:linear-gradient(100deg,#FFC62E 0%,#FFE27A 22%,#FFF8DC 34%,#FFD54A 48%,#FFC62E 60%,#FFE27A 74%,#FFF8DC 86%,#FFD54A 100%)!important;background-size:220% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;}' +
   /* cinta superior */
   '.nv-cinta{background:' + (estilo === '2' ? '#10523a' : estilo === '3' ? '#0B0B0D' : '#0a1530') + ';color:#fff;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 Inter,sans-serif;letter-spacing:.04em;text-align:center;padding:9px 16px;}' +
   '.nv-cinta b{color:' + T.a + ';font-family:"Plus Jakarta Sans",Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-right:10px;}' +
@@ -72,7 +73,7 @@
   /* ruleta */
   '.nv-ruleta{display:block;width:100%;max-width:230px;margin:2px auto 8px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.4));}' +
   '.nv-badge{display:inline-flex;align-items:center;gap:7px;margin:0 auto 8px;background:' + T.a + ';color:' + T.ink + ';font:800 11px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;border-radius:999px;}' +
-  '.game-panel{border-color:' + T.a + '!important;' + (estilo === '2' ? 'background:linear-gradient(180deg,#8a1420,#4d0a10)!important;' : estilo === '3' ? 'background:linear-gradient(180deg,#1f1708,#0b0905)!important;' : '') + '}' +
+  '.game-panel{border-color:' + T.a + '!important;' + (estilo === '2' ? 'background:linear-gradient(160deg,#a51f2c 0%,#7d1019 45%,#0e5a35 100%)!important;' : estilo === '3' ? 'background:linear-gradient(180deg,#1f1708,#0b0905)!important;' : '') + '}' +
   '@media(max-width:860px){.nv-banda-in{grid-template-columns:1fr;gap:18px;text-align:center;justify-items:center}.nv-escena{max-width:300px}.nv-texto p{margin:0 auto}.nv-lado{width:100%;max-width:340px}}' +
   '@media(prefers-reduced-motion:reduce){.nv-luces::before,.nv-luces::after,.nv-nieve i,.nv-estrella,.nv-aura{animation:none!important}.nv-nieve{display:none}}' +
   /* filtro del selector de estilo (solo vista previa) */
@@ -172,6 +173,8 @@
   function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
   ready(function(){
     document.body.classList.add('nv-on', 'nv-e' + estilo);
+    var foto = document.querySelector('.hero-key-photo');
+    if (foto && estilo !== '1') foto.src = 'assets/hero-llave-nav' + estilo + '.webp';
     if (T.dark) document.body.classList.add('nv-dark');
 
     /* días que faltan para Navidad */
