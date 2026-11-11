@@ -55,22 +55,22 @@
   "precio_promo": "12.24"
  },
  {
-  "codigo": "CERRADURA-19",
-  "precio_antes": "17.86",
-  "precio_promo": "14.29"
- },
- {
-  "codigo": "CERRADURA-20",
-  "precio_antes": "17.86",
-  "precio_promo": "14.29"
- },
- {
   "codigo": "CERRADURA-21",
   "precio_antes": "17.86",
   "precio_promo": "14.29"
  },
  {
   "codigo": "CERRADURA-22",
+  "precio_antes": "17.86",
+  "precio_promo": "14.29"
+ },
+ {
+  "codigo": "CERRADURA-23",
+  "precio_antes": "17.86",
+  "precio_promo": "14.29"
+ },
+ {
+  "codigo": "CERRADURA-24",
   "precio_antes": "17.86",
   "precio_promo": "14.29"
  },
