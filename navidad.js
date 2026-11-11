@@ -1,6 +1,6 @@
 /* Tema de Navidad de Keys Cars (borrador para elegir estilo).
    Fechas previstas: del 28 de noviembre (cuando termina Black Friday) al 6 de enero. Las confirma la dueña.
-   Para probar: ?navidad=1 (forzar) o ?navidad=0 (apagar). Estilo: ?estilo=1 (noche navideña), 2 (rojo y verde clásico) o 3 (dorado y negro).
+   Para probar: ?navidad=1 (forzar) o ?navidad=0 (apagar). Estilo: ?estilo=1 (noche navideña), 2 (rojo clásico), 3 (dorado y negro) o 4 (verde y rojo).
    Es solo decoración: no toca el catálogo ni los datos. Para quitarlo del todo: borrar este archivo y su línea <script> en index.html. */
 (function(){
   var q, estilo;
@@ -11,13 +11,14 @@
     var enFecha = (m === 10 && day >= 28) || m === 11 || (m === 0 && day <= 6);
     if (q === '0' || (q !== '1' && !enFecha)) return;
   }catch(e){ return; }
-  if (estilo !== '2' && estilo !== '3') estilo = '1';
+  if (['2','3','4'].indexOf(estilo) < 0) estilo = '1';
 
   /* paletas de los tres estilos */
   var T = {
-    '1': {n:'Noche navideña', dark:true,  a:'#FFD24A', a2:'#F2B705', head:'#0A1530', hero:'radial-gradient(ellipse 60% 120% at 82% 20%,rgba(255,210,74,.20),transparent 60%),linear-gradient(105deg,#060d22 0%,#0b1a3d 42%,#0a3770 100%)', band:'linear-gradient(180deg,#0b1a3a,#10244f 60%,#0a1630)', bg:'#070b18', bg2:'#0a1226', l1:'#F2C14E', l2:'#FFFFFF', sky1:'#0b1a3d', sky2:'#1d3f80', ink:'#0A1530'},
-    '2': {n:'Rojo y verde clásico', dark:false, a:'#FFD24A', a2:'#F2B705', head:'#9E1B26', hero:'linear-gradient(105deg,#6e0f19 0%,#a51f2c 36%,#8c1824 44%,#0f5a34 64%,#0a6230 100%)', band:'linear-gradient(100deg,#a51f2c 0%,#8a1420 42%,#0e5a35 100%)', bg:'#FBF7F0', bg2:'#F3ECDF', l1:'#E5303F', l2:'#2FA36B', sky1:'#10321f', sky2:'#1f6a45', ink:'#6e0f19'},
-    '3': {n:'Dorado y negro', dark:true,  a:'#F7C948', a2:'#E5AE10', head:'#0B0B0D', hero:'linear-gradient(105deg,#050505 0%,#120e08 45%,#2c2214 78%,#40321e 100%)', band:'linear-gradient(180deg,#14100a,#1d160a 60%,#0b0905)', bg:'#0a0907', bg2:'#12100b', l1:'#FFD56B', l2:'#FFF1C9', sky1:'#0d0b07', sky2:'#2b2210', ink:'#0B0B0D'}
+    '1': {dark:true,  a:'#FFD43B', a2:'#F5B400', head:'#0A1530', cinta:'#07102a', hero:'linear-gradient(105deg,#050b1d 0%,#0a1a40 38%,#0b2a5c 64%,#0e2a58 100%)', band:'linear-gradient(180deg,#0b1a3a,#10244f 60%,#0a1630)', bg:'#070b18', bg2:'#0a1226', l1:'#FFD43B', l2:'#FFFFFF', sky1:'#0b1a3d', sky2:'#1d3f80', ink:'#0A1530', panel:'', swag:'#1f7a4d', swag2:'#E5303F'},
+    '2': {dark:false, a:'#FFD43B', a2:'#F5B400', head:'#9E1B26', cinta:'#7a1019', hero:'linear-gradient(105deg,#5a0a13 0%,#98192a 40%,#8a1824 64%,#78151f 100%)', band:'linear-gradient(100deg,#b3202d 0%,#8a1420 55%,#6e0f19 100%)', bg:'#FBF7F0', bg2:'#F3ECDF', l1:'#FF4655', l2:'#FFE9A8', sky1:'#4a0a12', sky2:'#8a1c28', ink:'#6e0f19', panel:'linear-gradient(160deg,#a51f2c 0%,#7d1019 55%,#5a0a13 100%)', swag:'#1f7a4d', swag2:'#FFD43B'},
+    '3': {dark:true,  a:'#FFD21F', a2:'#F5B400', head:'#0B0B0D', cinta:'#000', hero:'linear-gradient(105deg,#030303 0%,#0b0b0b 50%,#161513 100%)', band:'linear-gradient(180deg,#151515,#0a0a0a)', bg:'#080808', bg2:'#101010', l1:'#FFD21F', l2:'#FFF4C2', sky1:'#0a0a0b', sky2:'#26241f', ink:'#0B0B0D', panel:'linear-gradient(180deg,#171717,#050505)', swag:'#E8B800', swag2:'#FFF1B0'},
+    '4': {dark:false, a:'#FFD43B', a2:'#F5B400', head:'#0d5a33', cinta:'#9E1B26', hero:'linear-gradient(105deg,#052e19 0%,#0b5530 42%,#116a3b 68%,#0f5f35 100%)', band:'linear-gradient(100deg,#0e5a35 0%,#0b4a2b 52%,#8a1420 100%)', bg:'#F7FAF5', bg2:'#EAF1E7', l1:'#FF4655', l2:'#4FD18E', sky1:'#082b18', sky2:'#1b6b44', ink:'#06331d', panel:'linear-gradient(160deg,#0e5a35 0%,#07391f 55%,#8a1420 130%)', swag:'#1b7a49', swag2:'#E5303F'}
   }[estilo];
 
   var css = '' +
@@ -36,13 +37,15 @@
   '.hero-key-photo{-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 40%),radial-gradient(ellipse 80% 78% at 58% 50%,#000 45%,rgba(0,0,0,.6) 65%,transparent 90%)!important;-webkit-mask-composite:source-in!important;mask-image:linear-gradient(90deg,transparent 0%,#000 40%),radial-gradient(ellipse 80% 78% at 58% 50%,#000 45%,rgba(0,0,0,.6) 65%,transparent 90%)!important;mask-composite:intersect!important;}' +
   '.hero h1{background:linear-gradient(100deg,#FFC62E 0%,#FFE27A 22%,#FFF8DC 34%,#FFD54A 48%,#FFC62E 60%,#FFE27A 74%,#FFF8DC 86%,#FFD54A 100%)!important;background-size:220% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;}' +
   /* cinta superior */
-  '.nv-cinta{background:' + (estilo === '2' ? '#10523a' : estilo === '3' ? '#0B0B0D' : '#0a1530') + ';color:#fff;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 Inter,sans-serif;letter-spacing:.04em;text-align:center;padding:9px 16px;}' +
+  '.nv-cinta{background:' + T.cinta + ';color:#fff;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 Inter,sans-serif;letter-spacing:.04em;text-align:center;padding:9px 16px;}' +
   '.nv-cinta b{color:' + T.a + ';font-family:"Plus Jakarta Sans",Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-right:10px;}' +
   /* luces colgantes */
-  '.nv-luces{position:relative;height:24px;overflow:hidden;background:transparent;pointer-events:none;margin-bottom:-24px;z-index:5;}' +
-  '.nv-luces::before,.nv-luces::after{content:"";position:absolute;inset:0;background-size:44px 24px;}' +
-  '.nv-luces::before{background-image:radial-gradient(circle at 11px 14px,var(--nv-l1) 0 4.5px,transparent 5.5px),linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55));background-size:44px 24px,100% 2px;background-repeat:repeat-x,no-repeat;animation:nvLuz 2.4s ease-in-out infinite;filter:drop-shadow(0 0 5px var(--nv-l1));}' +
-  '.nv-luces::after{background-image:radial-gradient(circle at 33px 14px,var(--nv-l2) 0 4.5px,transparent 5.5px);background-repeat:repeat-x;animation:nvLuz 2.4s ease-in-out infinite reverse;filter:drop-shadow(0 0 5px var(--nv-l2));}' +
+  '.nv-luces{height:58px;background-color:' + T.head + ';background-repeat:repeat-x;background-position:center top;background-size:200px 58px;pointer-events:none;border-bottom:3px solid ' + T.a + ';}' +
+  '.nv-marco{position:relative;}' +
+  '.nv-corona{position:absolute;pointer-events:none;filter:drop-shadow(0 4px 8px rgba(0,0,0,.45));z-index:3;}' +
+  '.nv-gorro{position:absolute;pointer-events:none;z-index:6;width:46px;left:-6px;top:-16px;transform:rotate(-14deg);filter:drop-shadow(0 2px 3px rgba(0,0,0,.5));}' +
+  '.brand{position:relative;}' +
+  '@media(max-width:700px){.nv-gorro{width:36px;left:-5px;top:-13px}}' +
   '@keyframes nvLuz{0%,100%{opacity:1}50%{opacity:.35}}' +
   /* nieve */
   '.nv-nieve{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden;}' +
@@ -73,9 +76,9 @@
   /* ruleta */
   '.nv-ruleta{display:block;width:100%;max-width:230px;margin:2px auto 8px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.4));}' +
   '.nv-badge{display:inline-flex;align-items:center;gap:7px;margin:0 auto 8px;background:' + T.a + ';color:' + T.ink + ';font:800 11px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;border-radius:999px;}' +
-  '.game-panel{border-color:' + T.a + '!important;' + (estilo === '2' ? 'background:linear-gradient(160deg,#a51f2c 0%,#7d1019 45%,#0e5a35 100%)!important;' : estilo === '3' ? 'background:linear-gradient(180deg,#1f1708,#0b0905)!important;' : '') + '}' +
+  '.game-panel{position:relative;border-color:' + T.a + '!important;' + (T.panel ? 'background:' + T.panel + '!important;' : '') + '}' +
   '@media(max-width:860px){.nv-banda-in{grid-template-columns:1fr;gap:18px;text-align:center;justify-items:center}.nv-escena{max-width:300px}.nv-texto p{margin:0 auto}.nv-lado{width:100%;max-width:340px}}' +
-  '@media(prefers-reduced-motion:reduce){.nv-luces::before,.nv-luces::after,.nv-nieve i,.nv-estrella,.nv-aura{animation:none!important}.nv-nieve{display:none}}' +
+  '@media(prefers-reduced-motion:reduce){.nv-nieve i,.nv-estrella,.nv-aura{animation:none!important}.nv-nieve{display:none}}' +
   /* filtro del selector de estilo (solo vista previa) */
   '.nv-sel{position:fixed;left:12px;bottom:12px;z-index:9999;display:flex;gap:6px;flex-wrap:wrap;background:rgba(0,0,0,.82);padding:8px;border-radius:12px;font:700 12px/1 Inter,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.4);}' +
   '.nv-sel a{color:#fff;text-decoration:none;padding:9px 12px;border-radius:8px;background:rgba(255,255,255,.12);}' +
@@ -170,11 +173,57 @@
     '</svg>';
   }
 
+
+  /* guirnalda de pino con luces y bolas (se repite a lo ancho) */
+  function guirnaldaURI(){
+    var g = T.swag, g2 = T.swag2;
+    function pt(t){ var x = 2*(1-t)*t*100 + t*t*200, y = (1-t)*(1-t)*4 + 2*(1-t)*t*50 + t*t*4; return [x, y]; }
+    var luces = '', cols = [T.l1, T.l2, '#FFFFFF', T.l1, T.l2, '#FFFFFF'];
+    [0.10,0.22,0.36,0.64,0.78,0.90].forEach(function(t, i){ var p = pt(t); luces += '<circle cx="' + p[0].toFixed(1) + '" cy="' + (p[1] + 6).toFixed(1) + '" r="3.1" fill="' + cols[i] + '"/><circle cx="' + p[0].toFixed(1) + '" cy="' + (p[1] + 6).toFixed(1) + '" r="6" fill="' + cols[i] + '" opacity=".28"/>'; });
+    var bayas = ''; [0.30,0.70].forEach(function(t){ var p = pt(t); bayas += '<circle cx="' + p[0].toFixed(1) + '" cy="' + (p[1] - 1).toFixed(1) + '" r="3.2" fill="' + g2 + '"/><circle cx="' + (p[0] + 5).toFixed(1) + '" cy="' + (p[1] + 1).toFixed(1) + '" r="2.6" fill="' + g2 + '"/>'; });
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="58" viewBox="0 0 200 58">' +
+      '<path d="M-2 4 Q100 50 202 4" fill="none" stroke="' + g + '" stroke-width="10" stroke-linecap="round"/>' +
+      '<path d="M-2 4 Q100 50 202 4" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="7" stroke-dasharray="1.6 3.2"/>' +
+      '<path d="M-2 6 Q100 52 202 6" fill="none" stroke="rgba(0,0,0,.28)" stroke-width="3" stroke-dasharray="3 4"/>' +
+      luces + bayas +
+      '<path d="M100 28 V41" stroke="' + T.a + '" stroke-width="1.4"/>' +
+      '<circle cx="100" cy="48" r="8" fill="' + g2 + '"/><ellipse cx="97" cy="45" rx="2.4" ry="3.2" fill="#fff" opacity=".55"/><rect x="96.5" y="38.6" width="7" height="3.6" rx="1" fill="' + T.a + '"/>' +
+      '<path d="M0 4 L0 2 M200 4 L200 2" stroke="' + g + '" stroke-width="3"/>' +
+    '</svg>';
+    return 'url("data:image/svg+xml;utf8,' + encodeURIComponent(svg) + '")';
+  }
+
+  /* corona de guirnalda con moño */
+  function corona(cls, estiloPos){
+    var g = T.swag, g2 = T.swag2;
+    var bolas = '', pos = [[50,10,'#E5303F'],[84,30,T.a],[88,66,'#E5303F'],[62,90,T.a],[24,80,'#E5303F'],[12,46,T.a],[28,18,'#fff']];
+    pos.forEach(function(p){ bolas += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="5" fill="' + p[2] + '"/><circle cx="' + (p[0]-1.6) + '" cy="' + (p[1]-1.6) + '" r="1.4" fill="#fff" opacity=".65"/>'; });
+    return '<svg class="nv-corona ' + cls + '" viewBox="0 0 100 108" style="' + estiloPos + '" aria-hidden="true">' +
+      '<circle cx="50" cy="50" r="36" fill="none" stroke="#0f4a2b" stroke-width="17"/>' +
+      '<circle cx="50" cy="50" r="36" fill="none" stroke="' + g + '" stroke-width="14"/>' +
+      '<circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,.30)" stroke-width="11" stroke-dasharray="1.8 3.4"/>' +
+      '<circle cx="50" cy="50" r="42" fill="none" stroke="' + g + '" stroke-width="3" stroke-dasharray="5 6"/>' +
+      bolas +
+      '<path d="M50 84 L30 106 L40 108 L50 94 L60 108 L70 106Z" fill="#B3202D"/>' +
+      '<path d="M50 90 C30 74 22 92 38 96 C44 97 48 94 50 90Z" fill="#E5303F"/><path d="M50 90 C70 74 78 92 62 96 C56 97 52 94 50 90Z" fill="#E5303F"/>' +
+      '<circle cx="50" cy="90" r="5.5" fill="#B3202D"/>' +
+    '</svg>';
+  }
+
+  /* gorrito de Papá Noel */
+  var GORRO = '<svg class="nv-gorro" viewBox="0 0 70 60" aria-hidden="true">' +
+    '<path d="M6 44 C6 20 22 8 46 8 C56 8 62 14 64 24 C54 20 46 24 44 34 C43 40 42 44 42 46 Z" fill="#D8202F"/>' +
+    '<path d="M6 44 C14 30 26 18 46 10" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="2.2" stroke-linecap="round"/>' +
+    '<path d="M2 46 C16 38 36 38 50 47 C52 55 40 58 26 56 C10 56 0 52 2 46Z" fill="#fff"/>' +
+    '<path d="M6 49 C18 45 34 46 46 50" fill="none" stroke="#DCDCE6" stroke-width="1.6" stroke-linecap="round"/>' +
+    '<circle cx="63" cy="23" r="7.4" fill="#fff"/><circle cx="60" cy="20.4" r="2.2" fill="#E8E8F2"/>' +
+  '</svg>';
+
   function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
   ready(function(){
     document.body.classList.add('nv-on', 'nv-e' + estilo);
     var foto = document.querySelector('.hero-key-photo');
-    if (foto && estilo !== '1') foto.src = 'assets/hero-llave-nav' + estilo + '.webp';
+    if (foto) foto.src = 'assets/hero-llave-nav' + estilo + '.webp';
     if (T.dark) document.body.classList.add('nv-dark');
 
     /* días que faltan para Navidad */
@@ -188,7 +237,9 @@
 
     /* luces bajo la cabecera */
     var hd = document.querySelector('header');
-    if (hd) hd.insertAdjacentHTML('afterend', '<div class="nv-luces" aria-hidden="true"></div>');
+    if (hd){ hd.insertAdjacentHTML('afterend', '<div class="nv-luces" aria-hidden="true"></div>'); document.querySelector('.nv-luces').style.backgroundImage = guirnaldaURI(); }
+    /* gorrito sobre la llave del logo */
+    var br = document.querySelector('.brand'); if (br) br.insertAdjacentHTML('afterbegin', GORRO);
 
     /* nieve suave */
     var N = document.createElement('div'); N.className = 'nv-nieve'; N.setAttribute('aria-hidden', 'true');
@@ -201,7 +252,7 @@
 
     /* banda del pesebre, en el lugar del carrete de ofertas */
     var sec = document.createElement('section'); sec.className = 'nv-banda'; sec.setAttribute('aria-label', 'Navidad en Keys Cars');
-    sec.innerHTML = '<div class="nv-banda-in">' + pesebre('A', 'nv-escena') +
+    sec.innerHTML = '<div class="nv-banda-in"><div class="nv-marco">' + pesebre('A', 'nv-escena') + corona('', 'width:92px;left:-26px;top:-30px') + '</div>' +
       '<div class="nv-texto"><span class="nv-kicker">Navidad en Keys Cars</span>' +
       '<h2>Que tu hogar esté <span>seguro y en paz</span> esta Navidad</h2>' +
       '<p>Llaves, cerraduras, candados y controles para cuidar lo que más quieres. Cotiza por WhatsApp y te atendemos en el local.</p></div>' +
@@ -213,12 +264,12 @@
 
     /* pesebre pequeño en la ruleta */
     var panel = document.querySelector('.game-panel');
-    if (panel) panel.insertAdjacentHTML('afterbegin', '<div style="text-align:center"><span class="nv-badge">★ Edición Navidad</span></div>' + pesebre('B', 'nv-ruleta'));
+    if (panel) panel.insertAdjacentHTML('afterbegin', corona('', 'width:62px;right:6px;top:10px') + '<div style="text-align:center"><span class="nv-badge">★ Edición Navidad</span></div>' + pesebre('B', 'nv-ruleta'));
 
     /* selector de estilo (solo en la vista previa) */
     if (window.NV_VISTA){
       var sel = document.createElement('div'); sel.className = 'nv-sel';
-      sel.innerHTML = [['1','1 · Noche navideña'],['2','2 · Rojo y verde'],['3','3 · Dorado y negro']].map(function(o){
+      sel.innerHTML = [['1','1 · Noche navideña'],['2','2 · Rojo clásico'],['3','3 · Dorado y negro'],['4','4 · Verde y rojo']].map(function(o){
         return '<a class="' + (o[0] === estilo ? 'on' : '') + '" href="?navidad=1&estilo=' + o[0] + '">' + o[1] + '</a>';
       }).join('');
       document.body.appendChild(sel);
