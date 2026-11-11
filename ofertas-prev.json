@@ -1,22 +1,127 @@
 [
-  {"codigo": "CANDADO-34", "precio_antes": "5.40", "precio_promo": "4.32"},
-  {"codigo": "CANDADO-35", "precio_antes": "6.81", "precio_promo": "5.45"},
-  {"codigo": "CANDADO-36", "precio_antes": "8.10", "precio_promo": "6.48"},
-  {"codigo": "CANDADO-37", "precio_antes": "9.65", "precio_promo": "7.72"},
-  {"codigo": "CANDADO-38", "precio_antes": "8.94", "precio_promo": "7.15"},
-  {"codigo": "CANDADO-39", "precio_antes": "9.65", "precio_promo": "7.72"},
-  {"codigo": "CANDADO-40", "precio_antes": "4.76", "precio_promo": "3.81"},
-  {"codigo": "CANDADO-41", "precio_antes": "12.73", "precio_promo": "10.18"},
-  {"codigo": "CANDADO-42", "precio_antes": "15.30", "precio_promo": "12.24"},
-  {"codigo": "CANDADOGUAYA-01", "precio_antes": "11.31", "precio_promo": "9.05"},
-  {"codigo": "CANDADOGUAYA-03", "precio_antes": "15.30", "precio_promo": "12.24"},
-  {"codigo": "CERRADURA-19", "precio_antes": "17.86", "precio_promo": "14.29"},
-  {"codigo": "CERRADURA-20", "precio_antes": "17.86", "precio_promo": "14.29"},
-  {"codigo": "CERRADURA-21", "precio_antes": "17.86", "precio_promo": "14.29"},
-  {"codigo": "CERRADURA-22", "precio_antes": "17.86", "precio_promo": "14.29"},
-  {"codigo": "LLAVERO-44", "precio_antes": "7.46", "precio_promo": "5.97"},
-  {"codigo": "LLAVERO-45", "precio_antes": "7.46", "precio_promo": "5.97"},
-  {"codigo": "LLAVERO-46", "precio_antes": "7.46", "precio_promo": "5.97"},
-  {"codigo": "LLAVERO-47", "precio_antes": "7.46", "precio_promo": "5.97"},
-  {"codigo": "LLAVERO-48", "precio_antes": "7.46", "precio_promo": "5.97"}
+ {
+  "codigo": "CANDADO-34",
+  "precio_antes": "5.40",
+  "precio_promo": "4.32"
+ },
+ {
+  "codigo": "CANDADO-35",
+  "precio_antes": "6.81",
+  "precio_promo": "5.45"
+ },
+ {
+  "codigo": "CANDADO-36",
+  "precio_antes": "8.10",
+  "precio_promo": "6.48"
+ },
+ {
+  "codigo": "CANDADO-37",
+  "precio_antes": "9.65",
+  "precio_promo": "7.72"
+ },
+ {
+  "codigo": "CANDADO-38",
+  "precio_antes": "8.94",
+  "precio_promo": "7.15"
+ },
+ {
+  "codigo": "CANDADO-39",
+  "precio_antes": "9.65",
+  "precio_promo": "7.72"
+ },
+ {
+  "codigo": "CANDADO-40",
+  "precio_antes": "4.76",
+  "precio_promo": "3.81"
+ },
+ {
+  "codigo": "CANDADO-41",
+  "precio_antes": "12.73",
+  "precio_promo": "10.18"
+ },
+ {
+  "codigo": "CANDADO-42",
+  "precio_antes": "15.30",
+  "precio_promo": "12.24"
+ },
+ {
+  "codigo": "CANDADOGUAYA-01",
+  "precio_antes": "11.31",
+  "precio_promo": "9.05"
+ },
+ {
+  "codigo": "CANDADOGUAYA-03",
+  "precio_antes": "15.30",
+  "precio_promo": "12.24"
+ },
+ {
+  "codigo": "CERRADURA-19",
+  "precio_antes": "17.86",
+  "precio_promo": "14.29"
+ },
+ {
+  "codigo": "CERRADURA-20",
+  "precio_antes": "17.86",
+  "precio_promo": "14.29"
+ },
+ {
+  "codigo": "CERRADURA-21",
+  "precio_antes": "17.86",
+  "precio_promo": "14.29"
+ },
+ {
+  "codigo": "CERRADURA-22",
+  "precio_antes": "17.86",
+  "precio_promo": "14.29"
+ },
+ {
+  "codigo": "LLAVERO-44",
+  "precio_antes": "7.46",
+  "precio_promo": "5.97"
+ },
+ {
+  "codigo": "LLAVERO-45",
+  "precio_antes": "7.46",
+  "precio_promo": "5.97"
+ },
+ {
+  "codigo": "LLAVERO-46",
+  "precio_antes": "7.46",
+  "precio_promo": "5.97"
+ },
+ {
+  "codigo": "LLAVERO-47",
+  "precio_antes": "7.46",
+  "precio_promo": "5.97"
+ },
+ {
+  "codigo": "LLAVERO-48",
+  "precio_antes": "7.46",
+  "precio_promo": "5.97"
+ },
+ {
+  "codigo": "LINTERNA-05",
+  "precio_antes": "20.45",
+  "precio_promo": "16.36"
+ },
+ {
+  "codigo": "LINTERNA-06",
+  "precio_antes": "15.88",
+  "precio_promo": "12.70"
+ },
+ {
+  "codigo": "LINTERNA-07",
+  "precio_antes": "10.84",
+  "precio_promo": "8.67"
+ },
+ {
+  "codigo": "LINTERNA-08",
+  "precio_antes": "11.26",
+  "precio_promo": "9.01"
+ },
+ {
+  "codigo": "PANEL-01",
+  "precio_antes": "19.17",
+  "precio_promo": "15.33"
+ }
 ]
