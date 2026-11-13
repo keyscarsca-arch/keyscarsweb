@@ -635,12 +635,14 @@
   .nos-stat b{font:800 34px/1 'Plus Jakarta Sans',Inter,sans-serif;color:var(--gold);}
   .nos-stat span{font-size:14px;line-height:1.35;font-weight:600;}
   @media (max-width:560px){.nos-stat{flex:1 1 100%;}}
-  .ig-link{display:inline-flex;align-items:center;gap:10px;margin-top:10px;padding:5px 14px 5px 6px;border-radius:12px;border:1.5px solid var(--gold);background:rgba(255,255,255,.04);color:#fff!important;text-decoration:none;box-shadow:0 0 12px rgba(255,196,0,.2);transition:box-shadow .2s,transform .2s;}
-  .ig-link .ig-ico{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;background:linear-gradient(180deg,var(--gold) 0%,var(--gold-dark,#E6AE00) 100%);color:#0B0B0D;box-shadow:0 1px 0 rgba(255,255,255,.45) inset,0 2px 4px rgba(0,0,0,.35);}
-  .ig-link .ig-txt{display:flex;flex-direction:column;text-align:left;line-height:1.15;}
-  .ig-link .ig-txt small{font:700 9px/1.1 Inter,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);}
-  .ig-link .ig-txt b{font:800 15px/1.2 'Plus Jakarta Sans',Inter,sans-serif;color:#fff;}
-  .ig-link:hover{box-shadow:0 0 20px rgba(255,196,0,.45);transform:translateY(-1px);}
+  .foot-card{display:flex;flex-direction:column;min-width:262px;border:1.5px solid var(--gold);border-radius:14px;background:rgba(255,255,255,.04);box-shadow:0 0 14px rgba(255,196,0,.18);overflow:hidden;}
+  .foot-row{display:flex;align-items:center;gap:12px;padding:10px 18px 10px 10px;color:#fff!important;text-decoration:none;transition:background .2s;}
+  .foot-row+.foot-row{border-top:1px solid rgba(255,196,0,.38);}
+  .foot-row:hover{background:rgba(255,196,0,.12);}
+  .foot-ico{display:flex;align-items:center;justify-content:center;flex:none;width:36px;height:36px;border-radius:9px;background:linear-gradient(180deg,var(--gold) 0%,var(--gold-dark,#E6AE00) 100%);color:#0B0B0D;box-shadow:0 1px 0 rgba(255,255,255,.45) inset,0 2px 4px rgba(0,0,0,.35);}
+  .foot-txt{display:flex;flex-direction:column;line-height:1.15;text-align:left;}
+  .foot-txt small{font:700 9.5px/1.1 Inter,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;}
+  .foot-txt b{font:800 15px/1.2 'Plus Jakarta Sans',Inter,sans-serif;color:#fff;}
   .ig-link-inline{font-weight:700;}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
   .footer-credits{
@@ -1118,7 +1120,10 @@
       <img src="assets/pie-logo-79007ed8.webp" alt="Keys Cars Motos & House" style="height:34px;width:auto;">
       <span>San Cristóbal, Táchira</span>
     </div>
-    <div>Catálogo y cotización por WhatsApp<br><a class="ig-link" href="https://www.instagram.com/keyscarsmotos/" target="_blank" rel="noopener me" aria-label="Instagram de Keys Cars"><span class="ig-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span><span class="ig-txt"><small>Síguenos en Instagram</small><b>@keyscarsmotos</b></span></a></div>
+    <div class="foot-card">
+      <a class="foot-row" href="https://wa.me/584226377050?text=Hola%20Keys%20Cars%2C%20quiero%20cotizar%20unos%20productos." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><span class="foot-ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.1-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg></span><span class="foot-txt"><small>Catálogo y cotización</small><b>por WhatsApp</b></span></a>
+      <a class="foot-row" href="https://www.instagram.com/keyscarsmotos/" target="_blank" rel="noopener me" aria-label="Instagram de Keys Cars"><span class="foot-ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span><span class="foot-txt"><small>Síguenos en Instagram</small><b>@keyscarsmotos</b></span></a>
+    </div>
   </div>
   <!--SEO-CATS--><nav class="footer-cats" aria-label="Categorías del catálogo"><a href="/categoria/llaves-tipo-cisa/">Llaves tipo CISA</a> · <a href="/categoria/llaves-residenciales-y-especiales/">Llaves Residenciales y Especiales</a> · <a href="/categoria/llaves-para-motos-y-vehiculos/">Llaves para Motos y Vehiculos</a> · <a href="/categoria/herramientas-repuestos-y-accesorios-cerrajeria/">Herramientas, Repuestos y Accesorios Cerrajeria</a> · <a href="/categoria/cilindros-candados-y-cerraduras/">Cilindros Candados y Cerraduras</a> · <a href="/categoria/portachip/">Portachip</a> · <a href="/categoria/carcasas/">Carcasas</a> · <a href="/categoria/llaveros/">Llaveros</a> · <a href="/categoria/controles-y-telemandos/">Controles y Telemandos</a> · <a href="/categoria/llaves-con-chip/">Llaves con Chip</a> · <a href="/categoria/productos-xhorse/">PRODUCTOS Xhorse</a> · <a href="/categoria/controles-keydiy/">Controles KEYDIY</a> · <a href="/categoria/espadines-para-vvdi-xhorse/">Espadines para VVDI XHORSE</a> · <a href="/categoria/productos-cisa/">Productos CISA</a> · <a href="/categoria/llaves-silca-flexon/">Llaves SILCA - Flexon</a> · <a href="/categoria/cerraduras-inteligentes/">Cerraduras Inteligentes</a></nav><!--/SEO-CATS-->
   <div class="footer-credits">
