@@ -635,14 +635,26 @@
   .nos-stat b{font:800 34px/1 'Plus Jakarta Sans',Inter,sans-serif;color:var(--gold);}
   .nos-stat span{font-size:14px;line-height:1.35;font-weight:600;}
   @media (max-width:560px){.nos-stat{flex:1 1 100%;}}
-  .foot-card{display:flex;flex-direction:column;min-width:262px;border:1.5px solid var(--gold);border-radius:14px;background:rgba(255,255,255,.04);box-shadow:0 0 14px rgba(255,196,0,.18);overflow:hidden;}
-  .foot-row{display:flex;align-items:center;gap:12px;padding:10px 18px 10px 10px;color:#fff!important;text-decoration:none;transition:background .2s;}
-  .foot-row+.foot-row{border-top:1px solid rgba(255,196,0,.38);}
+  /* Cuadro del pie con proporciones de la serie áurea (Fibonacci): ícono 34 px = altura del logo, relleno 21 px (10,5 arriba y abajo)
+     -> alto total 55 px = 34 x 1,618; ancho ~ alto x 1,618^4; separación 13 px; texto principal 13 px. */
+  footer .wrap{align-items:center;}
+  .foot-card{display:flex;flex-direction:row;align-items:stretch;border:1.5px solid var(--gold);border-radius:13px;background:rgba(255,255,255,.04);box-shadow:0 0 13px rgba(255,196,0,.18);overflow:hidden;}
+  .foot-row{display:flex;align-items:center;gap:12px;padding:9.5px 16px 9.5px 10px;color:#fff!important;text-decoration:none;transition:background .2s;}
+  .foot-row+.foot-row{border-left:1px solid rgba(255,196,0,.38);}
   .foot-row:hover{background:rgba(255,196,0,.12);}
-  .foot-ico{display:flex;align-items:center;justify-content:center;flex:none;width:36px;height:36px;border-radius:9px;background:linear-gradient(180deg,var(--gold) 0%,var(--gold-dark,#E6AE00) 100%);color:#0B0B0D;box-shadow:0 1px 0 rgba(255,255,255,.45) inset,0 2px 4px rgba(0,0,0,.35);}
-  .foot-txt{display:flex;flex-direction:column;line-height:1.15;text-align:left;}
-  .foot-txt small{font:700 9.5px/1.1 Inter,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;}
-  .foot-txt b{font:800 15px/1.2 'Plus Jakarta Sans',Inter,sans-serif;color:#fff;}
+  .foot-ico{display:flex;align-items:center;justify-content:center;flex:none;width:34px;height:34px;border-radius:8px;background:linear-gradient(180deg,var(--gold) 0%,var(--gold-dark,#E6AE00) 100%);color:#0B0B0D;box-shadow:0 1px 0 rgba(255,255,255,.45) inset,0 2px 4px rgba(0,0,0,.35);}
+  .foot-ico svg{width:18px;height:18px;}
+  .foot-txt{display:flex;flex-direction:column;line-height:1.15;text-align:left;white-space:nowrap;}
+  .foot-txt small{font:700 8px/1.1 Inter,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;}
+  .foot-txt b{font:800 13px/1.2 'Plus Jakarta Sans',Inter,sans-serif;color:#fff;}
+  @media (max-width:640px){
+    .foot-card{width:100%;}
+    .foot-row{flex:1 1 0;min-width:0;gap:8px;padding:8px 10px 8px 8px;}
+    .foot-ico{width:30px;height:30px;}
+    .foot-ico svg{width:16px;height:16px;}
+    .foot-txt small{font-size:7.5px;letter-spacing:.08em;}
+    .foot-txt b{font-size:12px;}
+  }
   .ig-link-inline{font-weight:700;}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
   .footer-credits{
