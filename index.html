@@ -427,6 +427,9 @@
     background:#fff;white-space:nowrap;
     max-width:100%;
   }
+  .footer-cats{max-width:1100px;margin:10px auto 0;padding:0 16px;font-size:12.5px;line-height:1.9;text-align:center;opacity:.85;}
+  .footer-cats a{color:inherit;text-decoration:none;white-space:nowrap;}
+  .footer-cats a:hover{text-decoration:underline;}
   .chips-brand{margin-top:-6px;align-items:center;}
   .chips-brand .chip{padding:5px 11px;font-size:11.5px;}
   .chips-brand .chip-label{font:800 10.5px/1 Inter,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-right:2px;}
@@ -1099,6 +1102,7 @@
     </div>
     <div>Catálogo y cotización por WhatsApp</div>
   </div>
+  <!--SEO-CATS--><nav class="footer-cats" aria-label="Categorías del catálogo"><a href="/categoria/llaves-tipo-cisa/">Llaves tipo CISA</a> · <a href="/categoria/llaves-residenciales-y-especiales/">Llaves Residenciales y Especiales</a> · <a href="/categoria/llaves-para-motos-y-vehiculos/">Llaves para Motos y Vehiculos</a> · <a href="/categoria/herramientas-repuestos-y-accesorios-cerrajeria/">Herramientas, Repuestos y Accesorios Cerrajeria</a> · <a href="/categoria/cilindros-candados-y-cerraduras/">Cilindros Candados y Cerraduras</a> · <a href="/categoria/portachip/">Portachip</a> · <a href="/categoria/carcasas/">Carcasas</a> · <a href="/categoria/llaveros/">Llaveros</a> · <a href="/categoria/controles-y-telemandos/">Controles y Telemandos</a> · <a href="/categoria/llaves-con-chip/">Llaves con Chip</a> · <a href="/categoria/productos-xhorse/">PRODUCTOS Xhorse</a> · <a href="/categoria/controles-keydiy/">Controles KEYDIY</a> · <a href="/categoria/espadines-para-vvdi-xhorse/">Espadines para VVDI XHORSE</a> · <a href="/categoria/productos-cisa/">Productos CISA</a> · <a href="/categoria/llaves-silca-flexon/">Llaves SILCA - Flexon</a> · <a href="/categoria/cerraduras-inteligentes/">Cerraduras Inteligentes</a></nav><!--/SEO-CATS-->
   <div class="footer-credits">
     <span class="footer-creator">© 2026 Keys Cars Motos &amp; House. Todos los derechos reservados.</span>
   </div>
@@ -2333,10 +2337,16 @@ function initAfterLoad(){
   document.getElementById('statTotal').textContent = PRODUCTS.length;
   document.getElementById('statCats').textContent = categories.length - 1;
 
+  // enlace desde Google o desde una página de producto: /?q=CERRADURA-11#catalogo
+  try{
+    const qp = new URLSearchParams(location.search).get('q');
+    if(qp){ searchTerm = qp.slice(0,80); document.getElementById('searchInput').value = searchTerm; }
+  }catch(e){}
   renderChips();
   renderBrands();
   renderGrid();
   renderDrawer();
+  if(searchTerm && location.hash === '#catalogo'){ setTimeout(()=>{ const c = document.getElementById('catalogo'); if(c) c.scrollIntoView(); }, 150); }
 }
 
 /* Acepta el formato simple [{"c","cat","d"}, ...] que usa este sitio, PERO también el
