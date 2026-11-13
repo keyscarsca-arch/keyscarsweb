@@ -128,7 +128,10 @@
     letter-spacing:0.03em;border:1px solid var(--gold);
   }
   .clock-pill svg{width:13px;height:13px;color:var(--gold);flex:none;}
-  .visits-badge{height:20px;display:block;}
+  .visits-badge{height:20px;display:flex;align-items:stretch;border-radius:3px;overflow:hidden;font:600 11px/20px Verdana,Geneva,sans-serif;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.35);}
+  .visits-badge[hidden]{display:none;}
+  .visits-badge .vb-l{background:#FFD700;color:#0D47A1;padding:0 7px;}
+  .visits-badge .vb-n{background:#0D47A1;color:#fff;padding:0 7px;min-width:18px;text-align:center;}
   .nav-actions{display:flex;align-items:center;gap:14px;}
   .cart-btn{
     position:relative;background:var(--navy);border:none;
@@ -810,7 +813,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2" stroke-linecap="round"/></svg>
           <span id="clockDisplay">--:--:--</span>
         </div>
-        <img class="visits-badge" id="visitsBadge" alt="contador de visitas" src="https://hits.sh/keyscarsmotosandhouse.com.svg?label=visitas&color=0D47A1&labelColor=FFD700&style=flat-square" onerror="this.style.display='none'">
+        <div class="visits-badge" id="visitsBadge" hidden title="Visitas a la página"><span class="vb-l">visitas</span><span class="vb-n" id="visitsNum">0</span></div>
       </div>
       <button class="cart-btn" id="cartOpenBtn" aria-label="Ver cotización">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h2l2.4 12.2a2 2 0 0 0 2 1.8h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>
@@ -1619,9 +1622,22 @@ setInterval(updateClock, 1000);
 /* Contador de visitas: insignia de imagen (sin backend propio), suma 1 en cada
    carga de la página una vez publicada en un dominio real. Si el navegador no
    puede cargarla (por ejemplo abierta como archivo local), se oculta sola. */
-document.getElementById('visitsBadge').addEventListener('error', function(){
-  this.style.display = 'none';
-});
+(function(){
+  /* Contador propio (base de datos de Keys Cars): suma 1 por cada visita nueva
+     (una vez por pestaña) y muestra el total. Si no hay conexión, se oculta solo. */
+  var b = document.getElementById('visitsBadge'); if(!b) return;
+  var ya = false; try{ ya = sessionStorage.getItem('kc_visita') === '1'; }catch(e){}
+  fetch('https://qtfxrhznhgxrimqivlfj.supabase.co/rest/v1/rpc/fn_visita', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','apikey':'sb_publishable_tYY-1_EE19qx-TEiUN-0pg__QMGcngc'},
+    body: JSON.stringify({p_contar: !ya})
+  }).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(n){
+    if(typeof n !== 'number') throw 0;
+    document.getElementById('visitsNum').textContent = n.toLocaleString('es-VE');
+    b.hidden = false;
+    try{ sessionStorage.setItem('kc_visita','1'); }catch(e){}
+  }).catch(function(){ b.hidden = true; });
+})();
 
 /* ===== ILUSTRACIÓN DE LLAVES (HERO) =====
    Reemplaza el antiguo carrusel de fotos por una ilustración estática (ver SVG en el HTML). */
