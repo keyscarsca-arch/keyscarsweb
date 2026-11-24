@@ -1,6 +1,6 @@
-/* Tema de Navidad de Keys Cars (borrador para elegir estilo).
-   Fechas previstas: del 28 de noviembre (cuando termina Black Friday) al 6 de enero. Las confirma la dueña.
-   Para probar: ?navidad=1 (forzar) o ?navidad=0 (apagar). Estilo: ?estilo=1 (noche navideña), 2 (rojo clásico), 3 (dorado y negro) o 4 (verde y rojo).
+/* Tema de Navidad de Keys Cars.
+   ELEGIDO por la dueña (23/11/2026): estilo 1 (azul) en versión OSCURA. Activo del 28 de noviembre (al terminar Black Friday) al 6 de enero.
+   Para probar: ?navidad=1 (forzar) o ?navidad=0 (apagar). Estilo: ?estilo=1 (noche navideña), 2 (rojo clásico), 3 (dorado y negro) o 4 (verde y rojo); tono: ?tono=claro u oscuro (por defecto oscuro).
    Es solo decoración: no toca el catálogo ni los datos. Para quitarlo del todo: borrar este archivo y su línea <script> en index.html. */
 (function(){
   var q, estilo, tono;
@@ -12,6 +12,7 @@
     if (q === '0' || (q !== '1' && !enFecha)) return;
   }catch(e){ return; }
   if (['2','3','4'].indexOf(estilo) < 0) estilo = '1';
+  if (tono !== 'claro') tono = 'oscuro';   /* elegido: versión oscura */
 
   /* paletas de los tres estilos */
   var T = {
@@ -371,7 +372,7 @@
       sel.innerHTML = [['1','1 · Azul'],['2','2 · Rojo'],['3','3 · Dorado'],['4','4 · Verde']].map(function(o){
         return '<a class="' + (o[0] === estilo ? 'on' : '') + '" href="?navidad=1&estilo=' + o[0] + tq + '">' + o[1] + '</a>';
       }).join('') + '<span style="width:100%;height:0"></span>' +
-      '<a class="' + (!oscuro ? 'on' : '') + '" href="?navidad=1&estilo=' + estilo + '">☀ Claro</a><a class="' + (oscuro ? 'on' : '') + '" href="?navidad=1&estilo=' + estilo + '&tono=oscuro">☾ Oscuro</a>';
+      '<a class="' + (!oscuro ? 'on' : '') + '" href="?navidad=1&estilo=' + estilo + '&tono=claro">☀ Claro</a><a class="' + (oscuro ? 'on' : '') + '" href="?navidad=1&estilo=' + estilo + '&tono=oscuro">☾ Oscuro</a>';
       document.body.appendChild(sel);
     }
   });
